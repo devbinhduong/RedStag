@@ -102,7 +102,7 @@ export default function(context) {
     }
 
     function sectionLoad() {
-        const handler = (entries, observer) => {
+        const handler = (entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
                     const section = entry.target;

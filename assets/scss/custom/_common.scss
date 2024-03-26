@@ -1,3 +1,12 @@
+:root {
+    --desktopCol: 4;
+    --tabletCol: 2;
+    --mobileCol: 1;
+    --desktopGap: 20px;
+    --tabletGap: 20px;
+    --mobileGap: 20px;
+}
+
 .background-overlay {
     position: absolute;
     top: 0;
@@ -27,27 +36,33 @@
 }
 
 .custom-animation {
-    transform: translatey(100px);
-}
-
-.js .custom-animation {
-    transition-property: transform, opacity;
-    transition-timing-function: ease;
-    transform: translatey(100px);
-    opacity: 0;
-
-
-    @for $i from 0 through 100 {
-        &[data-step-animate="#{$i}"] {
-            transition-delay: 0.1s + $i * 0.02;
-            transition-duration: 0.3s + $i * 0.1;
-        }
+    [data-step-animate], 
+    &[data-step-animate] {
+        transform: translatey(100px);
     }
 }
 
-.js .animated.custom-animation {
-    transform: translatey(0);
-    opacity: 1;
+.js {
+    [data-step-animate] {
+        transition-property: transform, opacity;
+        transition-timing-function: ease;
+        transform: translatey(100px);
+        opacity: 0;
+
+        @for $i from 0 through 100 {
+            &[data-step-animate='#{$i}'] {
+                transition-delay: 0.1s + $i * 0.02;
+                transition-duration: 0.3s + $i * 0.1;
+            }
+        }
+    }
+    .animated {
+        [data-step-animate],
+        &[data-step-animate] {
+            transform: translatey(0);
+            opacity: 1;
+        }
+    }
 }
 
 @include smin-m {
@@ -68,7 +83,8 @@
     
     /* ------------------ Hover Link ------------------------- */
     .hover-link {
-        color: #FF6651;
+        text-decoration: none;
+
         > span:not(.icon):not(.navUser-icon) {
             background: linear-gradient(90deg, currentColor 33.33333%,transparent 0 70%, currentColor 0) 50% 100%/300% 1px no-repeat;
             transition: background .6s cubic-bezier(.52,.18,.45,1.4) 0s;
@@ -82,7 +98,7 @@
     }
 }
 
-/* Grid Layout */
+/* Flex Layout */
 .row {
     --f-col: var(--rowDesktop);
     --f-gap: 20px;
@@ -104,5 +120,47 @@
         padding-right: calc(var(--f-gap) / 2);
         flex: 0 0 calc(100% / var(--f-col));
         max-width: calc(100% / var(--f-col));
+    }
+}
+
+//
+// Grid Layout
+// -----------------------------------------------------------------------------
+.grid {
+    --colDesktop: var(--desktopCol);
+    --colTablet: var(--tabletCol);
+    --colMobile: var(--mobileCol);
+    display: grid;
+    grid-template-columns: repeat(var(--colDesktop), 1fr);
+    gap: var(--desktopGap);
+
+    @include smax-m {
+        grid-template-columns: repeat(var(--colTablet), 1fr);
+        gap: var(--tabletGap);
+    }
+
+    @include smax-s {
+        grid-template-columns: repeat(var(--colMobile), 1fr);
+        gap: var(--mobileGap);
+    }
+}
+
+//
+// Skeleton Loader
+// -----------------------------------------------------------------------------
+.skeleton-loader {
+    background: #f2f2f2;
+    background: linear-gradient(120deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 4s infinite linear;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
     }
 }

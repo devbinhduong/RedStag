@@ -51,9 +51,9 @@
         "id": "body-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_400"
           },
           {
             "group": "Karla",
@@ -144,14 +144,14 @@
         "id": "headings-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_600"
           },
           {
-            "group": "Poppins",
-            "label": "Poppins Bold",
-            "value": "Google_Poppins_700"
+            "group": "Oswald",
+            "label": "Oswald Bold",
+            "value": "Google_Oswald_700"
           },
           {
             "group": "Montserrat",
@@ -2253,14 +2253,14 @@
         "id": "optimizedCheckout-headingPrimary-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_400"
           },
           {
-            "group": "Poppins",
-            "label": "Poppins Bold",
-            "value": "Google_Poppins_700"
+            "group": "Oswald",
+            "label": "Oswald Bold",
+            "value": "Google_Oswald_700"
           },
           {
             "group": "OpenSans",
@@ -2315,14 +2315,14 @@
         "id": "optimizedCheckout-headingSecondary-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_400"
           },
           {
-            "group": "Poppins",
-            "label": "Poppins Bold",
-            "value": "Google_Poppins_700"
+            "group": "Oswald",
+            "label": "Oswald Bold",
+            "value": "Google_Oswald_600"
           },
           {
             "group": "OpenSans",
@@ -2395,14 +2395,14 @@
         "id": "optimizedCheckout-contentPrimary-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_400"
           },
           {
-            "group": "Poppins",
-            "label": "Poppins",
-            "value": "Google_Poppins_500"
+            "group": "Oswald",
+            "label": "Oswald",
+            "value": "Google_Oswald_500"
           },
           {
             "group": "OpenSans",
@@ -2457,14 +2457,14 @@
         "id": "optimizedCheckout-contentSecondary-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_400"
           },
           {
-            "group": "Poppins",
-            "label": "Poppins",
-            "value": "Google_Poppins_500"
+            "group": "Oswald",
+            "label": "Oswald",
+            "value": "Google_Oswald_500"
           },
           {
             "group": "OpenSans",
@@ -2519,14 +2519,14 @@
         "id": "optimizedCheckout-link-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_400"
           },
           {
-            "group": "Poppins",
-            "label": "Poppins",
-            "value": "Google_Poppins_500"
+            "group": "Oswald",
+            "label": "Oswald",
+            "value": "Google_Oswald_500"
           },
           {
             "group": "OpenSans",
@@ -2590,14 +2590,14 @@
         "id": "optimizedCheckout-buttonPrimary-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_400"
           },
           {
-            "group": "Poppins",
-            "label": "Poppins",
-            "value": "Google_Poppins_500"
+            "group": "Oswald",
+            "label": "Oswald",
+            "value": "Google_Oswald_500"
           },
           {
             "group": "OpenSans",
@@ -2711,14 +2711,14 @@
         "id": "optimizedCheckout-buttonSecondary-font",
         "options": [
           {
-            "group": "Poppins",
-            "label": "Poppins Light",
-            "value": "Google_Poppins_400"
+            "group": "Oswald",
+            "label": "Oswald Light",
+            "value": "Google_Oswald_400"
           },
           {
-            "group": "Poppins",
-            "label": "Poppins",
-            "value": "Google_Poppins_500"
+            "group": "Oswald",
+            "label": "Oswald",
+            "value": "Google_Oswald_500"
           },
           {
             "group": "OpenSans",
