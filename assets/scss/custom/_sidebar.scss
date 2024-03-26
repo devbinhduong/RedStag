@@ -1,0 +1,73 @@
+.custom-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    height: 100vh;
+    width: calc(100% - 44px);
+    max-width: 375px;
+    transition: all 0.5s ease, z-index 0s ease;
+    box-shadow: rgba(50, 50, 50, 0.2) 0 0 2px 0;
+    background-color: #ffffff;
+
+    .custom-sidebar-close {
+        position: absolute;
+        top: 0;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        background-color: $buttonStyle-primary-backgroundColor;
+        
+        svg {
+            transition: all 0.3s ease;
+            fill: $buttonStyle-primary-color;
+            width: 24px;
+            height: 24px;
+        }
+
+        &:hover {
+            background-color: $buttonStyle-primary-backgroundColorHover;
+
+            svg {
+                transform: rotate(180deg) scale(1.2);
+            }
+        }
+    }
+
+    .custom-sidebar-wrapper {
+        position: relative;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-bottom: 72px;
+    }
+
+    &.custom-sidebar-left {
+        left: -101%;
+
+        .custom-sidebar-close {
+            right: -44px;
+            left: auto;
+        }
+    }
+
+    &.custom-sidebar-right {
+        right: -101%;
+
+        .custom-sidebar-close {
+            left: -44px;
+            right: auto;
+        }
+    }
+}
+
+/* Open Menu Sidebar */
+.has-activeNavPages {
+    .custom-menu-mobile {
+        left: 0;
+        z-index: 103;
+    }
+}

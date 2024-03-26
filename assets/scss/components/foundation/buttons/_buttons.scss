@@ -1,0 +1,230 @@
+// =============================================================================
+// BUTTONS (CSS)
+// =============================================================================
+
+.button {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    font-family: $fontFamily-sans;
+    font-size: $fontSize-root - 2;
+    font-weight: $fontWeight-bold;
+    font-style: normal;
+    user-select: none;
+    appearance: none;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px;
+    margin: 0;
+    padding: 8px;
+    line-height: 24px;
+    min-width: 153px;
+    cursor: pointer;
+    border: 1px solid $buttonStyle-default-borderColor;
+    color: $buttonStyle-default-color;
+    background-color: $buttonStyle-default-backgroundColor;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: $anchor-transition;
+
+    @include breakpoint('small') {
+        font-size: $fontSize-root;
+        width: auto;
+        padding: 15px;
+    }
+
+    svg {
+        fill: $buttonStyle-default-color;
+    }
+
+    &:after {
+        content: '';
+        background-color: $buttonStyle-default-backgroundColor;
+        position: absolute;
+        z-index: -1;
+        left: -20%;
+        right: -20%;
+        top: 0;
+        bottom: 0;
+        transform: skewX(-45deg) scale(0, 1);
+        transition: all 0.5s;
+    }
+
+    &:focus,
+    &:active {
+        color: $buttonStyle-default-colorActive;
+        border-color: $buttonStyle-default-borderColorActive;
+        background-color: $buttonStyle-default-backgroundColorActive;
+    }
+
+    &:hover {
+        color: $buttonStyle-default-colorHover;
+
+        &:after {
+            background-color: $buttonStyle-default-backgroundColorHover;
+            transform: skewX(-45deg) scale(1, 1);
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+    }
+
+    &.button--action {
+        @include breakpoint('small') {
+            font-size: $fontSize-root;
+            width: auto;
+            padding: 11px 15px;
+        }
+    }
+
+    &.button--full {
+        width: 100%;
+    }
+
+    /* Primary */
+    &.button--primary {
+        border-color: $buttonStyle-primary-borderColor;
+        color: $buttonStyle-primary-color;
+        background-color: $buttonStyle-primary-backgroundColor;
+
+        svg {
+            fill: $buttonStyle-primary-color;
+        }
+
+        &:after {
+            background-color: $buttonStyle-primary-backgroundColor;
+        }
+
+        &:focus,
+        &:active {
+            color: $buttonStyle-primary-colorActive;
+            border-color: $buttonStyle-primary-borderColorActive;
+            background-color: $buttonStyle-primary-backgroundColorActive;
+        }
+
+        &:hover {
+            color: $buttonStyle-primary-colorHover;
+
+            &:after {
+                background-color: $buttonStyle-primary-backgroundColorHover;
+            }
+        }
+    }
+
+    /* Secondary */
+    &.button--secondary {
+        border-color: $buttonStyle-secondary-borderColor;
+        color: $buttonStyle-secondary-color;
+        background-color: $buttonStyle-secondary-backgroundColor;
+
+        svg {
+            fill: $buttonStyle-secondary-color;
+        }
+
+        &:after {
+            background-color: $buttonStyle-secondary-backgroundColor;
+        }
+
+        &:focus,
+        &:active {
+            color: $buttonStyle-secondary-colorActive;
+            border-color: $buttonStyle-secondary-borderColorActive;
+            background-color: $buttonStyle-secondary-backgroundColorActive;
+        }
+
+        &:hover {
+            color: $buttonStyle-secondary-colorHover;
+
+            &:after {
+                background-color: $buttonStyle-secondary-backgroundColorHover;
+            }
+        }
+    }
+
+    /* Tertiary */
+    &.button--tertiary {
+        border-color: $buttonStyle-tertiary-borderColor;
+        color: $buttonStyle-tertiary-color;
+        background-color: $buttonStyle-tertiary-backgroundColor;
+
+        svg {
+            fill: $buttonStyle-tertiary-color;
+        }
+
+        &:after {
+            background-color: $buttonStyle-tertiary-backgroundColor;
+        }
+
+        &:focus,
+        &:active {
+            color: $buttonStyle-tertiary-colorActive;
+            border-color: $buttonStyle-tertiary-borderColorActive;
+            background-color: $buttonStyle-tertiary-backgroundColorActive;
+        }
+
+        &:hover {
+            color: $buttonStyle-tertiary-colorHover;
+            border-color: $buttonStyle-tertiary-borderColorHover;
+            &:after {
+                background-color: $buttonStyle-tertiary-backgroundColorHover;
+            }
+        }
+    }
+
+    /* Transparent */
+    &.button--transparent {
+        color: $buttonStyle-primary-colorHover;
+        background-color: transparent;
+        border-color: $buttonStyle-primary-backgroundColor;
+
+        svg {
+            fill: $buttonStyle-primary-color;
+        }
+
+        &:after {
+            background-color: transparent;
+        }
+
+        &:focus,
+        &:active {
+            color: $buttonStyle-primary-colorActive;
+            border-color: $buttonStyle-primary-borderColorActive;
+            background-color: $buttonStyle-tertiary-backgroundColorActive;
+        }
+
+        &:hover {
+            color: $buttonStyle-tertiary-colorHover;
+
+            &:after {
+                background-color: $buttonStyle-tertiary-backgroundColorHover;
+            }
+        }
+    }
+
+    /* Disable */
+    &.button--disabled {
+        pointer-events: none;
+        color: $buttonStyle-disabled-color;
+        background-color: $buttonStyle-disabled-backgroundColor;
+        border-color: $buttonStyle-disabled-borderColor;
+
+        svg {
+            fill: $buttonStyle-disabled-color;
+        }
+
+        &:after {
+            background-color: $buttonStyle-disabled-color;
+        }
+    }
+}
+
+.button[disabled] {
+    cursor: not-allowed;
+}
+
+.button--icon {
+    svg {
+        fill: stencilColor('button--icon-svg-color');
+    }
+}
