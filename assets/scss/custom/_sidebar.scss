@@ -71,3 +71,20 @@
         z-index: 103;
     }
 }
+
+/* Open card sidebar */
+.openCartSidebar {
+    overflow: hidden;
+
+    #custom-cart-sidebar {
+        right: 0;
+        z-index: 105
+    }
+
+    .background-overlay {
+        z-index: 103;
+        opacity: 1;
+        display: block;
+        visibility: visible;
+    }
+}

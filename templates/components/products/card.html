@@ -3,6 +3,7 @@
     {{#if alternate}} card--alternate{{/if}}"
     data-test="card-{{id}}"
     data-event-type="{{event}}"
+    data-product-id="{{id}}"
     data-entity-id="{{id}}"
     data-position="{{position}}"
     data-name="{{name}}"
@@ -152,7 +153,7 @@
                         <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--small card-figcaption-button">{{lang 'products.pre_order'}}</a>
                     {{/if}}
                     {{#if add_to_cart_url }}
-                        <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button bspoq-add-to-cart">{{lang 'products.add_to_cart'}}</a>
+                        <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button bspoq-add-to-cart" data-product-id="{{id}}">{{lang 'products.add_to_cart'}}</a>
                         <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
                     {{/if}}
                     {{#if out_of_stock_message }}

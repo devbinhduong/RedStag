@@ -92,16 +92,19 @@
         <li class="navUser-item navUser-item--cart">
             <a class="navUser-action"
                data-cart-preview
-               data-dropdown="cart-preview-dropdown"
                data-options="align:right"
                href="{{urls.cart}}"
                aria-label="{{lang 'cart.nav_aria_label'}}"
+               {{#unless theme_settings.enable_cart_sidebar}}
+               data-dropdown="cart-preview-dropdown"
+               {{/unless}}
             >
                 <span class="navUser-item-cartLabel">{{lang 'common.cart'}}</span>
                 <span class="countPill cart-quantity"></span>
             </a>
-
-            <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+            {{#unless theme_settings.enable_cart_sidebar}}
+                <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+            {{/unless}}
         </li>
     </ul>
     <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" data-prevent-quick-search-close>

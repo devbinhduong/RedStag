@@ -7,11 +7,16 @@ export const CartPreviewEvents = {
     open: 'opened.fndtn.dropdown',
 };
 
-export default function (secureBaseUrl, cartId) {
+export default function (secureBaseUrl, cartId, context) {
     const loadingClass = 'is-loading';
     const $cart = $('[data-cart-preview]');
-    const $cartDropdown = $('#cart-preview-dropdown');
-    const $cartLoading = $('<div class="loadingOverlay"></div>');
+    
+    let $cartDropdown = $('#cart-preview-dropdown');
+    let $cartLoading = $('<div class="loadingOverlay"></div>');
+
+    if (context.themeSettings.enable_cart_sidebar) {
+        $cartDropdown = $('#custom-cart-sidebar .custom-sidebar-wrapper');
+    }
 
     const $body = $('body');
 
@@ -50,6 +55,10 @@ export default function (secureBaseUrl, cartId) {
         }
 
         event.preventDefault();
+        
+        if (context.themeSettings.enable_cart_sidebar) {
+            $body.toggleClass('openCartSidebar');
+        }
 
         $cartDropdown
             .addClass(loadingClass)
@@ -64,6 +73,7 @@ export default function (secureBaseUrl, cartId) {
             $cartLoading
                 .hide();
         });
+        
     });
 
     let quantity = 0;

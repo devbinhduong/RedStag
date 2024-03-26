@@ -769,7 +769,10 @@
         "masterpass-button-color": "black",
         "paymentbuttons-provider-sorting": [],
         "customMegamenu": true,
-        "restrict_to_login": false
+        "restrict_to_login": false,
+        "bspoqAjaxAddToCart": true,
+        "custom_add_to_cart_popup": "sidebar",
+        "enable_cart_sidebar": true
       }
     }
   ]

@@ -4,6 +4,8 @@ import { load } from 'webfontloader';
 import event from '../global/jquery-migrate/event';
 import { forEach } from 'lodash';
 
+import ajaxAddToCart from './ajax-add-to-cart';
+
 export default function(context) {
     const themeSettings = context.themeSettings;
 
@@ -18,6 +20,7 @@ export default function(context) {
             check_JS_load = false;
             console.log("JS is loaded");
 
+            ajaxAddToCart(context);
             /* Add global function here */
             closeSidebar();
             clickOverlay();
@@ -63,11 +66,13 @@ export default function(context) {
     /* Hide all Sidebar */
     function hideAllSidebar() {
         const body = document.body;
+        const removeClassArray = ['has-activeNavPages', 'openCartSidebar'];
 
-        /* Hide menu sidebar */
-        if(body.classList.contains('has-activeNavPages')) {
-            body.classList.remove('has-activeNavPages');
-        }
+        removeClassArray.forEach((sidebarClass)=>{
+            if(body.classList.contains(sidebarClass)) {
+                body.classList.remove(sidebarClass);
+            }
+        });
     }
 
     /* Close sidebar */
