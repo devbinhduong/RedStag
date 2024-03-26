@@ -772,7 +772,8 @@
         "restrict_to_login": false,
         "bspoqAjaxAddToCart": true,
         "custom_add_to_cart_popup": "sidebar",
-        "enable_cart_sidebar": true
+        "enable_cart_sidebar": true,
+        "bspoq_quick_shop": true
       }
     }
   ]

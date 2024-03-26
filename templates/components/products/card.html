@@ -106,6 +106,17 @@
                 {{/unless}}
             </div>
         </figcaption>
+
+        <!-- Quick shop popup -->
+        {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            {{#if show_cart_action}}
+                {{#if has_options}}
+                    {{#if theme_settings.bspoq_quick_shop}}    
+                        <div class="quickShopPopup scrollbar"></div>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        {{/or}}
     </figure>
     <div class="card-body">
         {{#and brand.name theme_settings.show_card_brand_name}}
@@ -130,7 +141,6 @@
             {{/or}}
         </div>
         {{> components/products/bulk-discount-rates}}
-
         <p class="card-text" data-test-info-type="productRating">
             <span class="rating--small">
                 {{> components/products/ratings rating_target=name rating=rating}}

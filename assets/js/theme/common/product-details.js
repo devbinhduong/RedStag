@@ -443,24 +443,64 @@ export default class ProductDetails extends ProductDetailsBase {
                 return showAlertModal(tmp.textContent || tmp.innerText);
             }
 
-            // Open preview modal and update content
-            if (this.previewModal) {
-                this.previewModal.open();
+            if (this.context.themeSettings.custom_add_to_cart_popup === 'sidebar'){
+                $('.modal--quickShop .modal-close').trigger('click');
+                
+                const options = {
+                    template: 'common/cart-preview'
+                };
+                const loadingClass = 'is-loading';
+                const $body = $('body');
+                const $cartDropdown = $('#custom-cart-sidebar .custom-sidebar-wrapper');
+                const $cartLoading = $('<div class="loadingOverlay"></div>');
 
-                if (window.ApplePaySession) {
-                    this.previewModal.$modal.addClass('apple-pay-supported');
-                }
+                setTimeout(function(){ 
+                    $body.toggleClass('openCartSidebar');
+                }, 500);
 
-                if (!this.checkIsQuickViewChild($addToCartBtn)) {
-                    this.previewModal.$preModalFocusedEl = $addToCartBtn;
-                }
+                $cartDropdown
+                    .addClass(loadingClass)
+                    .html($cartLoading);
+                $cartLoading
+                    .show();
 
-                this.updateCartContent(this.previewModal, response.data.cart_item.id);
+                utils.api.cart.getContent(options, (err, response) => {
+                    if (err) {
+                        return;
+                    }
+                    
+                    $cartDropdown
+                        .removeClass(loadingClass)
+                        .html(response);
+                    $cartLoading
+                        .hide();
+
+                    const quantity = $(response).find('[data-cart-quantity]').data('cartQuantity') || 0;
+
+                    $body.trigger('cart-quantity-update', quantity);
+                });
+                
             } else {
-                this.$overlay.show();
-                // if no modal, redirect to the cart page
-                this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
+                // Open preview modal and update content
+                if (this.previewModal) {
+                    this.previewModal.open();
+    
+                    if (window.ApplePaySession) {
+                        this.previewModal.$modal.addClass('apple-pay-supported');
+                    }
+    
+                    if (!this.checkIsQuickViewChild($addToCartBtn)) {
+                        this.previewModal.$preModalFocusedEl = $addToCartBtn;
+                    }
+    
+                    this.updateCartContent(this.previewModal, response.data.cart_item.id);
+                } else {
+                    this.$overlay.show();
+                    // if no modal, redirect to the cart page
+                    this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
+                }
             }
+
         });
 
         this.setLiveRegionAttributes($addToCartBtn.next(), 'status', 'polite');

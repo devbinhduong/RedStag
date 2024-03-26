@@ -5,6 +5,7 @@ import event from '../global/jquery-migrate/event';
 import { forEach } from 'lodash';
 
 import ajaxAddToCart from './ajax-add-to-cart';
+import quickShop from './quickShop';
 
 export default function(context) {
     const themeSettings = context.themeSettings;
@@ -21,6 +22,8 @@ export default function(context) {
             console.log("JS is loaded");
 
             ajaxAddToCart(context);
+            quickShop(context);
+
             /* Add global function here */
             closeSidebar();
             clickOverlay();
