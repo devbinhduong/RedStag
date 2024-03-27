@@ -4,8 +4,8 @@ import { load } from 'webfontloader';
 import event from '../global/jquery-migrate/event';
 import { forEach } from 'lodash';
 
-import ajaxAddToCart from './ajax-add-to-cart';
 import quickShop from './quickShop';
+import ajaxAddToCart from './ajaxAddToCart';
 
 export default function(context) {
     const themeSettings = context.themeSettings;

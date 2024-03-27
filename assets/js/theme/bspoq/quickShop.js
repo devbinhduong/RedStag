@@ -15,7 +15,7 @@ export default function (context) {
         modal.$modal.removeClass().addClass('modal modal--quickShop');
         modal.open({ size: 'small' });
 
-        utils.api.product.getById(productId, { template: 'custom/products/quick-shop' }, (err, response) => {
+        utils.api.product.getById(productId, { template: 'bspoq/products/quick-shop' }, (err, response) => {
             modal.updateContent(response);
 
             var productDetails = new ProductDetails(modal.$content.find('.quickShop'), context);
