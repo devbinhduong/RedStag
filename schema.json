@@ -533,6 +533,30 @@
     "settings": [
       {
         "type": "heading",
+        "content": "Top promotion"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Top Promotion",
+        "id": "show_topPromotion"
+      },
+      {
+        "type": "color",
+        "label": "Top Promotion Background",
+        "id": "topPromotion_background"
+      },
+      {
+        "type": "color",
+        "label": "Top Promotion Text Color",
+        "id": "topPromotion_textColor"
+      },
+      {
+        "type": "text",
+        "label": "Top Promotion Text",
+        "id": "topPromotion_text"
+      },
+      {
+        "type": "heading",
         "content": "Header"
       },
       {

@@ -274,3 +274,48 @@
 
     }
 }
+
+//
+// Start custom header
+// -----------------------------------------------------------------------------
+#bspoq_topPromotion {
+    position: relative;
+    background-color: stencilColor("topPromotion_background");
+    padding-top: remCalc(4px);
+    padding-bottom: remCalc(5px);
+
+    .banner-promotion {
+        .text {
+            color: stencilColor("topPromotion_textColor");
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 26px;
+            font-weight: bold;
+
+            @include smax-m {
+                font-size: 16px;
+            }
+        }
+    }
+    .promotion-close {
+        top: 50%;
+        right: 12px;
+        font-size: 0;
+        line-height: 1;
+        position: absolute;
+        transform: translateY(-50%);
+        padding: 0;
+
+        .icon {
+            width: 31px;
+            height: 31px;
+            fill: #232323;
+            transition: all 0.3s ease;
+
+            &:hover {
+                fill: stencilColor("topPromotion_textColor");
+                transform: rotate(180deg) scale(1.1);
+            }
+        }
+    }
+}

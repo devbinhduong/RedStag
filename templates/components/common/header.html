@@ -10,6 +10,26 @@
     {{/each}}
 </div>
 {{/if}}
+
+<!-- Top Banner Promotion -->
+{{#if theme_settings.show_topPromotion}}
+<div id="bspoq_topPromotion" class="u-hidden">
+    <div class="container">
+        <a href="#" class="banner-promotion text-center block no-underline">
+            <span class="text">{{theme_settings.topPromotion_text}}</span>
+        </a>
+    </div>
+
+    <button type="button" class="promotion-close" aria-label="{{lang 'common.close'}}">
+        <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+            <title>{{lang 'common.close'}}</title>
+            <desc>{{lang 'common.close'}}</desc>
+            <use xlink:href="#icon-close"></use>
+        </svg>
+    </button>
+</div>
+{{/if}}
+
 <header class="header" role="banner">
     <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
         <span class="mobileMenu-toggleIcon">Toggle menu</span>

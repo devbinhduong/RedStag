@@ -21,19 +21,17 @@ export default function(context) {
             check_JS_load = false;
             console.log("JS is loaded");
 
-            ajaxAddToCart(context);
-            quickShop(context);
-
             /* Add global function here */
             closeSidebar();
             clickOverlay();
+            ajaxAddToCart(context);
+            quickShop(context);
         }
     }
 
     function eventLoad(){
         /* Load when DOM ready */
         window.addEventListener('load', (e) =>{
-
             /* Global Slick Slider */
             const sectionSlicks = document.querySelectorAll('.section-slick');
             if(sectionSlicks.length > 0) {
@@ -49,6 +47,7 @@ export default function(context) {
 
             /* Load Section when scroll */
             sectionLoad();
+            handleTopPromotion();
         });
 
         /* Load when scroll */
@@ -142,4 +141,37 @@ export default function(context) {
         });
     }
 
+    /* Header Top Promotion */
+    function handleTopPromotion() {
+        const closePromotion = document.querySelector('.promotion-close');
+        if(!closePromotion) return;
+
+        /* Handle when click close button */
+        closePromotion.addEventListener('click', function(event) {
+            event.preventDefault();
+        
+            $('#bspoq_topPromotion').slideToggle();
+
+            /* Save Close Time */
+            localStorage.setItem('lastHiddenTime', new Date().getTime());
+        });
+
+        /* Check if promotion is closed */
+        const lastHiddenTime = localStorage.getItem('lastHiddenTime');
+
+        console.log("lastHiddenTime", lastHiddenTime);
+
+        if(lastHiddenTime) {
+            const currentTime = new Date().getTime();
+            const timeHide = 1; // 1 day
+            const timeDiff = currentTime - lastHiddenTime;
+            const timeDiffInDay = timeDiff / (1000 * 60 * 60 * 24);
+
+            if(timeDiffInDay > timeHide) {
+                $('#bspoq_topPromotion').removeClass("u-hidden");
+            }
+        } else {
+            $('#bspoq_topPromotion').removeClass("u-hidden");
+        }
+    }
 }
