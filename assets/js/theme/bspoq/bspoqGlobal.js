@@ -47,7 +47,9 @@ export default function(context) {
 
             /* Load Section when scroll */
             sectionLoad();
-            handleTopPromotion();
+
+            /* Top Promotion Function */
+            context.themeSettings.show_topPromotion && handleTopPromotion();
         });
 
         /* Load when scroll */
@@ -158,8 +160,6 @@ export default function(context) {
 
         /* Check if promotion is closed */
         const lastHiddenTime = localStorage.getItem('lastHiddenTime');
-
-        console.log("lastHiddenTime", lastHiddenTime);
 
         if(lastHiddenTime) {
             const currentTime = new Date().getTime();
