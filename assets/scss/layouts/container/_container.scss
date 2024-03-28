@@ -5,11 +5,15 @@
 .container {
     position: relative;
     width: 100%;
-    max-width: 1470px;
+    max-width: 1500px;
     padding: 0 15px;
     margin-inline: auto;
 
     &.container--full {
         max-width: 100%;
+    }
+
+    &.container-2 {
+        max-width: 1394px;
     }
 }

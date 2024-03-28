@@ -1,45 +1,128 @@
-// =============================================================================
-// FORMS (CSS)
-// =============================================================================
+//
+// Form Inputs
+//---------------------------------------------------------------------------- 
+.form-input {
+    font-size: $fontSize-root - 2;
+    font-weight: $fontWeight-normal;
+    -webkit-text-size-adjust: 100%;
+    max-width: 100%;
+    height: 35px;
+    line-height: 19px;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-family: stencilFontFamily("search-font"), sans-serif;
 
 
-// Select boxes
-// -----------------------------------------------------------------------------
+    &[rows] {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
 
-.form-select {
-    appearance: none;
-    background-image: $select-backgroundImage;
-    background-position: $select-backgroundPosition;
-    border-radius: $select-borderRadius;
-    padding: $select-padding;
+    &::-webkit-input-placeholder {
+        color: stencilColor('input-font-color');
+        left: 0;
+        opacity: 0.4;
+        visibility: visible;
+        position: relative;
+        text-transform: unset;
+        transition: $anchor-transition;
+        letter-spacing: $letterSpacing-base;
+        font-style: normal !important;
+    }
 
-    &:hover {
-        border-color: $select-hover-borderColor;
+    &:-ms-input-placeholder {
+        color: stencilColor('input-font-color');
+        left: 0;
+        opacity: 0.4;
+        visibility: visible;
+        position: relative;
+        text-transform: unset;
+        transition: $anchor-transition;
+        letter-spacing: $letterSpacing-base;
+        font-style: normal !important;
+    }
+
+    &::placeholder {
+        color: stencilColor('input-font-color');
+        left: 0;
+        opacity: 0.4;
+        visibility: visible;
+        position: relative;
+        text-transform: unset;
+        transition: $anchor-transition;
+        letter-spacing: $letterSpacing-base;
+        font-style: normal !important;
+    }
+
+    &:focus {
+        &::-webkit-input-placeholder {
+            left: 5%;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &:-ms-input-placeholder {
+            left: 5%;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &::placeholder {
+            left: 5%;
+            opacity: 0;
+            visibility: hidden;
+        }
     }
 }
 
+//
+// Form Field
+//---------------------------------------------------------------------------- 
+.form-field {
+    margin-bottom: 20px;
 
-// Form labels
-// -----------------------------------------------------------------------------
+    &.form-field-radio {
+        position: relative;
+        padding: 13px 0 0 0;
 
-.form-label {
-    small {
-        float: $opposite-direction;
-        margin-top: $form-label-small-marginTop;
-    }
-}
+        .form-label {
+            display: inline-block;
+            vertical-align: top;
+            width: auto;
+            margin: 0 25px 0 0;
+            line-height: 24px;
 
+            &:last-child {
+                display: inline-block;
+                margin-bottom: 0;
+            }
+        }
 
-// Form labels (inline small text)
-// -----------------------------------------------------------------------------
+        .form-radio {
+            +.form-label {
+                font-size: $fontSize-root;
+                font-weight: $fontWeight-normal;
+                color: $color-textSecondary;
+                padding-left: 23px;
 
-.form-label--inlineSmall {
-    small {
-        color: stencilColor("color-textSecondary");
-        float: none;
-        font-size: inherit;
-        font-weight: fontWeight("normal");
-        margin-left: spacing("quarter");
-        text-transform: none;
+                &:before {
+                    width: 18px;
+                    height: 18px;
+                    border-color: $color-custom-greyDark;
+                }
+
+                &:after {
+                    width: 0;
+                    height: 0;
+                    border: 6px solid stencilColor('color-textBase');
+                    border-radius: 50%;
+                    top: 6px;
+                    left: 3px;
+                }
+            }
+        }
     }
 }

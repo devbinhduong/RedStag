@@ -290,6 +290,7 @@
     },
     "account": {
         "breadcrumb": "Your Account",
+        "title": "Login / Register",
         "nav": {
             "overview": "Overview",
             "orders": "Orders",
@@ -857,7 +858,7 @@
         "errorMessage": "There was a problem retrieving your results. Please try again in a few seconds.",
         "quick_search": {
             "input_label": "Search",
-            "input_placeholder": "Search the store"
+            "input_placeholder": "Search for a product, category or brand"
         },
         "results": {
             "form_label": "Search Keyword:",

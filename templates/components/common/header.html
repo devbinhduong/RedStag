@@ -31,9 +31,9 @@
 {{/if}}
 
 <header class="header" role="banner">
-    <div class="header__middle">
-        <div class="container static">
-            <div class="middleHeader-item text-left">
+    <div class="headerMiddle">
+        <div class="container container-2 static flex-between-center">
+            <div class="headerMiddle__item flex-between-center text-left">
                 <div class="items item--hamburger">
                     <a class="mobileMenu-toggle" href="#" data-mobile-menu-toggle="menu">
                         <span class="mobileMenu-toggleIcon">{{lang 'header.toggle_menu'}}</span>
@@ -47,7 +47,9 @@
                     </a>
                 </div>
             </div>
-            <div class="middleHeader-item text-center">
+
+            <!-- ----------- Logo ----------- --> 
+            <div class="headerMiddle__item flex-between-center text-center">
                 <div class="items item--logo">
                     {{#if page_type '===' 'default'}}
                         <h1 class="header-logo">
@@ -60,27 +62,59 @@
                     {{/if}}
                 </div>
             </div>
-            <div class="middleHeader-item text-right">
-                <div class="items item--quicksearch bspoq-search">
+
+            <div class="headerMiddle__item flex-between-center text-right">
+                <!-- ----------- Search ----------- --> 
+                <div class="items item--quickSearch bspoq-search">
                     <div id="quickSearch" data-prevent-quick-search-close>
                         {{> components/common/quick-search}}
                     </div>
                 </div>
 
+                <!-- ----------- Trade Account ----------- -->
+                <div class="items item--trade flex-center-inline">
+                    <a class="navUser-action cartDesktop flex-center-y hover-link"
+                    href="{{urls.cart}}"
+                    aria-label="Trade Account">
+                        <span class="navUser-icon navUser-item-cartIcon flex-center-inline">
+                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-header-trade"></use></svg>
+                        </span>
+                        <span>Trade Account</span>
+                    </a>
+                </div>
+
+                <!-- ----------- Cart ----------- -->
+                <div class="items item--cart bspoq-cart flex-center-inline">
+                    <a class="navUser-action cartDesktop flex-center-y hover-link"
+                        data-cart-preview
+                        data-options="align:right"
+                        href="{{urls.cart}}"
+                        aria-label="{{lang 'cart.nav_aria_label'}}">
+                        <span class="navUser-icon navUser-item-cartIcon flex-center-inline">
+                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-shopping-cart"></use></svg>
+                        </span>
+                        <span>{{lang 'common.cart'}}</span>
+                    </a>
+                    <span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity flex-center">{{cart.quantity}}</span>
+
+                    <div class="dropdown-cart" id="cart-preview-dropdown" aria-hidden="true"></div>
+                </div>
+
+                <!-- ----------- Account ----------- --> 
                 <div class="items item--account">
                     {{#if customer}}
                         <a class="navUser-action flex-center-y hover-link hide-on-tablet" href="{{urls.account.index}}" aria-label="{{customer.name}}" data-login-form>
                             <span class="navUser-icon flex-center-inline">
                                 <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
                             </span>
-                            {{customer.name}}
+                            <span>{{customer.name}}</span>
                         </a>
                     {{else}}
                         <a class="navUser-action flex-center-y hover-link hide-on-tablet" href="{{urls.auth.login}}" aria-label="{{lang 'account.title'}}" data-login-form>
                             <span class="navUser-icon flex-center-inline">
                                 <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
                             </span>
-                            {{lang 'account.title'}}
+                            <span>{{lang 'account.title'}}</span>
                         </a>
                     {{/if}}
 
@@ -92,28 +126,7 @@
                     </a>
                 </div>
 
-                <div class="items item--cart bspoq-cart flex-center-inline">
-                    <a class="navUser-action cartDesktop flex-center-y hover-link"
-                        data-cart-preview
-                        data-options="align:right"
-                        href="{{urls.cart}}"
-                        aria-label="{{lang 'cart.nav_aria_label'}}">
-                        <span class="navUser-icon navUser-item-cartIcon flex-center-inline">
-                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-shopping-cart"></use></svg>
-                        </span>
-                        {{lang 'common.cart'}}
-                    </a>
-                    <span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity hide-on-tablet">{{cart.quantity}}</span>
-                    <div class="dropdown-cart" id="cart-preview-dropdown" aria-hidden="true"></div>
-                    <a class="navUser-action cartMobile" data-cart-preview2 href="/cart.php" aria-label="{{lang 'cart.nav_aria_label'}}">
-                        <span class="navUser-icon navUser-item-cartIcon">
-                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-shopping-cart"></use></svg>
-                            <span class="countPill cart-quantity">{{#if cart.items}}{{cart.quantity}}{{else}}0{{/if}}</span>
-                        </span>
-                        {{lang 'common.cart'}}
-                    </a>
-                </div>
-
+                <!-- ----------- Currency ----------- -->
                 {{#or customer (unless settings.hide_price_from_guests)}}
                     <div class="items item--currency flex-center-inline">
                         {{> components/common/currency-selector}}
