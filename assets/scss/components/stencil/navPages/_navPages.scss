@@ -37,7 +37,6 @@
 
 .navPages-container {
     bottom: 0;
-    display: none;
     height: 100%;
     left: 0;
     -webkit-overflow-scrolling: touch;
@@ -45,8 +44,8 @@
     right: 0;
     z-index: zIndex("lower");
 
-    @include breakpoint("medium") {
-        background: transparent;
+    @include smin-m {
+        background: $color-custom-red;
         display: block;
         height: auto;
         padding: 0;
@@ -54,7 +53,6 @@
     }
 
     &.is-open {
-        display: block;
         padding-top: $header-height;
     }
 }
@@ -69,7 +67,7 @@
     overflow-y: auto;
     padding: spacing("single");
 
-    @include breakpoint("medium") {
+    @include smin-m {
         @include grid-row(); // 1
         @include nav($style: "navBar", $wrapper: "nav");
         background: none;
@@ -77,6 +75,9 @@
         overflow-y: visible;
         padding: 0;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     ul {
@@ -91,19 +92,29 @@
         margin-left: 0;
         padding-left: 0;
 
-        @include breakpoint("medium") {
+        @include smin-m {
             @include grid-row();
             border-left: 0;
             margin: auto;
             padding-left: 0;
         }
     }
+
+    &.navPages-container {
+        max-width: 1394px;
+        position: static;
+    }
+
+    .button--ez-street {
+        background-color: #ffffff;
+        color: $color-custom-red;
+    }
 }
 
 .navPages-list {
     margin: 0;
 
-    @include breakpoint("medium") {
+    @include smin-m {
         display: inline-block;
         float: none;
     }
@@ -119,7 +130,7 @@
     .is-hidden {
         display: none;
 
-        @include breakpoint("medium") {
+        @include smin-m {
             display: inline-block;
         }
     }
@@ -127,7 +138,7 @@
     .navPages-item-page {
         display: none;
 
-        @include breakpoint("medium") {
+        @include smin-m {
             display: inline-block;
         }
     }
@@ -135,7 +146,7 @@
 
 .navPages-action-depth-max.has-subMenu.is-root.is-open {
     .navPages-action-moreIcon {
-        @include breakpoint("medium") {
+        @include smin-m {
             transform: rotate(0);
         }
     }
@@ -145,7 +156,7 @@
     border-bottom: 1px solid $navPages-list--user-borderColor;
     text-align: center;
 
-    @include breakpoint("medium") {
+    @include smin-m {
         border-bottom: 0;
         text-align: left;
     }
@@ -160,7 +171,7 @@
         transform: rotate(90deg);
         width: 35px;
 
-        @include breakpoint("medium") {
+        @include smin-m {
             @include square(8px);
             border: 0;
             border-radius: 0;
@@ -175,7 +186,7 @@
         height: 9.6px;
         width: 9.6px;
 
-        @include breakpoint("medium") {
+        @include smin-m {
             height: 100%;
             width: 100%;
         }
@@ -185,16 +196,14 @@
 .navPages-action {
     color: stencilColor("navPages-color");
     display: block;
-    font-size: fontSize("smaller");
-    font-weight: fontWeight("bold");
-    padding: spacing("half") 0;
+    font-size: 13px;
+    font-weight: fontWeight("normal");
+    padding: 8px 15px;
     text-decoration: none;
     text-transform: uppercase;
 
-    @include breakpoint("medium") {
+    @include smin-m {
         display: inline-block;
-        padding: spacing("half") (spacing("half") + spacing("quarter")) (spacing("half") + spacing("quarter"));
-
         &.is-open {
             background-color: $navPage-subMenu-item--is-highlighted-background;
         }
@@ -250,8 +259,9 @@
     margin-left: spacing("half");
     transform: rotate(-90deg);
 
-    @include breakpoint("medium") {
+    @include smin-m {
         transform: none;
+        display: none;
     }
 
     .has-subMenu.is-open &,
@@ -263,7 +273,7 @@
         @include square(11px);
         margin: 0 spacing("single");
 
-        @include breakpoint("medium") {
+        @include smin-m {
             @include square(8px);
             margin: 0 0 0 spacing("half");
         }
@@ -278,7 +288,7 @@
     @extend %navPage-childList;
     display: none;
 
-    @include breakpoint("medium") {
+    @include smin-m {
         border: 0;
         display: block;
     }
@@ -290,7 +300,7 @@
     .navPage-subMenu-action:not(.navPages-action-depth-max) + & {
         margin-left: spacing("double"); //
 
-        @include breakpoint("medium") {
+        @include smin-m {
             margin-left: 0;
         }
     }
@@ -308,7 +318,7 @@
     display: none;
     outline: 0;
 
-    @include breakpoint("medium") {
+    @include smin-m {
         background-color: stencilColor("navPages-subMenu-backgroundColor");
         padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
         position: absolute;
@@ -333,7 +343,7 @@
         .navPage-subMenu-list {
             margin-right: 0;
 
-            @include breakpoint("medium") {
+            @include smin-m {
                 margin-right: auto;
             }
         }
@@ -341,7 +351,7 @@
 }
 
 .has-subMenu.is-root + .navPage-subMenu-horizontal {
-    @include breakpoint("medium") {
+    @include smin-m {
         border-left: 0;
         height: $navPage-subMenu-horizontal-height;
         left: inherit;
@@ -353,7 +363,7 @@
 
 .navPage-subMenu-horizontal {
     &.is-open {
-        @include breakpoint("medium") {
+        @include smin-m {
             border-left: 1px solid stencilColor("navPages-subMenu-separatorColor");
             display: inherit;
             height: $navPage-subMenu-horizontal-height;
@@ -365,7 +375,7 @@
     }
 
     .navPages-action-moreIcon {
-        @include breakpoint("medium") {
+        @include smin-m {
             display: inline-block;
             transform: rotate(-90deg);
         }
@@ -375,7 +385,7 @@
 .navPage-subMenu-item {
     padding: spacing("half") 0;
 
-    @include breakpoint("medium") {
+    @include smin-m {
         @include grid-column(3);
         padding: 0 0.75rem !important; // 1
 
@@ -395,7 +405,7 @@
 .navPage-subMenu-item-parent {
     width: 100%;
 
-    @include breakpoint("medium") {
+    @include smin-m {
         .navPage-subMenu-action {
             padding-left: spacing("single");
             padding-right: spacing("single");
@@ -407,14 +417,14 @@
 .navPage-subMenu-action {
     padding: spacing("half") 0;
 
-    @include breakpoint("medium") {
+    @include smin-m {
         padding: spacing("half") 0 (spacing("half") + spacing("quarter"));
     }
 
     .navPages-list:not(.navPages-list-depth-max) & {
         padding: 0 0 0 spacing("single");
 
-        @include breakpoint("medium") {
+        @include smin-m {
             padding: spacing("half") 0 (spacing("half") + spacing("quarter"));
         }
     }
@@ -426,7 +436,7 @@
         text-align: right;
         width: 100%;
 
-        @include breakpoint("medium") {
+        @include smin-m {
             display: none;
         }
     }
@@ -450,7 +460,7 @@
     border-bottom: container("border");
     margin-bottom: spacing("half");
 
-    @include breakpoint("medium") {
+    @include smin-m {
         display: none;
     }
 
@@ -473,7 +483,7 @@
 // -----------------------------------------------------------------------------
 
 .navPages-list--user {
-    @include breakpoint("medium") {
+    @include smin-m {
         display: none;
     }
 
@@ -494,3 +504,73 @@
         }
     }
 }
+
+
+/* Start Custom Menu Mobile */
+@include smax-m {
+    .header__bottom {
+        #menu {
+            top: -102%;
+            transition: top 0.4s ease;
+            z-index: 99;
+            &.is-open {
+                position: fixed;
+                top: 0;
+            }
+
+            .navPages-close {
+                margin-left: auto;
+                margin-right: auto;
+
+                .icon {
+                    fill: $color-custom-red;
+                    @include square(20px);
+                }
+            }
+        }
+    }
+}; 
+
+@include smin-m {
+    .navPages-container{
+        justify-content: space-between;
+        &.navPages-container--small {
+            .navPages-list-wrapper {
+                width: calc(100% - 153px);
+                > .navPages-list {
+                    max-width: 1040px;
+                    margin-right: auto;
+                    display: flex;
+    
+                    > .navPages-item {
+                        max-width: 130px;
+    
+                        .navPages-action {
+                            position: relative;
+    
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                display: block;
+                                left: 0;
+                                width: 1px;
+                                height: 24px;
+                                background-color: rgba(255, 255, 255, 0.212);
+                            }
+    
+                        }
+                        &:first-child {
+                            .navPages-action {
+                                &::after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}; 

@@ -423,6 +423,20 @@
                             width: inherit;
                         }
                     }
+
+                    &.is-open span {
+                        background-color: transparent;
+
+                        &::before {
+                            top: 0;
+                            background-color: #ffffff;
+                        }
+
+                        &::after {
+                            background-color: #ffffff;
+                            top: 0;
+                        }
+                    }
                 }
             }
 

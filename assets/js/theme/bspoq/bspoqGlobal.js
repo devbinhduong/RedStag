@@ -71,6 +71,12 @@ export default function(context) {
     function hideAllSidebar() {
         const body = document.body;
         const removeClassArray = ['has-activeNavPages', 'openCartSidebar'];
+        const menuMobileIcon = document.querySelector('.mobileMenu-toggle');
+
+        /* Hide menu sidebar */
+        if(body.classList.contains('has-activeNavPages')) {
+            menuMobileIcon.click();
+        }
 
         removeClassArray.forEach((sidebarClass)=>{
             if(body.classList.contains(sidebarClass)) {
