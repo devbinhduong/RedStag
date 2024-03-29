@@ -14,13 +14,6 @@
         height: auto;
     }
 
-    body {
-        padding-top: $header-height; // 2
-        @include breakpoint("medium") {
-            padding-top: 0;
-        }
-    }
-
     figure {
         margin-bottom: $figure-marginBottom;
         margin-top: $figure-marginTop;

@@ -32,19 +32,23 @@
 
 <header class="header" role="banner">
     <div class="headerMiddle">
-        <div class="container container-2 static flex-between-center">
+        <div class="container container-2 static flex-between-center flex-wrap-tablet">
             <div class="headerMiddle__item flex-between-center text-left">
                 <div class="items item--hamburger">
                     <a class="mobileMenu-toggle" href="#" data-mobile-menu-toggle="menu">
                         <span class="mobileMenu-toggleIcon">{{lang 'header.toggle_menu'}}</span>
                     </a>
                 </div>
-                <div class="items item--searchMobile">
-                    <a class="navUser-action" href="#" data-search="quickSearch" aria-controls="quickSearch" aria-expanded="false" aria-label="{{lang 'search.quick_search.button_search'}}">
-                        <div class="navUser-icon">
-                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-header-search"></use></svg>
+                <div class="items item--logoMobile">
+                    {{#if page_type '===' 'default'}}
+                        <h1 class="header-logo">
+                            {{> components/common/store-logo}}
+                        </h1>
+                    {{else}}
+                        <div class="header-logo">
+                            {{> components/common/store-logo}}
                         </div>
-                    </a>
+                    {{/if}}
                 </div>
             </div>
 
@@ -73,7 +77,7 @@
 
                 <!-- ----------- Trade Account ----------- -->
                 <div class="items item--trade flex-center-inline">
-                    <a class="navUser-action cartDesktop flex-center-y hover-link"
+                    <a class="navUser-action cartDesktop flex-center-y hover-link pl-0-tablet"
                     href="{{urls.cart}}"
                     aria-label="Trade Account">
                         <span class="navUser-icon navUser-item-cartIcon flex-center-inline">
@@ -91,7 +95,7 @@
                         href="{{urls.cart}}"
                         aria-label="{{lang 'cart.nav_aria_label'}}">
                         <span class="navUser-icon navUser-item-cartIcon flex-center-inline">
-                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-shopping-cart"></use></svg>
+                            <svg class="icon icon--cart" aria-hidden="true"><use xlink:href="#icon-shopping-cart"></use></svg>
                         </span>
                         <span>{{lang 'common.cart'}}</span>
                     </a>
@@ -103,27 +107,20 @@
                 <!-- ----------- Account ----------- --> 
                 <div class="items item--account">
                     {{#if customer}}
-                        <a class="navUser-action flex-center-y hover-link hide-on-tablet" href="{{urls.account.index}}" aria-label="{{customer.name}}" data-login-form>
+                        <a class="navUser-action flex-center-y hover-link" href="{{urls.account.index}}" aria-label="{{customer.name}}" data-login-form>
                             <span class="navUser-icon flex-center-inline">
                                 <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
                             </span>
                             <span>{{customer.name}}</span>
                         </a>
                     {{else}}
-                        <a class="navUser-action flex-center-y hover-link hide-on-tablet" href="{{urls.auth.login}}" aria-label="{{lang 'account.title'}}" data-login-form>
+                        <a class="navUser-action flex-center-y hover-link" href="{{urls.auth.login}}" aria-label="{{lang 'account.title'}}" data-login-form>
                             <span class="navUser-icon flex-center-inline">
                                 <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
                             </span>
                             <span>{{lang 'account.title'}}</span>
                         </a>
                     {{/if}}
-
-                    <!-- Mobile -->
-                    <a class="navUser-action myAccountMobile hide-on-desktop" {{#if customer}}href="{{urls.account.index}}"{{else}}href="{{urls.auth.login}}"{{/if}} data-login-form-mobile aria-label="{{lang 'account.title'}}">
-                        <span class="navUser-icon flex-center-inline">
-                            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
-                        </span>
-                    </a>
                 </div>
 
                 <!-- ----------- Currency ----------- -->
