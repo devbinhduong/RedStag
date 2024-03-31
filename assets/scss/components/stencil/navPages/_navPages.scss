@@ -89,8 +89,8 @@
 
         border-left: 0;
         list-style: none;
-        margin-left: 0;
         padding-left: 0;
+        margin: 0;
 
         @include smin-m {
             @include grid-row();
@@ -194,7 +194,7 @@
 }
 
 .navPages-action {
-    color: stencilColor("navPages-color");
+    color: #000000;
     display: block;
     font-size: 13px;
     font-weight: fontWeight("normal");
@@ -203,10 +203,8 @@
     text-transform: uppercase;
 
     @include smin-m {
+        color: stencilColor("navPages-color");
         display: inline-block;
-        &.is-open {
-            background-color: $navPage-subMenu-item--is-highlighted-background;
-        }
     }
 
     &.has-subMenu {
@@ -214,10 +212,39 @@
             align-items: center;
             display: flex;
             justify-content: space-between;
+
+            @include smax-m {
+                position: relative;
+                justify-content: center;
+
+                .navPages-action-moreIcon {
+                    margin: 0;
+                    @include pos($pos: abs, $r: 0, $cb: "center-y");
+                    transform: translateY(-50%) rotate(-90deg);
+                    transition: all 0.2s linear;
+                }
+
+                &.is-open {
+                    .navPages-action-moreIcon {
+                        transform: translateY(-50%) rotate(0deg);
+                    }
+                }
+
+                .collapsible-icon-wrapper {
+                    @include pos($pos: abs, $cb: 'full');
+                    background-color: transparent;
+
+                    &.is-open {
+                        .navPages-action-moreIcon {
+                            transform: translateY(-50%) rotate(0deg);
+                        }
+                    }
+                }
+            }
         }
     }
 
-    &.is-open,
+    // &.is-open,
     .collapsible-icon-wrapper.is-open {
         svg {
             fill: $navPage-subMenu-item--is-highlighted-color;
@@ -228,10 +255,11 @@
     &:hover,
     &.activePage {
         color: $navPage-subMenu-item--is-highlighted-color;
+    }
 
-        svg {
-            fill: $navPage-subMenu-item--is-highlighted-color;
-            stroke: $navPage-subMenu-item--is-highlighted-color;
+    @include smax-m {
+        &.is-open {
+            color: #D81C17;
         }
     }
 
@@ -239,6 +267,24 @@
         fill: stencilColor("navPages-color");
         stroke: stencilColor("navPages-color");
         transition: all 0.15s ease;
+    }
+
+    /* Menu Items Lv2 */
+    &.navPage-subMenu-action {
+        color: stencilColor("navPages-lv2-color");
+
+        &:hover {
+            color: stencilColor("navPages-lv2-color-hover");
+        }
+    }
+
+    /* Menu Items Lv3 */
+    &.navPage-childList-action  {
+        color: stencilColor("navPages-lv3-color");
+
+        &:hover {
+            color: stencilColor("navPages-lv3-color-hover");
+        }
     }
 }
 
@@ -313,42 +359,79 @@
 // 1. navBar mixin has lots of decendant child selectors to deal with
 //
 // -----------------------------------------------------------------------------
-
-.navPage-subMenu {
-    display: none;
-    outline: 0;
-
-    @include smin-m {
-        background-color: stencilColor("navPages-subMenu-backgroundColor");
-        padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
-        position: absolute;
-        text-align: left;
-
-        &.is-open {
-            display: block;
-            left: 0;
-            width: 100%;
-        }
-
-        .navPages-action-moreIcon {
+// Hover menu items
+// -----------------------------------------------------------------------------
+.navPages-list-wrapper {
+    .navPage-subMenu {
+        outline: 0;
+    
+        @include smax-m {
             display: none;
+
+            &.is-open {
+                display: block;
+            }
+        }
+    
+        @include smin-m {
+            background-color: stencilColor("navPages-subMenu-backgroundColor");
+            padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
+            position: absolute;
+            text-align: left;
+        }
+    
+        .navPages-list:not(.navPages-list-depth-max) .navPages-action.has-subMenu + & {
+            .navPage-subMenu-list {
+                margin-right: 0;
+    
+                @include smin-m {
+                    margin-right: auto;
+                }
+            }
+        }
+    }
+    
+    /* Hover Desktop */
+    @include smin-m {
+        > .navPages-list {
+            > .navPages-item {
+                >.navPage-subMenu {
+                    left: 0;
+                    width: 100%;
+                    opacity: 0;
+                    visibility: hidden;
+                    pointer-events: none;
+                    transform: translate3d(0, 50px, 0);
+                    transition: all .3s ease;
+                    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                    max-height: 60vh;
+                    overflow: auto;
+                }
+                &:hover {
+                    >.navPage-subMenu {
+                        top: auto;
+                        opacity: 1;
+                        visibility: visible;
+                        pointer-events: auto;
+                        transform: translate3d(0, 0, 0);
+                    }
+                }
+            }
         }
     }
 
-    &.is-open {
-        display: block;
-    }
-
-    .navPages-list:not(.navPages-list-depth-max) .navPages-action.has-subMenu + & {
-        .navPage-subMenu-list {
-            margin-right: 0;
-
-            @include smin-m {
-                margin-right: auto;
+    /* Menu Mobile */
+    @include smax-m {
+        .navPages-list {
+            .navPages-item {
+                &.is-hidden {
+                    display: none;
+                }
             }
         }
     }
 }
+
 
 .has-subMenu.is-root + .navPage-subMenu-horizontal {
     @include smin-m {
@@ -416,6 +499,10 @@
 
 .navPage-subMenu-action {
     padding: spacing("half") 0;
+
+    @include smax-m {
+        text-align: center;
+    }
 
     @include smin-m {
         padding: spacing("half") 0 (spacing("half") + spacing("quarter"));
@@ -509,18 +596,24 @@
 /* Start Custom Menu Mobile */
 @include smax-m {
     .header__bottom {
+        position: relative;
+
         #menu {
-            top: -102%;
-            transition: top 0.4s ease;
-            z-index: 99;
+            top: -117px;
+            transition: all 0.3s ease;
+            z-index: 999;
+            height: 0;
+            overflow: hidden;
+            padding-top: 0;
+
             &.is-open {
-                position: fixed;
-                top: 0;
+                height: 100vh;
             }
 
             .navPages-close {
                 margin-left: auto;
                 margin-right: auto;
+                display: block;
 
                 .icon {
                     fill: $color-custom-red;

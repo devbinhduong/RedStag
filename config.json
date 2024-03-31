@@ -609,9 +609,9 @@
         "navUser-dropdown-borderColor": "#cccccc",
         "navUser-indicator-backgroundColor": "#ffffff",
         "navPages-color": "#ffffff",
-        "navPages-color-hover": "#757575",
-        "navPages-subMenu-backgroundColor": "#e5e5e5",
-        "navPages-subMenu-separatorColor": "#cccccc",
+        "navPages-color-hover": "#000000",
+        "navPages-subMenu-backgroundColor": "#ffffff",
+        "navPages-subMenu-separatorColor": "#D81C17",
         "dropdown--quickSearch-backgroundColor": "#e5e5e5",
         "dropdown--wishList-backgroundColor": "#ffffff",
         "blockquote-cite-font-color": "#999999",
@@ -781,7 +781,11 @@
         "topPromotion_text": "VISIT US AT H.A.U.C - STAND 12B",
         "headerMiddleBackground": "#000000",
         "navUser-iconColor": "#D81C17",
-        "search-font": "Google_Open+Sans_400"
+        "search-font": "Google_Open+Sans_400",
+        "navPages-lv2-color": "#000000",
+        "navPages-lv2-color-hover": "#D81C17",
+        "navPages-lv3-color": "#000000",
+        "navPages-lv3-color-hover": "#D81C17"
       }
     }
   ]
