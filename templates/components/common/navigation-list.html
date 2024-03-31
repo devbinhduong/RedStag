@@ -1,9 +1,14 @@
 {{#if children}}
-<a class="navPages-action has-subMenu{{#if is_active}} activePage{{/if}}"
+<a class="navPages-action navPages-action--lv1 has-subMenu{{#if is_active}} activePage{{/if}}"
    href="{{url}}"
    data-collapsible="navPages-{{id}}"
 >
+    <i class="icon navPages-action--back hide-on-desktop" aria-hidden="true">
+        <svg class="icon--back"><use href="#icon-long-arrow-left" /></svg>
+    </i>
+
     {{name}}
+
     <i class="icon navPages-action-moreIcon" aria-hidden="true">
         <svg><use href="#icon-chevron-down" /></svg>
     </i>
@@ -25,6 +30,10 @@
                        href="{{url}}"
                        aria-label="{{name}}"
                     >
+                        <i class="icon navPages-action--back hide-on-desktop" aria-hidden="true">
+                            <svg class="icon--back"><use href="#icon-long-arrow-left" /></svg>
+                        </i>
+
                         {{name}}
                         <span class="collapsible-icon-wrapper"
                             data-collapsible="navPages-{{id}}"

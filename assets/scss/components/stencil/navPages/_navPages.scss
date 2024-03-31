@@ -595,6 +595,9 @@
 
 /* Start Custom Menu Mobile */
 @include smax-m {
+    .is-hidden {
+        display: none;
+    }
     .header__bottom {
         position: relative;
 
@@ -618,6 +621,43 @@
                 .icon {
                     fill: $color-custom-red;
                     @include square(20px);
+                }
+            }
+
+            .navPages-list {
+                .navPages-item {
+                    .navPages-action--back {
+                        display: none;
+                        > .icon--back {
+                            fill: $color-custom-red;
+                            stroke: $color-custom-red;
+                        }
+                    }
+
+                    &.is-show {
+                        > .is-open {
+                            > .navPages-action--back {
+                                display: block;
+                            }
+                            
+                            > .navPages-action-moreIcon {
+                                display: none
+                            }
+                        }
+                    }
+
+                    /* Lv3 List */
+                    .navPage-subMenu-item {
+                        &.is-show {
+                            .navPages-action--back {
+                                display: block;
+                            }
+
+                            .navPages-action-moreIcon {
+                                display: none;
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -31,7 +31,7 @@ export class MobileMenuToggle {
     } = {}) {
         this.$body = $('body');
         this.$menu = $(menuSelector);
-        this.$navList = $('.navPages-list.navPages-list-depth-max');
+        this.$navList = $('.navPages-list');
         this.$header = $(headerSelector);
         this.$scrollView = $(scrollViewSelector, this.$menu);
         this.$subMenus = this.$navList.find('.navPages-action');
@@ -137,8 +137,11 @@ export class MobileMenuToggle {
 
     onSubMenuClick(event) {
         const $closestAction = $(event.target).closest('.navPages-action');
-        const $parentSiblings = $closestAction.parent().siblings();
+        const $closestParent = $closestAction.parent();
+        const $parentSiblings = $closestParent.siblings();
         const $parentAction = $closestAction.closest('.navPage-subMenu-horizontal').siblings('.navPages-action');
+
+        const $backAction = $closestAction.find('.navPages-back');
 
         if (this.$subMenus.hasClass('is-open')) {
             this.$navList.addClass('subMenu-is-open');
@@ -146,10 +149,18 @@ export class MobileMenuToggle {
             this.$navList.removeClass('subMenu-is-open');
         }
 
+        if($closestParent.hasClass('navPage-subMenu-item')) {
+            $('.navPages-action--lv1').hide();
+        } else {
+            $('.navPages-action--lv1').show();
+        }
+
         if ($(event.target).hasClass('is-open')) {
+            $closestParent.addClass("is-show");
             $parentSiblings.addClass('is-hidden');
             $parentAction.addClass('is-hidden');
         } else {
+            $closestParent.removeClass("is-show");
             $parentSiblings.removeClass('is-hidden');
             $parentAction.removeClass('is-hidden');
         }
