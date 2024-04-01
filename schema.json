@@ -840,28 +840,6 @@
         "id": "social_icon_placement_top"
       },
       {
-        "type": "select",
-        "label": "Footer Placement",
-        "id": "social_icon_placement_bottom",
-        "force_reload": true,
-        "reference": "social_icon_placement_top",
-        "reference_default": false,
-        "options": [
-          {
-            "value": "bottom_none",
-            "label": "None"
-          },
-          {
-            "value": "bottom_right",
-            "label": "Right"
-          },
-          {
-            "value": "bottom_left",
-            "label": "Left"
-          }
-        ]
-      },
-      {
         "type": "heading",
         "content": "Footer"
       },

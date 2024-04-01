@@ -10,84 +10,196 @@
     </div>
 {{/if}}
 <footer class="footer" role="contentinfo">
-    <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
-    <div class="container">
-        {{#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
-            <article class="footer-info-col
-                footer-info-col--social
-                footer-info-col--{{#if theme_settings.social_icon_placement_bottom '===' 'bottom_left'}}left{{else}}right{{/if}}"
-                data-section-type="footer-webPages">
-                    <h3 class="footer-info-heading">{{lang 'social.connect'}}</h3>
+    <!-- Custom Footer Top -->
+    <div class="footerTop">
+        <div class="container container-2">
+            <div class="footerTop__wrapper">
+                <div class="footerTop__left text-left">
+                    {{#if settings.show_newsletter_box}}
+                        {{> components/common/subscription-form}}
+                    {{/if}}
+                </div>
+                <div class="footerTop__right text-right">
+                    <h3 class="footer-info-heading uppercase">{{lang 'social.connect'}}</h3>
                     {{> components/common/social-links}}
-            </article>
-        {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Middle -->
+    <div class="container">
         <section class="footer-info">
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
-                <h3 class="footer-info-heading">{{lang 'footer.navigate'}}</h3>
+            <article class="footer-info-col" data-section-type="footer-storeInfo">
                 <ul class="footer-info-list">
-                    {{#each pages}}
+                    {{#if theme_settings.footer_logo_image}}
+                        <div class="footer-logo">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/images/stencil/{{theme_settings.footer_logo_size}}/image-manager/{{theme_settings.footer_logo_image}}" alt="{{theme_settings.footer_logo_image}}">
+                        </div>
+                    {{/if}}
+
+                    {{#if settings.address}}
                         <li>
-                            <a href="{{url}}">{{name}}</a>
+                            <span class="icon icon--footer-location">
+                                <svg><use xlink:href="#icon-footer-location"></use></svg>
+                            </span>
+                            <a  target="_blank" href="http://maps.google.com/?q={{settings.address}}" class="hover-link">
+                                <span>{{settings.address}}</span>
+                            </a>
                         </li>
-                    {{/each}}
-                    <li>
-                        <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
-                    </li>
+                    {{/if}}
+
+                    {{#if settings.phone_number}}
+                        <li>
+                            <span class="icon icon--footer-call">
+                                <svg><use xlink:href="#icon-footer-call"></use></svg>
+                            </span>
+                            <a href="tel:{{settings.phone_number}}" class="hover-link">
+                                <span>{{settings.phone_number}}</span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    
+                    {{#if theme_settings.footer_col1_email}}
+                        <li>
+                            <span class="icon icon--footer-mail">
+                                <svg><use xlink:href="#icon-footer-mail"></use></svg>
+                            </span>
+                            <a href="mailto:{{theme_settings.footer_col1_email}}" class="hover-link">
+                                <span>{{theme_settings.footer_col1_email}}</span>
+                            </a>
+                        </li>
+                    {{/if}}
                 </ul>
             </article>
 
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-categories">
-                <h3 class="footer-info-heading">{{lang 'footer.categories'}}</h3>
+            <article class="footer-info-col" data-section-type="footer-categories">
+                <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col2_heading}}</h3>
                 <ul class="footer-info-list">
                     {{#each categories}}
                         <li>
-                            <a href="{{url}}">{{name}}</a>
+                            <a class="hover-link" href="{{url}}"><span>{{name}}</span></a>
                         </li>
                     {{/each}}
                 </ul>
             </article>
 
-            {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
-            <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
-                <h3 class="footer-info-heading">{{lang 'footer.brands'}}</h3>
+            <article class="footer-info-col" data-section-type="footer-webpages">
+                <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col3_heading}}</h3>
                 <ul class="footer-info-list">
-                    {{#each shop_by_brand}}
+                    {{#if theme_settings.footer_col3_text1}}
                         <li>
-                            <a href="{{url}}">{{name}}</a>
+                            <a class="hover-link" href="{{theme_settings.footer_col3_link1}}">
+                                <span>
+                                    {{theme_settings.footer_col3_text1}}
+                                </span>
+                            </a>
                         </li>
-                    {{/each}}
-                    <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                    {{/if}}
+                    {{#if theme_settings.footer_col3_text2}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.footer_col3_link2}}">
+                                <span>
+                                    {{theme_settings.footer_col3_text2}}
+                                </span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    {{#if theme_settings.footer_col3_text3}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.footer_col3_link3}}">
+                                <span>
+                                    {{theme_settings.footer_col3_text3}}
+                                </span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    {{#if theme_settings.footer_col3_text4}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.footer_col3_link4}}">
+                                <span>
+                                    {{theme_settings.footer_col3_text4}}
+                                </span>
+                            </a>
+                        </li>
+                    {{/if}}
                 </ul>
             </article>
-            {{/and}}
 
-            {{#if settings.address}}
-            <article class="footer-info-col footer-info-col--small" data-section-type="storeInfo">
-                <h3 class="footer-info-heading">{{lang 'footer.info'}}</h3>
-                <address>{{nl2br settings.address}}</address>
-                {{#if settings.phone_number}}
-                    <strong>{{lang 'footer.call_us' phone_number=settings.phone_number}}</strong>
-                {{/if}}
-            </article>
-            {{/if}}
-
-            <article class="footer-info-col" data-section-type="newsletterSubscription">
-                {{#if settings.show_newsletter_box}}
-                    {{> components/common/subscription-form}}
-                {{/if}}
-                {{> components/common/payment-icons}}
+            <article class="footer-info-col" data-section-type="footer-webpages2">
+                <h3 class="footer-info-heading footer-info-heading--toggle">{{theme_settings.footer_col4_heading}}</h3>
+                <ul class="footer-info-list">
+                    {{#if theme_settings.footer_col4_text1}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.footer_col4_link1}}">
+                                <span>
+                                    {{theme_settings.footer_col4_text1}}
+                                </span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    {{#if theme_settings.footer_col4_text2}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.footer_col4_link2}}">
+                                <span>
+                                    {{theme_settings.footer_col4_text2}}
+                                </span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    {{#if theme_settings.footer_col4_text3}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.footer_col4_link3}}">
+                                <span>
+                                    {{theme_settings.footer_col4_text3}}
+                                </span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    {{#if theme_settings.footer_col4_text4}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.footer_col4_link4}}">
+                                <span>
+                                    {{theme_settings.footer_col4_text4}}
+                                </span>
+                            </a>
+                        </li>
+                    {{/if}}
+                    {{#if theme_settings.footer_col4_text5}}
+                        <li>
+                            <a class="hover-link" href="{{theme_settings.footer_col4_link5}}">
+                                <span>
+                                    {{theme_settings.footer_col4_text5}}
+                                </span>
+                            </a>
+                        </li>
+                    {{/if}}
+                </ul>
             </article>
         </section>
-        {{#if theme_settings.show_powered_by}}
-            <div class="footer-copyright">
-                <p class="powered-by">{{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a></p>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footerBottom">
+        <div class="container container-2">
+            <div class="footerBottom__wrapper">
+                <div class="footerBottom__left">
+                    {{#and (if theme_settings.show_powered_by) (if theme_settings.show_copyright_footer)}}
+                        <p class="footerBottom__text">&copy; {{moment format="YYYY"}} REDSTAG | {{lang 'footer.powered_by'}} bspoq</p>
+                    {{/and}}
+                </div>
+                <div class="footerBottom__right">
+                    <div class="payment__list">
+                        <div class="payment__item payment__item--left">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/images/stencil/48x26/image-manager/klana-payment.png" alt="Klana Payment">
+                        </div>
+                        <div class="payment__item">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="https://cdn11.bigcommerce.com/s-{{settings.store_hash}}/images/stencil/131x26/image-manager/footer-payment-group-image.png" alt="Payment Group">
+                        </div>
+                    </div>
+                </div>
             </div>
-        {{/if}}
-        {{#if theme_settings.show_copyright_footer}}
-            <div class="footer-copyright">
-                <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} </p>
-            </div>
-        {{/if}}
+        </div>
     </div>
     {{{region name="ssl_site_seal--global"}}}
 </footer>

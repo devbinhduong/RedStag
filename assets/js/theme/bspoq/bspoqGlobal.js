@@ -26,6 +26,7 @@ export default function(context) {
             ajaxAddToCart(context);
             quickShop(context);
             openMenuMobileEffect();
+            toogleFooterMobile();
         }
     }
 
@@ -70,6 +71,10 @@ export default function(context) {
 
         /* Load When Match Media Function For Mobile */
         window.matchMedia('(max-width: 768px)').addEventListener('change', () => {});
+
+        window.matchMedia('(max-width: 550px)').addEventListener('change', () => {
+            toogleFooterMobile();
+        });
     }
     eventLoad();
 
@@ -206,6 +211,32 @@ export default function(context) {
                 body.style.transform = 'translateY(0)';
             } else {
                 body.style.transform = 'translateY(' + -promotionHeight + 'px)';
+            }
+        });
+    }
+
+    /* Footer Mobile Toggle */
+    function toogleFooterMobile() {
+        if(window.innerWidth > 550) return;
+
+        const $footerHeadingToggle = $('.footer-info-heading--toggle');
+
+        $footerHeadingToggle.on('click', (e) => {
+            e.preventDefault();
+
+            console.log("click");
+
+            const $target = $(e.currentTarget);
+            const $thisFooterInfo = $target.parents('.footer-info-col');
+            const $thisFooterInfo_list = $thisFooterInfo.find('.footer-info-list');
+
+            $thisFooterInfo.toggleClass('open-dropdown');
+
+            if ($thisFooterInfo.hasClass('open-dropdown')) {
+                $thisFooterInfo_list.slideDown(400);
+            }
+            else {
+                $thisFooterInfo_list.slideUp(400);
             }
         });
     }

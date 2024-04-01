@@ -834,13 +834,13 @@
         "product_name": "Product Name",
         "price": "Price",
         "total": "Total",
-        "comments": "Comments"
+        "comments": "Comments" 
     },
     "newsletter": {
-        "subscribe": "Subscribe to our newsletter",
-        "subscribe_intro": "Get the latest updates on new products and upcoming sales",
-        "subscribe_submit": "Subscribe",
-        "email_placeholder": "Your email address",
+        "subscribe": "SIGN UP FOR OUR NEWSLETTER",
+        "subscribe_intro": "To get updates on the latest products, offers and more…",
+        "subscribe_submit": "GO>",
+        "email_placeholder": "Your email...",
         "subscribed_heading": "Thanks for Subscribing!",
         "subscribed_heading_error": "Oops...",
         "subscribed_message": "Thank you for joining our mailing list. You'll be sent the next issue of our newsletter shortly",
@@ -848,7 +848,7 @@
         "unsubscribed_message": "You will no longer receive marketing emails from <b>{store_name}</b>"
     },
     "social": {
-        "connect": "Connect With Us"
+        "connect": "JOIN US ON SOCIAL"
     },
     "errors": {
         "shipping_quote_failure": "There was a problem retrieving your shipping quote",
