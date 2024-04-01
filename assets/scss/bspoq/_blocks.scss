@@ -1,0 +1,195 @@
+// Home Service Block
+// -----------------------------------------------------------------------------
+.serviceBlock {
+    background-color: $color-custom-black;
+    padding: 10px 0;
+    &__list {
+        @include flexbox($align-items: center, $justify-content: center);
+    }
+
+    &__item {
+        @include flexbox($align-items: center, $justify-content: center);
+
+        &:nth-child(2) {
+            margin-left: 85px;
+            margin-right: 90px;
+
+            @include smax-m {
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+        }
+
+        .item-icon {
+            margin-right: 9px;
+        }
+
+        .item-text {
+            color: #ffffff;
+            font-weight: 300;
+            line-height: 21px;
+            letter-spacing: 0;
+        }
+    }
+}
+
+// Home Banner Text
+// -----------------------------------------------------------------------------
+.bannerText {
+    background-color: #d6d6d6;
+
+    &__list {
+        @include flex-layout(4, 8px);
+
+        @include smax-m {
+            @include flex-layout(2, 8px);
+        }
+        @include smax-s {
+            @include flex-layout(1, 8px);
+        }
+
+        .bannerText__image {
+            @include image-padding-bottom(465, 265);
+        }
+
+        &--bottom {
+            @include flex-layout(3, 10px);
+            margin-top: 8px;
+
+            @include smax-s {
+                @include flex-layout(1, 10px);
+            }
+
+            .bannerText__image {
+                @include image-padding-bottom(622, 354);
+            }
+        }
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__content {
+        @include pos($pos: abs, $b: 24px, $r: 18px);
+        text-align: right;
+        color: #ffffff;
+        text-transform: uppercase;
+
+        h2 {
+            margin: 0;
+            font-size: 24px;
+            line-height: 21px;
+            letter-spacing: 0;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        p {
+            margin-bottom: 0;
+            letter-spacing: 0;
+            line-height: 21px;
+            font-weight: 500;
+        }
+    }
+}
+
+//  Home Banner 2 Columns
+// -----------------------------------------------------------------------------
+.homeBanner {
+    margin-top: 40px;
+    &__list {
+        @include flex-layout(2, 12px);
+
+        @include smax-s {
+            @include flex-layout(1, 0px)
+        }
+    }
+
+    &__item {
+        position: relative;
+        color: #ffffff;
+
+        @include smax-s {
+            + .homeBanner__item {
+                margin-top: 7px;
+            }
+        }
+    }
+
+    &__image {
+        @include image-padding-bottom(676, 223);
+        display: block;
+        min-height: 223px;
+    }
+
+    &__content {
+        @include pos($pos: abs, $cb: center);
+        @include flexbox($align-items: center, $justify-content: center, $flex-direction: column);
+
+        .title {
+            color: inherit;
+            font-size: 45px;
+            line-height: 20px;
+            font-weight: 600;
+            letter-spacing: 0;
+
+            > span {
+                font-size: 27px;
+            }
+        }
+
+        .text {
+            font-size: 20px;
+            line-height: 1;
+            letter-spacing: 0;
+            font-weight: 300;
+        }
+    }
+}
+
+// Home Brands Block
+// -----------------------------------------------------------------------------
+.brandBlock {
+    margin-top: 40px;
+    &__list {
+        @include flex-layout(6, 14px);
+
+        &:not(.slick-initialized){
+            flex-wrap: nowrap;
+            /* Hide item has nth > 6 */
+            .brandBlock__item:nth-child(n+7) {
+                display: none;
+            }
+
+            @include smax-m {
+                .brandBlock__item:nth-child(n+5) {
+                    display: none;
+                }
+            }
+
+            @include smax-s {
+                .brandBlock__item:nth-child(n+3) {
+                    display: none;
+                }
+            }
+        }
+
+        @include smax-m {
+            @include flex-layout(4, 14px);
+        }
+
+        @include smax-s {
+            @include flex-layout(2, 14px);
+        }
+    }
+
+    &__item {
+        position: relative;
+        border: 1px solid #d6d6d6;
+    }
+
+    &__image {
+        @include image-padding-bottom(215, 124);
+    }
+}
