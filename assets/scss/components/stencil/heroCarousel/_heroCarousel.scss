@@ -13,28 +13,37 @@
 //    from becoming cut off.
 // -----------------------------------------------------------------------------
 
+.no-js .heroCarousel:not(.slick-initialized) .heroCarousel-image-wrapper > .heroCarousel-image {
+    opacity: 1;
+}
+
+.no-js .heroCarousel:not(.slick-initialized) .heroCarousel-image-wrapper > .heroCarousel-image img {
+    opacity: 1;
+}
+
 .heroCarousel {
-    margin-bottom: (spacing("double") + spacing("single"));
-    margin-top: -(spacing("single")); // 3
     min-width: 100%;
     width: 1px;
 
-    @include breakpoint("medium") {
-        margin-top: -(spacing("single") + spacing("base")); // 3
+    &:not(.special-style) {
+        .slick-dots {
+            bottom: 15px;
+
+            @include smin-xl {
+                .home-layout-2 & {
+                    bottom: 22px;
+                }
+            }
+        }
     }
 
-    &.slick-initialized {
-        @include breakpoint("small") {
-            max-height: remCalc(400px);
-        }
-
-        @include breakpoint("medium") {
-            max-height: remCalc(600px);
-        }
+    &.slick-slider {
+        margin-bottom: 0;
     }
 
     // for IE
-    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @media screen and (-ms-high-contrast: active),
+    (-ms-high-contrast: none) {
         opacity: 0;
 
         &.slick-initialized {
@@ -44,6 +53,11 @@
 
     &:not(.slick-initialized) :not(.heroCarousel-slide--first).heroCarousel-slide {
         display: none;
+    }
+
+    .heroCarousel-image-wrapper .heroCarousel-image {
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     a {
@@ -60,28 +74,49 @@
     .slick-next {
         right: 15px;
 
-        @include breakpoint("medium") {
-            right: 25px;
+        @include smin-xxl {
+            right: 80px;
+        }
+
+        &:before {
+            @include carousel-arrow-color($slick-arrow-slideshow-color, "next");
+        }
+    
+        &:hover {
+            &:before {
+                @include carousel-arrow-color($slick-arrow-slideshow-color-hover, "next");
+            }
         }
     }
 
     .slick-prev {
         left: 15px;
 
-        @include breakpoint("medium") {
-            left: 25px;
+        @include smin-xxl {
+            left: 80px;
+        }
+
+        &:before {
+            @include carousel-arrow-color($slick-arrow-slideshow-color, "prev");
+        }
+    
+        &:hover {
+            &:before {
+                @include carousel-arrow-color($slick-arrow-slideshow-color-hover, "prev");
+            }
         }
     }
 
     .slick-dots {
-        bottom: spacing("third");
+        position: absolute;
+        bottom: 15px;
 
-        @include breakpoint("medium") {
-            bottom: spacing("single");
-        }
+        @include smin-xl {
+            bottom: 70px;
 
-        li {
-            @include carouselOpaqueBackgrounds($slick-dot-bgColor);
+            .home-layout-2 & {
+                bottom: 22px;
+            }
         }
     }
 
@@ -101,7 +136,7 @@
         &.is-square-image-type,
         &.is-vertical-image-type {
             .heroCarousel-image-wrapper {
-                @include breakpoint("small") {
+                @include smax-xs {
                     height: 56.25vw;
                 }
             }
@@ -110,8 +145,16 @@
         &.is-image-error {
             .heroCarousel-image-wrapper {
                 background: url("../img/hero-carousel-image-load-error.svg") center center no-repeat;
-                background-size: contain;    
+                background-size: contain;
             }
+        }
+    }
+
+    &.heroCarousel-2 {
+        @include smin-m {
+            min-width: auto;
+            width: calc(100% - 270px);
+            margin-left: 270px;
         }
     }
 }
@@ -124,31 +167,32 @@
     }
 
     .heroCarousel-image {
-        height: 100%;
-        object-fit: contain;
-        object-position: 50% 0%;
+        @include lazy-loaded-img;
+        border: 0;
         width: 100%;
+        max-height: 100%;
+        margin: 0 auto;
 
-        @include breakpoint("small") {
-            object-position: 50% 50%;
-        }
-    }
-
-    &.stretch {
-        .heroCarousel-image {
-            object-fit: cover;
-            object-position: 50% 50%;
-        }
-
-        &.compat-object-fit { // 1
-            .heroCarousel-image {
-                height: 100%;
+        @include smax-xs {
+            &:before {
+                content: "";
                 width: 100%;
+                height: 100%;
+                top: 0;
+                right: 0;
+                left: auto;
+                z-index: 2;
+                transform: none;
+                position: absolute;
+                transition: $anchor-transition;
+                background-color: rgba(0, 0, 0, .6);
+                background: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, .6) 100%);
             }
         }
     }
 
-    &.compat-object-fit { // 1
+    &.compat-object-fit {
+        // 1
         overflow: hidden;
 
         .heroCarousel-image {
@@ -157,80 +201,200 @@
     }
 
     .heroCarousel-image-wrapper {
-        align-items: flex-start;
-        display: flex;
-        height: 56.25vw;
-        justify-content: center;
-        max-height: 100vh;
-        transition: height 0.3s ease;
+        display: block;
+        overflow: hidden;
+        background: $color-custom-loading;
 
-        @include breakpoint("small") {
-            max-height: remCalc(400px);
+        &:after {
+            content: '';
+            display: block;
+            height: 0;
+            width: 100%;
+            padding-bottom: var(--pb);
         }
+    }
+}
 
-        @include breakpoint("medium") {
-            max-height: remCalc(600px);
+.heroCarousel-image {
+    img {
+        display: block;
+        width: 100%;
+
+        &.lazyload,
+        &.lazyloading {
+            width: auto;
+            height: auto;
+            max-height: 100vh;
+            margin: 0 auto;
+            object-fit: scale-down;
+
+            @include smax-xs {
+                max-height: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    @include smin-xs {
+        img {
+            &.lazyload,
+            &.lazyloading {
+                width: auto;
+            }
         }
     }
 }
 
 .heroCarousel-content {
-    background-color: rgba($carousel-bgColor, 1);
-    padding: spacing("half") spacing("single") (spacing("double"));
+    position: absolute;
+    background-color: stencilColor('carousel-bgColor');
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    width: 100%;
+    max-width: 500px;
     text-align: center;
+    padding: 20px 15px 45px;
+    transform: translateY(-50%);
+    white-space: normal;
+    margin: 0;
 
-    @include breakpoint("small") {
-        @include carouselOpaqueBackgrounds;
-        background-color: rgba($carousel-bgColor, 0.9);
-        left: 0;
+    @include smax-xs {
         margin: 0 auto;
         max-height: 80%;
         overflow: auto;
-        padding: spacing("single") * 1.5;
-        padding: spacing("single");
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: remCalc(700px);
-        width: 70%;
+        position: relative;
+        top: 0;
+        transform: unset;
+    }
 
-        &.heroCarousel-content--empty {
-            background-color: transparent;
+    @include smin-xs {
+        padding: 0 15px 8px;
+    }
+
+    @include smin-m {
+        max-width: 450px;
+
+        &.heroCarousel-content--left {
+            left: 100px;
+            text-align: left;
+            transform: translateY(-50%);
+
+            .heroCarousel-countdown {
+                justify-content: flex-start;
+            }
+
+            .home-layout-2 & {
+                left: 25px;
+            }
+        }
+
+        &.heroCarousel-content--center {
             left: 50%;
-            overflow: visible;
-            padding: 0;
-            right: auto;
-            transform: translateX(-50%) translateY(-50%);
-            width: auto;
+            transform: translate(-50%, -50%);
+        }
+
+        &.heroCarousel-content--right {
+            left: auto;
+            right: 100px;
+            text-align: right;
+            transform: translateY(-50%);
+
+            .heroCarousel-countdown {
+                justify-content: flex-end;
+            }
+
+            .home-layout-2 & {
+                right: 25px;
+            }
+        }
+    }
+
+    @include smin-xxl {
+        &.heroCarousel-content--left {
+            left: calc((100% - 1230px)/ 2);
+
+            .home-layout-2 & {
+                left: 55px;
+            }
+        }
+
+        &.heroCarousel-content--right {
+            right: calc((100% - 1230px)/ 2);
+
+            .home-layout-2 & {
+                right: 55px;
+            }
         }
     }
 }
 
 .heroCarousel-title {
-    color: $carousel-title-color;
-    font-size: fontSize("small");
-    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    font-size: $fontSize-hero - 16px;
+    font-weight: $fontWeight-bold;
+    color: $carousel-title-mb-color;
+    letter-spacing: 0;
+    line-height: 1.2;
+    margin: 0 0 10px 0;
 
-    @include breakpoint("medium") {
-        font-size: fontSize("hero");
+    @include smin-xs {
+        color: $carousel-title-color;
+    }
+
+    @include smin-m {
+        font-size: $fontSize-hero;
+        margin-bottom: 15px;
     }
 }
 
 .heroCarousel-description {
-    color: $carousel-description-color;
-    font-size: fontSize("tiny");
-    margin: 0;
+    font-size: $fontSize-root;
+    line-height: 24px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 8px 0;
+    color: $carousel-description-mb-color;
 
-    @include breakpoint("small") {
-        font-size: fontSize("smallest");
+    @include smin-xs {
+        color: $carousel-description-color;
     }
 
-    @include breakpoint("medium") {
-        font-size: fontSize("smaller");
+    @include smin-m {
+        font-size: $fontSize-root + 2;
+        margin-bottom: 17px;
     }
 }
 
 .heroCarousel-action {
-    margin: spacing("single") 0 0;
+    margin: 10px 0 0 0;
+
+    .button {
+        min-width: 146px;
+        height: 42px;
+        line-height: 40px;
+        font-size: 14px;
+
+        &.button--large {
+            min-width: 200px;
+        }
+
+        +.button {
+            margin-top: 10px;
+        }
+    }
+
+    @include smin-xs {
+        margin: 8px 0 0 0;
+
+        .button {
+            +.button {
+                margin-left: 30px;
+                margin-top: 0;
+            }
+        }
+    }
 }

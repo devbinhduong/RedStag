@@ -40,7 +40,6 @@
     z-index: zIndex("higher");
 
     @include smin-m {
-        border-bottom: container("border");
         display: flex;
         flex-direction: column;
         height: auto;
