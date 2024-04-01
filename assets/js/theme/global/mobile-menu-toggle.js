@@ -149,12 +149,7 @@ export class MobileMenuToggle {
             this.$navList.removeClass('subMenu-is-open');
         }
 
-        if($closestParent.hasClass('navPage-subMenu-item')) {
-            $('.navPages-action--lv1').hide();
-        } else {
-            $('.navPages-action--lv1').show();
-        }
-
+        // Modify the code to fix the syntax error and remove unnecessary code
         if ($(event.target).hasClass('is-open')) {
             $closestParent.addClass("is-show");
             $parentSiblings.addClass('is-hidden');
@@ -164,11 +159,19 @@ export class MobileMenuToggle {
             $parentSiblings.removeClass('is-hidden');
             $parentAction.removeClass('is-hidden');
         }
+
+        if($closestParent.hasClass('is-show') && $closestParent.hasClass('navPage-subMenu-item')) {
+            $('.navPages-action--lv1').hide();
+        } else {
+            $('.navPages-action--lv1').show();
+        }
+
     }
 
     resetSubMenus() {
         this.$navList.find('.is-hidden').removeClass('is-hidden');
         this.$navList.removeClass('subMenu-is-open');
+        $('.navPages-action--lv1').show();
     }
 }
 

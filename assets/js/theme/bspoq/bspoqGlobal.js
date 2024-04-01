@@ -19,13 +19,13 @@ export default function(context) {
     function loadFunction () {
         if(check_JS_load) {
             check_JS_load = false;
-            console.log("JS is loaded");
 
             /* Add global function here */
             closeSidebar();
             clickOverlay();
             ajaxAddToCart(context);
             quickShop(context);
+            openMenuMobileEffect();
         }
     }
 
@@ -62,8 +62,14 @@ export default function(context) {
             });
         });
 
-        /* Load when resize */
-        window.addEventListener('resize', (e) => {});
+
+         /* Load When Match Media Function For Tablet */
+        window.matchMedia('(max-width: 1024px)').addEventListener('change', () => {
+            openMenuMobileEffect();
+        });
+
+        /* Load When Match Media Function For Mobile */
+        window.matchMedia('(max-width: 768px)').addEventListener('change', () => {});
     }
     eventLoad();
 
@@ -180,4 +186,27 @@ export default function(context) {
             $('#bspoq_topPromotion').removeClass("u-hidden");
         }
     }
-}
+
+    /* Open Menu Mobile Effect */
+    function openMenuMobileEffect() {
+        if(window.innerWidth > 1024) return;
+
+        const body = document.body,
+            menuMobileIcon = document.querySelector('.mobileMenu-toggle'),
+            topPromotion = document.querySelector('#bspoq_topPromotion');
+
+        if(!menuMobileIcon || !topPromotion) return;
+
+        const promotionHeight = topPromotion.offsetHeight;
+
+        menuMobileIcon.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            if(!body.classList.contains('has-activeNavPages')) {
+                body.style.transform = 'translateY(0)';
+            } else {
+                body.style.transform = 'translateY(' + -promotionHeight + 'px)';
+            }
+        });
+    }
+} 
