@@ -173,3 +173,16 @@
         transform: translateY(-50%);
     }
 }
+
+
+@mixin lineClamp($row, $lineHeight) {
+    line-height: $lineHeight;
+    height: calc(#{$lineHeight} * #{$row});
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $row;
+
+    /* Add inline css code below to which tag use line clamp */
+    // style="-webkit-box-orient: vertical;"
+}

@@ -1,0 +1,38 @@
+{{#if theme_settings.show_home_recently_post}}
+    <div class="recentlyPost">
+        <h2 class="custom-heading">Blogs</h2>
+        <p class="custom-desc">The Word on the street</p>
+
+        <div class="container container--full">
+            <div class="recentlyPost__list" data-section-load="recent-post">
+                {{#each post}}
+                    <div class="recentlyPost__item">
+                        <a class="item-image" href="{{url}}">
+                            {{> components/common/responsive-img
+                                image=thumbnail
+                                class=""
+                                fallback_size=../theme_settings.recent_blog_size
+                                lazyload=../theme_settings.lazyload_mode
+                                default_image=../theme_settings.default_image_product
+                            }}
+                        </a>
+                        <div class="item-content">
+                            <h3 class="title">
+                                <a href="{{url}}" class="hover-link" style="-webkit-box-orient: vertical;">
+                                    <span>{{title}}</span>
+                                </a>
+                            </h3>
+
+                            <div class="content-bottom">
+                                <p class="date">{{date_published}}</p>
+                                <a class="readMore hover-link" href="{{url}}">
+                                    <span>{{lang 'blog.read_more'}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+{{/if}}

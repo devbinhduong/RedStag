@@ -50,6 +50,9 @@ export default function(context) {
             });
         });
 
+        window.matchMedia('(max-width: 1400px)').addEventListener('change', () => {
+            recentlyPostSlick();
+        });
 
          /* Load When Match Media Function For Tablet */
         window.matchMedia('(max-width: 1024px)').addEventListener('change', () => {
@@ -127,6 +130,50 @@ export default function(context) {
         $(section).slick(options);
     }
 
+    function recentlyPostSlick(section) {
+        // if(section.matches('.section-loaded')) return;
+
+        // section.classList.add("section-loaded");
+
+        if (window.innerWidth > 1400) {
+            $('.recentlyPost__list.slick-initialized').slick('unslick');
+
+            console.log("Unslick");
+
+        } else {
+            if($('.recentlyPost__list').hasClass('slick-initialized')) return;
+
+            console.log("Slick");
+
+            $('.recentlyPost__list').slick({
+                dots: false,
+                arrows: true,
+                infinite: false,
+                mobileFirst: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        }
+    }
+
+    function checkSlick () {}
+
     function sectionLoad() {
         const handler = (entries) => {
             entries.forEach(entry => {
@@ -141,6 +188,10 @@ export default function(context) {
                         
                         case 'slick-slider':
                             customSlickSlider(section);
+                            break;
+
+                        case 'recent-post': 
+                            recentlyPostSlick(section);
                             break;
                         
                         default:
