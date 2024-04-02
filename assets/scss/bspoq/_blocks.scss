@@ -22,6 +22,16 @@
 
         .item-icon {
             margin-right: 9px;
+            height: 22px;
+            width: 100%;
+
+            &.icon--credit-card {
+                max-width: 28px;
+            }
+
+            &.icon--truck {
+                max-width: 40px;
+            }
         }
 
         .item-text {
@@ -37,6 +47,15 @@
 // -----------------------------------------------------------------------------
 .bannerText {
     background-color: #d6d6d6;
+    padding: 18px;
+
+    @include smax-s {
+        padding: 12px;
+    }
+
+    > .container {
+        padding: 0
+    }
 
     &__list {
         @include flex-layout(4, 8px);
@@ -68,21 +87,46 @@
 
     &__item {
         position: relative;
+
+        &:hover {
+            .bannerText__content {
+                color: $color-custom-red;
+            }
+        }
     }
 
     &__content {
-        @include pos($pos: abs, $b: 24px, $r: 18px);
+        @include pos($pos: abs, $b: 36px, $r: 18px);
         text-align: right;
         color: #ffffff;
         text-transform: uppercase;
 
         h2 {
+            position: relative;
             margin: 0;
             font-size: 24px;
             line-height: 21px;
             letter-spacing: 0;
             font-weight: bold;
             color: inherit;
+
+            &::after {
+                content: "";
+                @include pos($pos: abs, $b: -18px, $r: 0);
+                background-color: $color-custom-red;
+                width: 61px;
+                height: 10px;
+            }
+
+            @include smax-s {
+                font-size: 21px;
+                line-height: 18px;
+
+                &::after {
+                    width: 56px;
+                    height: 9px;
+                }
+            }
         }
 
         p {
@@ -90,6 +134,11 @@
             letter-spacing: 0;
             line-height: 21px;
             font-weight: 500;
+
+            @include smax-s {
+                font-size: 14px;
+                line-height: 18px;
+            }
         }
     }
 }
@@ -126,6 +175,7 @@
     &__content {
         @include pos($pos: abs, $cb: center);
         @include flexbox($align-items: center, $justify-content: center, $flex-direction: column);
+        text-align: center;
 
         .title {
             color: inherit;
@@ -152,11 +202,30 @@
 // -----------------------------------------------------------------------------
 .brandBlock {
     margin-top: 40px;
-    &__list {
-        @include flex-layout(6, 14px);
 
+    > .container {
+        @include maxWidth(1500px) {
+            max-width: calc(100% - 104px);
+        };
+
+        @include smax-xxs {
+            max-width: calc(100% - 40px);
+        }; 
+    }
+    &__list {
+        /* Before add slick slider */
         &:not(.slick-initialized){
+            @include flex-layout(6, 14px);
             flex-wrap: nowrap;
+
+            @include smax-m {
+                @include flex-layout(4, 14px);
+            }
+    
+            @include smax-s {
+                @include flex-layout(2, 14px);
+            }
+
             /* Hide item has nth > 6 */
             .brandBlock__item:nth-child(n+7) {
                 display: none;
@@ -173,23 +242,68 @@
                     display: none;
                 }
             }
+
+            .brandBlock__image {
+                background-color: transparent;
+            }
         }
 
-        @include smax-m {
-            @include flex-layout(4, 14px);
-        }
-
-        @include smax-s {
-            @include flex-layout(2, 14px);
+        /* Hide Skeleton After loaded slick */
+        &.slick-initialized {
+            .skeleton-loader {
+                background: none;
+            }
         }
     }
 
     &__item {
         position: relative;
-        border: 1px solid #d6d6d6;
+    }
+
+    .slick-list {
+        margin: 0 -7px;
+
+        @include smax-s {
+            margin: 0 -5px;
+        }; 
+    }
+    
+    .slick-slide {
+        padding: 0 7px;
+
+        @include smax-s {
+            padding: 0 5px;
+        }
+    }
+
+    .slick-prev {
+        @include smax-xl {
+            left: -50px;
+        }; 
+
+        @include smax-xxs {
+            left: -25px;
+        }; 
+    }
+
+    .slick-next {
+        @include smax-xl {
+            right: -50px;
+        }; 
+
+        @include smax-xxs {
+            right: -25px;
+        };
     }
 
     &__image {
         @include image-padding-bottom(215, 124);
+        border: 1px solid #d6d6d6;
+        display: block;
+
+        img {
+            background-color: #ffffff;
+            object-fit: none;
+        }
     }
 }

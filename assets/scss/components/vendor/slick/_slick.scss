@@ -20,27 +20,34 @@
 .slick-prev {
     @include carouselOpaqueBackgrounds($slick-arrow-bgColor);
     border: 1px solid $slick-arrow-borderColor;
-    height: remCalc(61px);
-    margin-top: -(remCalc(15px));
+    height: remCalc(44px);
     padding: remCalc(10px);
-    width: remCalc(40px);
+    width: remCalc(44px);
     z-index: 1;
-
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    
     &::before {
         background-position: 50%;
         background-repeat: no-repeat;
         background-size: 100%;
         display: block;
-        height: remCalc(41px);
-        width: remCalc(20px);
+        height: remCalc(17px);
+        width: remCalc(10px);
     }
 
-    &:hover,
     &:focus {
         @include carouselOpaqueBackgrounds($slick-arrow-bgColor); // 1
         background-position: 50%;
         background-repeat: no-repeat;
         background-size: 100%;
+    }
+
+    &:hover {
+        @include carouselOpaqueBackgrounds($slick-arrow-bgColor-hover); // 1
     }
 }
 
@@ -98,13 +105,13 @@
     margin: 0;
 
     li {
-        @include square(32px);
+        @include square(18px);
         margin: 0;
         padding: remCalc(5px);
 
         button,
         button::before {
-            @include square(15px);
+            @include square(12px);
             border-radius: 50%;
         }
 
@@ -116,6 +123,8 @@
             position: relative;
             text-align: center;
             vertical-align: middle;
+            background-color: $slick-dot-bgColor;
+            border-color: #707070;
 
             &:hover {
                 &::before {
@@ -192,10 +201,6 @@ div.slick-slider {
     height: 1px;
     margin-top: 10px;
     position: relative;
-
-    @include breakpoint("small") {
-        display: block;
-    }
 
     &::after {
         padding: 15px 10px;

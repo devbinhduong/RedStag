@@ -33,19 +33,6 @@ export default function(context) {
     function eventLoad(){
         /* Load when DOM ready */
         window.addEventListener('load', (e) =>{
-            /* Global Slick Slider */
-            const sectionSlicks = document.querySelectorAll('.section-slick');
-            if(sectionSlicks.length > 0) {
-                for(let i = 0; i < sectionSlicks.length; i++) {
-                    const sectionSlick = sectionSlicks[i];
-                    const sectionSlickOptions = sectionSlick.getAttribute('data-slick-options');
-                    if(sectionSlickOptions) {
-                        const options = JSON.parse(sectionSlickOptions);
-                        $(sectionSlick).slick(options);
-                    }
-                }
-            }
-
             /* Load Section when scroll */
             sectionLoad();
 
@@ -127,6 +114,19 @@ export default function(context) {
         section.classList.add('animated');
     }
 
+    /* Custom Slick Slider */
+    function customSlickSlider(section) {
+        if(section.matches('.slick-slider-loaded')) return;
+
+        section.classList.add('slick-slider-loaded');
+
+        const sectionSlickOptions = section.getAttribute('data-slick-options');
+        if(!sectionSlickOptions) return;
+
+        const options = JSON.parse(sectionSlickOptions);
+        $(section).slick(options);
+    }
+
     function sectionLoad() {
         const handler = (entries) => {
             entries.forEach(entry => {
@@ -137,6 +137,10 @@ export default function(context) {
                     switch(sectionType) {
                         case 'animation':
                             customAnimate(section);
+                            break;
+                        
+                        case 'slick-slider':
+                            customSlickSlider(section);
                             break;
                         
                         default:
@@ -223,8 +227,6 @@ export default function(context) {
 
         $footerHeadingToggle.on('click', (e) => {
             e.preventDefault();
-
-            console.log("click");
 
             const $target = $(e.currentTarget);
             const $thisFooterInfo = $target.parents('.footer-info-col');

@@ -7,8 +7,8 @@
     z-index: 1;
     overflow: hidden;
     font-family: $fontFamily-sans;
-    font-size: $fontSize-root - 2;
-    font-weight: $fontWeight-bold;
+    font-size: $fontSize-root;
+    font-weight: $fontWeight-medium;
     font-style: normal;
     user-select: none;
     appearance: none;
@@ -18,8 +18,7 @@
     border-radius: 0;
     margin: 0;
     padding: 8px;
-    line-height: 24px;
-    min-width: 153px;
+    line-height: 21px;
     cursor: pointer;
     border: 1px solid $buttonStyle-default-borderColor;
     color: $buttonStyle-default-color;
@@ -31,9 +30,12 @@
     text-transform: uppercase;
 
     @include breakpoint('small') {
-        font-size: $fontSize-root;
         width: auto;
-        padding: 15px;
+        padding: 10px 15px 12px;
+    }
+
+    &.button--small {
+        padding: 4px 28px 3px 24px;
     }
 
     svg {
