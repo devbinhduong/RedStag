@@ -304,6 +304,11 @@
         img {
             background-color: #ffffff;
             object-fit: none;
+
+            @include smax-s {
+                object-fit: contain;
+                padding: 12px;
+            }
         }
     }
 }
@@ -336,6 +341,18 @@
         };
     }
 
+    .slick-list {
+        @include smax-xl {
+            margin: 0 -7px;
+        }
+    }
+    
+    .slick-slide {
+        @include smax-xl {
+            padding: 0 7px;
+        }
+    }
+
     &__item {
         .item-image {
             @include image-padding-bottom(465, 264);
@@ -354,6 +371,7 @@
                     font-weight: $fontWeight-medium;
                     letter-spacing: 0;
                     @include lineClamp(2, 21px);
+                    text-decoration: none;
                 }
             }
 

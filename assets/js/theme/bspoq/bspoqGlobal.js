@@ -1,17 +1,15 @@
-import utils from '@bigcommerce/stencil-utils';
-import modalFactory from '../global/modal';
-import { load } from 'webfontloader';
-import event from '../global/jquery-migrate/event';
-import { forEach } from 'lodash';
-
 import quickShop from './quickShop';
 import ajaxAddToCart from './ajaxAddToCart';
 
 export default function(context) {
     const themeSettings = context.themeSettings;
 
+    var $header = $('header.header'),
+        height_header = $header.outerHeight(),
+        header_top_height = $('#bspoq_topPromotion').outerHeight();
+
     /* Scroll position */
-    var scroll_position = window.scrollY;
+    var scroll_position = $(window).scrollTop();
 
     var check_JS_load = true;
 
@@ -41,7 +39,12 @@ export default function(context) {
         });
 
         /* Load when scroll */
-        window.addEventListener('scroll', (e) => {});
+        $(window).on('scroll', (e) => {
+            const $target = $(e.currentTarget);
+            const tScroll = $target.scrollTop();
+
+            headerSticky(tScroll);
+        });
 
         /* Load when user action on site */
         ['keydown', 'mousemove', 'touchstart'].forEach(event => {
@@ -131,23 +134,15 @@ export default function(context) {
     }
 
     function recentlyPostSlick(section) {
-        // if(section.matches('.section-loaded')) return;
-
-        // section.classList.add("section-loaded");
-
         if (window.innerWidth > 1400) {
             $('.recentlyPost__list.slick-initialized').slick('unslick');
-
-            console.log("Unslick");
 
         } else {
             if($('.recentlyPost__list').hasClass('slick-initialized')) return;
 
-            console.log("Slick");
-
             $('.recentlyPost__list').slick({
-                dots: false,
-                arrows: true,
+                dots: true,
+                arrows: false,
                 infinite: false,
                 mobileFirst: true,
                 slidesToShow: 1,
@@ -171,8 +166,6 @@ export default function(context) {
             });
         }
     }
-
-    function checkSlick () {}
 
     function sectionLoad() {
         const handler = (entries) => {
@@ -251,23 +244,47 @@ export default function(context) {
     function openMenuMobileEffect() {
         if(window.innerWidth > 1024) return;
 
-        const body = document.body,
+        const body = document.body, 
             menuMobileIcon = document.querySelector('.mobileMenu-toggle'),
             topPromotion = document.querySelector('#bspoq_topPromotion');
 
-        if(!menuMobileIcon || !topPromotion) return;
-
-        const promotionHeight = topPromotion.offsetHeight;
+        if(!menuMobileIcon || !topPromotion || topPromotion.classList.contains("u-hidden")) return;
+        
+        console.log(topPromotion.classList.contains("u-hidden"));
 
         menuMobileIcon.addEventListener('click', (event) => {
             event.preventDefault();
-
+            console.log('run');
             if(!body.classList.contains('has-activeNavPages')) {
-                body.style.transform = 'translateY(0)';
+                $("#bspoq_topPromotion").slideDown(400);
+
             } else {
-                body.style.transform = 'translateY(' + -promotionHeight + 'px)';
+                $("#bspoq_topPromotion").slideUp(400);
             }
         });
+    }
+
+    /* Header Sticky */
+    function headerSticky(tScroll) {
+        if (themeSettings.show_sticky_header) {
+            if (tScroll > header_top_height && tScroll < scroll_position) {
+                if (!$('.header-height').length) {
+                    $header.before(
+                        '<div class="header-height" style="height: ' +
+                            height_header +
+                            'px"></div>'
+                    );
+                }
+                $header.addClass('is-sticky');
+                $header.css('animation-name', 'fadeInDown');
+            } else {
+                $header.removeClass('is-sticky');
+                $('.header-height').remove();
+                $header.css('animation-name', '');
+            }
+
+            scroll_position = tScroll;
+        }
     }
 
     /* Footer Mobile Toggle */

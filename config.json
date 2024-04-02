@@ -849,7 +849,8 @@
         "home_brand_item2-7_link": "#",
         "home_brand_item2-7_image": "supplying-4.png",
         "show_home_recently_post": "true",
-        "recent_blog_size": "465x264"
+        "recent_blog_size": "465x264",
+        "show_sticky_header": true
       }
     }
   ]
