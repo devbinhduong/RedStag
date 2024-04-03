@@ -38,6 +38,7 @@
     position: relative;
     width: 100%;
     z-index: zIndex("higher");
+    transition: all 0.3s ease-in-out;
 
     @include smin-m {
         display: flex;
@@ -52,6 +53,10 @@
         @include smin-m {
             height: auto;
         }
+    }
+
+    &.slide-up {
+        transform: translateY(var(--slide-up));
     }
 }
 
@@ -277,7 +282,7 @@
     position: relative;
     background-color: stencilColor("topPromotion_background");
     padding-top: remCalc(4px);
-    padding-bottom: remCalc(5px);
+    padding-bottom: remCalc(6px);
 
     .banner-promotion {
         .text {
@@ -294,7 +299,7 @@
     }
     .promotion-close {
         top: 50%;
-        right: 12px;
+        right: 6px;
         font-size: 0;
         line-height: 1;
         position: absolute;
@@ -318,7 +323,7 @@
 .headerMiddle {
     position: relative;
     background-color: stencilColor("headerMiddleBackground");
-    padding: 5px 0 10px;
+    padding: 5px 0 11px;
 
     @include smax-m {
         padding: 0;
@@ -337,7 +342,8 @@
         }
 
         &.text-center {
-            width: 453px;
+            width: 100%;
+            max-width: 455px;
             padding-right: 200px;
 
             @include smax-xl {
@@ -352,6 +358,7 @@
 
         &.text-right {
             width: calc(100% - 440px);
+            padding-top: 12px;
 
             @include smax-xl {
                 width: calc(100% - 200px);

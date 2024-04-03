@@ -25,21 +25,32 @@ export default function(context) {
     }
 
     function eventLoad(){
+        /* Top Promotion Function */
+        context.themeSettings.show_topPromotion && handleTopPromotion();
+
+        $(document).ready(function() {
+            var $header = $('header.header'),
+                height_header = $header.outerHeight(),
+                header_top_height = $('#bspoq_topPromotion').outerHeight();
+
+                console.log("height_header", height_header);
+                console.log("header_top_height", header_top_height);
+
+            $header.css("--slide-up", `-${header_top_height}px`);
+
+            /* Load when scroll */
+            $(window).on('scroll', (e) => {
+                const $target = $(e.currentTarget);
+                const tScroll = $target.scrollTop();
+
+                headerSticky(tScroll, $header, height_header, header_top_height);
+            });
+        });
+
         /* Load when DOM ready */
         window.addEventListener('load', (e) =>{
             /* Load Section when scroll */
             sectionLoad();
-
-            /* Top Promotion Function */
-            context.themeSettings.show_topPromotion && handleTopPromotion();
-        });
-
-        /* Load when scroll */
-        $(window).on('scroll', (e) => {
-            const $target = $(e.currentTarget);
-            const tScroll = $target.scrollTop();
-
-            headerSticky(tScroll);
         });
 
         /* Load when user action on site */
@@ -249,21 +260,19 @@ export default function(context) {
         menuMobileIcon.addEventListener('click', (event) => {
             event.preventDefault();
             if(!body.classList.contains('has-activeNavPages')) {
-                $("#bspoq_topPromotion").slideDown(400);
-
+                $('header.header').removeClass('slide-up');
             } else {
-                $("#bspoq_topPromotion").slideUp(400);
+                $('header.header').addClass('slide-up');
             }
         });
     }
 
     /* Header Sticky */
-    function headerSticky(tScroll) {
+    function headerSticky(tScroll, $header, height_header, header_top_height) {
+        console.log("height_header", height_header);
+        console.log("header_top_height", header_top_height);
+
         if (themeSettings.show_sticky_header) {
-            var $header = $('header.header'),
-                height_header = $header.outerHeight(),
-                header_top_height = $('#bspoq_topPromotion').outerHeight();
-            
             if (tScroll > header_top_height && tScroll < scroll_position) {
                 if (!$('.header-height').length) {
                     $header.before(
@@ -274,7 +283,10 @@ export default function(context) {
                 }
                 $header.addClass('is-sticky');
                 $header.css('animation-name', 'fadeInDown');
+                console.log("srcoll up");
+
             } else {
+                console.log("srcoll down");
                 $header.removeClass('is-sticky');
                 $('.header-height').remove();
                 $header.css('animation-name', '');

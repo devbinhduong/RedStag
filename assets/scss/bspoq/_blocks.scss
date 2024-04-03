@@ -48,6 +48,7 @@
 .bannerText {
     background-color: #d6d6d6;
     padding: 18px;
+    margin-bottom: 37px;
 
     @include smax-s {
         padding: 12px;
@@ -201,7 +202,12 @@
 // Home Brands Block
 // -----------------------------------------------------------------------------
 .brandBlock {
-    margin-top: 40px;
+    margin-top: 5px;
+    padding-bottom: 26px;
+
+    .custom-desc {
+        margin-bottom: 20px;
+    }
 
     > .container {
         @include maxWidth(1500px) {
@@ -319,6 +325,10 @@
 .recentlyPost {
     background-color: #D6D6D6;
     padding: 20px 0;
+
+    .custom-desc {
+        margin-bottom: 16px;
+    }
 
     &__list {
         &:not(.slick-initialized) {

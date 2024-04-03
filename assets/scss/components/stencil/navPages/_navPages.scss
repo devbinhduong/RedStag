@@ -107,6 +107,15 @@
     .button--ez-street {
         background-color: #ffffff;
         color: $color-custom-red;
+        position: absolute;
+        right: calc((100% - 1364px) / 2);
+        top: 0;
+        bottom: 0;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 165px;
 
         &:hover {
             background-color: #000000;
@@ -743,7 +752,9 @@
         justify-content: space-between;
         &.navPages-container--small {
             .navPages-list-wrapper {
-                width: calc(100% - 153px);
+                width: 100%;
+                padding-left: 15px;
+
                 > .navPages-list {
                     max-width: 1040px;
                     margin-right: auto;
@@ -754,6 +765,9 @@
     
                         .navPages-action {
                             position: relative;
+                            padding-top: 4px;
+                            line-height: 16px;
+                            padding-bottom: 6px;
     
                             &::after {
                                 content: '';
