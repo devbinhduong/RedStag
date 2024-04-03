@@ -4,10 +4,6 @@ import ajaxAddToCart from './ajaxAddToCart';
 export default function(context) {
     const themeSettings = context.themeSettings;
 
-    var $header = $('header.header'),
-        height_header = $header.outerHeight(),
-        header_top_height = $('#bspoq_topPromotion').outerHeight();
-
     /* Scroll position */
     var scroll_position = $(window).scrollTop();
 
@@ -250,11 +246,8 @@ export default function(context) {
 
         if(!menuMobileIcon || !topPromotion || topPromotion.classList.contains("u-hidden")) return;
         
-        console.log(topPromotion.classList.contains("u-hidden"));
-
         menuMobileIcon.addEventListener('click', (event) => {
             event.preventDefault();
-            console.log('run');
             if(!body.classList.contains('has-activeNavPages')) {
                 $("#bspoq_topPromotion").slideDown(400);
 
@@ -267,6 +260,10 @@ export default function(context) {
     /* Header Sticky */
     function headerSticky(tScroll) {
         if (themeSettings.show_sticky_header) {
+            var $header = $('header.header'),
+                height_header = $header.outerHeight(),
+                header_top_height = $('#bspoq_topPromotion').outerHeight();
+            
             if (tScroll > header_top_height && tScroll < scroll_position) {
                 if (!$('.header-height').length) {
                     $header.before(

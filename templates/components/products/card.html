@@ -1,6 +1,7 @@
 <article
     class="card
-    {{#if alternate}} card--alternate{{/if}}"
+    {{#if alternate}} card--alternate{{/if}}
+    {{#or price.sale_price_with_tax.value price.sale_price_without_tax.value}} card--salePrice{{/or}}"
     data-test="card-{{id}}"
     data-event-type="{{event}}"
     data-product-id="{{id}}"
@@ -151,11 +152,17 @@
             {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
                 {{#if show_cart_action}}
                     {{#if has_options}}
-                        <a href="{{url}}" data-event-type="product-click" class="button button--secondary card-figcaption-button{{#if theme_settings.bspoq_quick_shop}} button--quickShop{{/if}}" data-product-id="{{id}}">
+                        <a href="{{url}}" data-event-type="product-click" class="button addToCartBtn card-figcaption-button{{#if theme_settings.bspoq_quick_shop}} button--quickShop{{/if}}" data-product-id="{{id}}">
                             {{#if theme_settings.bspoq_quick_shop}}
-                                {{lang 'products.quick_shop'}}
+                                <span class="addToCartText">{{lang 'products.quick_shop'}}</span>
+                                <span class="addToCartIcon">
+                                    <svg><use xlink:href="#icon-shopping-cart"></use></svg>
+                                </span>
                             {{else}}
-                                {{lang 'products.choose_options'}}
+                                <span class="addToCartText">{{lang 'products.choose_options'}}</span>
+                                <span class="addToCartIcon">
+                                    <svg><use xlink:href="#icon-shopping-cart"></use></svg>
+                                </span>
                             {{/if}}
                         </a>
                     {{/if}}
@@ -163,7 +170,13 @@
                         <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--small card-figcaption-button">{{lang 'products.pre_order'}}</a>
                     {{/if}}
                     {{#if add_to_cart_url }}
-                        <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button bspoq-add-to-cart" data-product-id="{{id}}">{{lang 'products.add_to_cart'}}</a>
+                        <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button addToCartBtn card-figcaption-button bspoq-add-to-cart" data-product-id="{{id}}" data-wait-message="{{lang 'products.adding_to_cart'}}">
+                            <span class="addToCartText">{{lang 'products.quick_shop'}}</span>
+
+                            <span class="addToCartIcon">
+                                <svg><use xlink:href="#icon-shopping-cart"></use></svg>
+                            </span>
+                        </a>
                         <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
                     {{/if}}
                     {{#if out_of_stock_message }}

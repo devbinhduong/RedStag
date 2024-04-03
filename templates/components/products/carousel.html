@@ -1,8 +1,14 @@
 <section class="productCarousel"
     data-list-name="{{list}}"
     data-slick='{
+        {{#if infinite}}
+        {{else}}
         "infinite": false,
+        {{/if}}
         "mobileFirst": true,
+        {{#unless dots}}
+        "dots": false,
+        {{/unless}}
         "slidesToShow": 2,
         "slidesToScroll": 2,
         "slide": "[data-product-slide]",

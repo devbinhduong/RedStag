@@ -18,25 +18,21 @@
 }
 
 .productCarousel-slide { // 1
-    @include grid-column(6);
-
-    @include breakpoint("small") {
-        width: grid-calc(4, $total-columns);
-    }
-
-    @include breakpoint("medium") {
-        width: grid-calc(3, $total-columns);
-    }
-
-    @include breakpoint("large") {
-        width: grid-calc(2, $total-columns);
-    }
-
+    padding: 0 remCalc(10px);
     .card {
         margin-bottom: 0;
 
         .card-title {
             overflow-wrap: break-word;
         }
+    }
+}
+
+
+/* Custom Start */
+.productCarousel {
+    .slick-arrow {
+        transform: translate(0);
+        top: calc((144 / 407)* 100%);
     }
 }

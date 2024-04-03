@@ -59,16 +59,17 @@
     /* Hover Image */
     .card-image {
         position: absolute;
-        top: 0;
+        top: 50%;
         bottom: 0;
         left: 0;
         right: 0;
-        margin: auto;
+        transform: translateY(-50%);
         border: 0;
         width: 100%;
         max-height: 100%;
         object-fit: contain;
         margin-bottom: 0;
+        max-height: 206px;
     }
 
     .card-img-hover {
@@ -95,5 +96,49 @@
         font-size: $fontSize-root - 2;
         font-weight: $fontWeight-normal;
         letter-spacing: $letterSpacing-base;
+        color: #515C6F;
+        line-height: 17px;
+        font-family: "Open Sans", sans-serif;
+    }
+}
+
+/* Custom card has sale price */
+.card {
+    &.card--salePrice {
+        .priceWithoutTax__wrapper {
+            .price-section {
+                > span,
+                > abbr {
+                    color: stencilColor("color_badge_product_sale_badges");
+                }
+            }
+        }
+    }
+}
+
+/* Custom the same height for all cards */
+.productCarousel {
+    .slick-track {
+        display: flex;
+    }
+
+    .slick-slide {
+        height: inherit;
+
+        .card {
+            height: 100%;
+            padding-bottom: 105px;
+            margin-top: 0;
+
+            .card-text {
+                &[data-test-info-type="productRating"] {
+                    position: absolute;
+                    bottom: 60px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
 }

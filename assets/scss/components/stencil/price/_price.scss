@@ -11,3 +11,39 @@
 .price-section--minor {
     color: color("greys", "light");
 }
+
+/* Start Custom */
+.customPrice__wrapper {
+    @include flexbox($align-items: center, $justify-content: center, $flex-wrap: wrap);
+    font-family: "Open Sans", sans-serif;
+
+    .price-section {
+        max-width: 50%;
+        padding: 0 3px;
+        color: #636362;
+        letter-spacing: 0;
+        line-height: 17px;
+
+        .price {
+            font-size: $fontSize-root - 2;
+            font-weight: $fontWeight-bold;
+
+            &[data-product-non-sale-price-without-tax] {
+                font-size: $fontSize-root;
+            }
+
+            &[data-product-price-without-tax] {
+                font-size: $fontSize-root + 4;
+                color: $color-custom-black;
+            }
+
+            &[data-product-non-sale-price-with-tax] {
+                font-weight: $fontWeight-normal;
+            }
+        }
+
+        > span[title]  {
+            font-size: 12px;
+        }
+    }
+}

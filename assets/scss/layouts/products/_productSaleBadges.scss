@@ -197,3 +197,19 @@
 .product {
     overflow: hidden;
 }
+
+/* Custom start */
+.custom-badge {
+    position: absolute;
+    right: 0;
+    background: stencilColor("color_badge_product_sale_badges");
+    color: stencilColor("color_text_product_sale_badges");
+    text-transform: uppercase;
+    font-size: $fontSize-root;
+    line-height: 21px;
+    letter-spacing: 0;
+    font-weight: $fontWeight-medium;
+    padding: 3px;
+    min-width: 60px;
+    text-align: center;
+}

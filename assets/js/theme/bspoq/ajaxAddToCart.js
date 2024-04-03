@@ -11,7 +11,8 @@ export default function (context) {
 
         const $addToCartBtn = $(event.currentTarget);
         const waitMessage = $addToCartBtn.data('waitMessage');
-        const originalBtnVal = $addToCartBtn.text();
+        const originalBtnVal = $addToCartBtn.html();
+
 
         event.preventDefault();
 
@@ -46,7 +47,7 @@ export default function (context) {
         utils.api.cart.itemAdd(formData, (err, response) => {
             const errorMessage = err || response.data.error;
 
-            $addToCartBtn.text(originalBtnVal);
+            $addToCartBtn.html(originalBtnVal);
             $addToCartBtn.prop('disabled', false);
 
             // Guard statement

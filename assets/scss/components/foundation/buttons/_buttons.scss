@@ -220,6 +220,76 @@
             background-color: $buttonStyle-disabled-color;
         }
     }
+
+    /* For only add to card button */
+    &.addToCartBtn {
+        border:none;
+        background-color: #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition-duration: 0.3s;
+        overflow: hidden;
+        padding: 0;
+        min-height: 46px;
+
+        &::after {
+            content: unset;
+        }
+
+        .addToCartIcon {
+            position: absolute;
+            right: 0;
+            width: 54px;
+            height: 100%;
+            background: $color-custom-red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 2;
+            transition-duration: 0.3s;
+
+
+            svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+        
+        .addToCartText {
+            height: 100%;
+            color: white;
+            z-index: 1;
+            transition-duration: 0.3s;
+            transform: translateX(-27px);
+        }
+
+        &:hover {
+            &::after {
+                content: unset;
+            }
+
+            .addToCartIcon {
+                width: 100%;
+                transition-duration: 0.3s;
+            }
+
+            .addToCartText {
+                transform: translate(10px);
+                width: 0;
+                font-size: 0;
+                transition-duration: 0.3s;
+            }
+        }
+
+        &:active {
+            transform: scale(0.95);
+            transition-duration: 0.3s;
+        }
+    }
+    
 }
 
 .button[disabled] {
@@ -231,3 +301,5 @@
         fill: stencilColor('button--icon-svg-color');
     }
 }
+
+  

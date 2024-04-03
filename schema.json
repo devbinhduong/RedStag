@@ -1219,6 +1219,10 @@
             "label": "None"
           },
           {
+            "value": "custom",
+            "label": "Custom"
+          },
+          {
             "value": "topleft",
             "label": "Top Left"
           },

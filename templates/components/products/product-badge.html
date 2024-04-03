@@ -12,3 +12,10 @@
         <div class="{{badge-type}}-flag-star"></div>
     </div>
 {{/if}}
+
+<!-- Custom start -->
+{{#if badge_view '===' 'custom'}}
+    <div class="{{badge-type}}-flag-custom custom-badge">
+        <span class="{{badge-type}}-text">{{{badge_label}}}</span>
+    </div>
+{{/if}}

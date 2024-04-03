@@ -32,6 +32,23 @@ blog:
     <!-- Home Banner Text -->
    {{> components/bspoq/home/home-banner-1 }}
 
+   <!-- Featured products -->
+   {{#if products.featured}}
+        <div class="custom-section">
+            <h2 class="custom-heading">Featured Products</h2>
+            <p class="custom-desc">Picked for you</p>
+
+            <div class="container">
+                {{> components/products/carousel 
+                    products=products.featured 
+                    columns=theme_settings.homepage_featured_products_column_count 
+                    dots=false
+                    infinite=true
+                }}
+            </div>
+        </div>
+   {{/if}}
+
     <!-- Home 2 Banners -->
    {{> components/bspoq/home/home-banner-2 }}
 
