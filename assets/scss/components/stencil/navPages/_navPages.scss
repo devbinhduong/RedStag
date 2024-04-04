@@ -117,6 +117,14 @@
         align-items: center;
         min-width: 165px;
 
+        @include maxWidth(1364px) {
+            right: 15px;
+        }
+
+        @include smax-xl {
+            min-width: 130px;
+        }
+
         &:hover {
             background-color: #000000;
             color: #ffffff;
@@ -680,7 +688,7 @@
         position: relative;
 
         #menu {
-            top: -117px;
+            top: -127px;
             transition: all 0.3s ease;
             z-index: 999;
             height: 0;
@@ -749,11 +757,16 @@
 
 @include smin-m {
     .navPages-container{
-        justify-content: space-between;
+        justify-content: flex-start;
         &.navPages-container--small {
             .navPages-list-wrapper {
-                width: 100%;
+                width: calc(100% - 180px);
                 padding-left: 15px;
+
+                @include maxWidth(1200px) {
+                    padding-left: 0;
+                    width: calc(100% - 145px);
+                }
 
                 > .navPages-list {
                     max-width: 1040px;

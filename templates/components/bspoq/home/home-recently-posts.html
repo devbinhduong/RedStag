@@ -1,13 +1,15 @@
 {{#if theme_settings.show_home_recently_post}}
     <div class="recentlyPost">
         <h2 class="custom-heading">Blogs</h2>
-        <p class="custom-desc">The Word on the street</p>
-        <a href="#" class="recentlyPost__viewAll uppercase">View All</a>
+        <p class="custom-desc recentlyPost__desc">
+            The Word on the street
+            <a href="#" class="recentlyPost__viewAll uppercase hover-link"><span>View All</span></a>
+        </p>
 
-        <div class="container container--full">
+        <div class="container container--full custom-animation" data-section-load="animation">
             <div class="recentlyPost__list" data-section-load="recent-post">
                 {{#each post}}
-                    <div class="recentlyPost__item">
+                    <div class="recentlyPost__item" data-step-animate="{{@index}}">
                         <a class="item-image" href="{{url}}">
                             {{> components/common/responsive-img
                                 image=thumbnail

@@ -201,6 +201,7 @@
 /* Custom start */
 .custom-badge {
     position: absolute;
+    z-index: 9;
     right: 0;
     background: stencilColor("color_badge_product_sale_badges");
     color: stencilColor("color_text_product_sale_badges");

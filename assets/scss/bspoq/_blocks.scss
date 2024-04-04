@@ -311,7 +311,7 @@
             background-color: #ffffff;
             object-fit: none;
 
-            @include smax-s {
+            @include smax-m {
                 object-fit: contain;
                 padding: 12px;
             }
@@ -328,6 +328,19 @@
 
     .custom-desc {
         margin-bottom: 16px;
+    }
+
+    &__desc {
+        position: relative;
+
+        > .recentlyPost__viewAll {
+            text-decoration: none;
+            @include pos($pos: abs, $r: 15px, $cb: center-y);
+
+            @include minWidth(1364px) {
+                right: calc((100% - 1364px) / 2);
+            }
+        }
     }
 
     &__list {
