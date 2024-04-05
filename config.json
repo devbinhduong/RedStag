@@ -421,7 +421,7 @@
       "images": {},
       "settings": {
         "hide_breadcrumbs": false,
-        "hide_page_heading": false,
+        "hide_page_heading": true,
         "hide_category_page_heading": false,
         "hide_blog_page_heading": false,
         "hide_contact_us_page_heading": false,

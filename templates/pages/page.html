@@ -1,6 +1,9 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#unless (toLowerCase page.title) '==' 'ez street'}}
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{/unless}}
+
 
 <main class="page">
     {{#unless theme_settings.hide_page_heading }}
@@ -23,7 +26,25 @@
         {{#replace '%%Syndicate%%' page.content}}
             {{> components/page/rss_feed}}
         {{else}}
+        
+        {{#unless (toLowerCase page.title) '==' 'ez street'}}
             <p>{{{page.content}}}</p>
+        {{/unless}}
+
+        <!-- Ez Street Top Banner -->
+        <div class="ezTopBanner">
+            <div class="ezTopBannerImage skeleton-loader">
+                <img class="lazyload" src="" data-src="/product_images/uploaded_images/ez-street-top-banner.png" alt="EZ Street Banner">
+            </div>
+        </div>
+
+        <!-- Custom Product Block IDs -->
+        <div class="bsProductList">
+            <div class="container">
+                <h2 class="custom-heading-page bsProductList__heading">SHOW POTHOLES WHO’S BOSS</h2>
+                
+            </div>
+        </div>
         {{/replace}}
     </div>
 

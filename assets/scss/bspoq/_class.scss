@@ -405,6 +405,34 @@
     text-transform: uppercase;
 }
 
+.custom-heading-page {
+    font-size: 40px;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-align: center;
+    font-weight: $fontWeight-bold;
+    text-transform: uppercase;
+    color: $color-custom-red;
+    margin: 0;
+
+    &.white {
+        color: #ffffff;
+    }
+}
+
+.custom-desc-page {
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 0;
+    color: $color-custom-black;
+    margin-bottom: 0;
+
+    &.white {
+        color: #ffffff;
+    }
+}
+
 .custom-category-heading {
     font-size: 35px;
     letter-spacing: 0.025em;

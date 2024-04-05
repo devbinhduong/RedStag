@@ -429,3 +429,10 @@
         }
     }
 }
+
+/* EZ Street Page */
+.ezTopBanner {
+    &Image {
+        @include image-padding-bottom(1920, 500);
+    }
+}
