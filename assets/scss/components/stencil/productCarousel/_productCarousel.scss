@@ -43,4 +43,9 @@
         transform: translate(0);
         top: calc((144 / 407)* 100%);
     }
+
+    .slick-list {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
 }

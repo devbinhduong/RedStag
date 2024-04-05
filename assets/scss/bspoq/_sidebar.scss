@@ -29,7 +29,7 @@
         }
 
         &:hover {
-            background-color: $buttonStyle-primary-backgroundColorHover;
+            background-color: $buttonStyle-primary-backgroundColor;
 
             svg {
                 transform: rotate(180deg) scale(1.2);

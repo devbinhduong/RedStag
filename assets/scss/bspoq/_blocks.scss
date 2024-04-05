@@ -18,15 +18,19 @@
                 margin-left: 40px;
                 margin-right: 40px;
             }
+
+            .item-icon {
+                margin-right: 4px;
+            }
         }
 
         .item-icon {
-            margin-right: 9px;
-            height: 22px;
+            margin-right: 8px;
+            height: 32px;
             width: 100%;
 
             &.icon--credit-card {
-                max-width: 28px;
+                max-width: 35px;
             }
 
             &.icon--truck {
@@ -39,6 +43,9 @@
             font-weight: 300;
             line-height: 21px;
             letter-spacing: 0;
+        }
+        .item-link {
+            min-height: 32px;
         }
     }
 }

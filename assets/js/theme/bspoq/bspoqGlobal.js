@@ -33,9 +33,6 @@ export default function(context) {
                 height_header = $header.outerHeight(),
                 header_top_height = $('#bspoq_topPromotion').outerHeight();
 
-                console.log("height_header", height_header);
-                console.log("header_top_height", header_top_height);
-
             $header.css("--slide-up", `-${header_top_height}px`);
 
             /* Load when scroll */
@@ -269,9 +266,6 @@ export default function(context) {
 
     /* Header Sticky */
     function headerSticky(tScroll, $header, height_header, header_top_height) {
-        console.log("height_header", height_header);
-        console.log("header_top_height", header_top_height);
-
         if (themeSettings.show_sticky_header) {
             if (tScroll > header_top_height && tScroll < scroll_position) {
                 if (!$('.header-height').length) {
@@ -283,10 +277,8 @@ export default function(context) {
                 }
                 $header.addClass('is-sticky');
                 $header.css('animation-name', 'fadeInDown');
-                console.log("srcoll up");
 
             } else {
-                console.log("srcoll down");
                 $header.removeClass('is-sticky');
                 $('.header-height').remove();
                 $header.css('animation-name', '');

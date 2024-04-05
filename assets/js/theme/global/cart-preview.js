@@ -110,4 +110,52 @@ export default function (secureBaseUrl, cartId, context) {
     } else {
         $body.trigger('cart-quantity-update', quantity);
     }
+
+    /* Custom start */
+    $(document).on('click','.previewCart .previewCartItem-remove', (event) => {
+        event.preventDefault();
+        const itemId = $(event.currentTarget).data('cartItemid');
+
+        cartRemoveItem(itemId);
+    });
+
+    function cartRemoveItem(itemId) {
+        utils.api.cart.itemRemove(itemId, (err, response) => {
+            if (response.data.status === 'succeed') {
+                refreshContent(true);
+            } else {
+                alert(response.data.errors.join('\n'));
+            }
+        });
+    }
+
+    function refreshContent(remove) {
+        const options = {
+            template: 'common/cart-preview',
+        };
+
+        if($body.hasClass('openCartSidebar')){
+            $cartDropdown
+                .addClass(loadingClass)
+                .html($cartLoading);
+            $cartLoading
+                .show();
+
+            utils.api.cart.getContent(options, (err, response) => {
+                $cartDropdown
+                    .removeClass(loadingClass)
+                    .html(response);
+                $cartLoading
+                    .hide();
+
+                const quantity = $(response).find('[data-cart-quantity]').data('cartQuantity') || $('[data-cart-quantity]').data('cartQuantity') || 0;
+
+                $body.trigger('cart-quantity-update', quantity);
+            });
+        }
+
+        if(location.pathname == "/cart.php"){
+            cart_page.refreshContent(remove);
+        }
+    }
 }
