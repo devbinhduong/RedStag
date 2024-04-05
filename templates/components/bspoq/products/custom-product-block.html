@@ -1,0 +1,105 @@
+<div class="productCarousel-slide">
+    <article  class="card custom-card
+    {{#if alternate}} card--alternate{{/if}} 
+    card-text"
+     data-product-id="{{product.id}}">
+        <div class="card-figure">
+            <a href="{{product.url}}" class="card-figure__link card-link" aria-label="{{name}},{{> components/products/product-aria-label}}"
+                data-event-type="product-click">
+                <div class="card-img-container{{#if images.length '<' 1}} card-img-container2{{/if}}">
+                    <img class="card-image lazyload card-image-loading" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage product.main_image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{product.title}}" title="{{product.title}}">
+                    {{#if images.length '>=' 2}}
+                        {{#each product.images}}
+                            {{#if @index '==' 1}}
+                                <span class="product-additional" data-product-id="">
+                                    <img class="card-image-2 img-responsive lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage this 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{this.alt}}" title="{{this.alt}}">
+                                </span>
+                            {{/if}}
+                        {{/each}}
+                    {{/if}}
+                </div>
+            </a>
+
+        </div>
+        <div class="card-body">
+            {{#and (if product.brand.name) (if theme_settings.show_card_brand_name)}}
+                <p class="card-brand card-brand-{{product.id}} card-text" data-test-info-type="brandName"></p>
+            {{/and}}
+
+            <h3 class="card-title">
+                <a aria-label="{{> components/products/product-info}}"
+                   href="{{url}}"
+                   data-event-type="product-click"
+                   class="hover-link"
+                >
+                    <span>{{product.title}}</span>
+                </a>
+            </h3>
+
+            <div class="card-text" data-test-info-type="price">
+                {{#or customer (unless settings.hide_price_from_guests)}}
+                    {{> components/products/price price=product.price}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                {{/or}}
+            </div>
+
+            <p class="card-text" data-test-info-type="productRating">
+                <span class="rating--small">
+                    {{> components/products/ratings rating_target=name rating=rating}}
+                </span>
+            </p>
+
+    
+            <div class="custom-card-action">
+                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                    {{#if product.out_of_stock_message }}
+                        <a href="{{product.url}}" data-event-type="product-click" class="button button--small card-figcaption-button button--disabled" data-product-id="{{product.id}}">{{product.out_of_stock_message}}</a>
+                    {{else}}
+                        {{#if product.options}}
+                            <a href="{{product.url}}" data-event-type="product-click" class="button addToCartBtn card-figcaption-button{{#if theme_settings.bspoq_quick_shop}} button--quickShop{{/if}}" data-product-id="{{product.id}}">
+                                {{#if theme_settings.bspoq_quick_shop}}
+                                    <span class="addToCartText">{{lang 'products.quick_shop'}}</span>
+                                    <span class="addToCartIcon">
+                                        <svg><use xlink:href="#icon-shopping-cart"></use></svg>
+                                    </span>
+                                {{else}}
+                                    <span class="addToCartText">{{lang 'products.choose_options'}}</span>
+                                    <span class="addToCartIcon">
+                                        <svg><use xlink:href="#icon-shopping-cart"></use></svg>
+                                    </span>
+                                {{/if}}
+                            </a>
+
+                        {{else}}
+                            {{#if product.pre_order}}
+                                <a href="{{product.pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--small card-figcaption-button">
+                                    <span>{{lang 'products.pre_order'}}</span>
+                                </a>
+                            {{else}}
+                                {{#if product.can_purchase }}
+                                    <a href="{{product.add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button addToCartBtn card-figcaption-button bspoq-add-to-cart" data-product-id="{{product.id}}" data-wait-message="{{lang 'products.adding_to_cart'}}">
+                                        <span class="addToCartText">{{lang 'products.quick_shop'}}</span>
+            
+                                        <span class="addToCartIcon">
+                                            <svg><use xlink:href="#icon-shopping-cart"></use></svg>
+                                        </span>
+                                    </a>
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                {{/or}}
+            </div>
+            
+            {{> components/products/bulk-discount-rates}}
+    
+            {{#if show_compare}}
+                <div class="card-compare">
+                    <input type="checkbox" name="products[]" value="{{id}}" id="compare-2-{{id}}" data-compare-id="{{id}}">
+                    <label class="compare" for="compare-2-{{id}}"><span>{{lang 'products.compare'}}</span></label>
+                </div>
+            {{/if}}
+        </div>
+    </article>
+</div>
