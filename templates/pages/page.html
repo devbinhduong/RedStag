@@ -44,13 +44,154 @@
                 <h2 class="custom-heading-page">SHOW POTHOLES WHO’S BOSS</h2>
 
                 <div id="list-product-detail" class="product-block" data-columns="5" data-limit="8" data-dots="false">
-                    <div class="productsByListId custom-block-product" data-list-id="115,116,117,118,119,120" id="product-by-list-id">
-                        <div class="custom_productLoading"></div>
-                        <div class="productCarouselCustom"></div>
+                    <div class="productsByListId custom-block-product" data-list-id="115,116,118,120" id="product-by-list-id">
+                        <div class="custom_productLoading productSkeleton__list">
+                            {{> components/bspoq/skeleton/product-skeleton }}
+                            {{> components/bspoq/skeleton/product-skeleton }}
+                            {{> components/bspoq/skeleton/product-skeleton }}
+                            {{> components/bspoq/skeleton/product-skeleton }}
+                            {{> components/bspoq/skeleton/product-skeleton }}
+                        </div>
+                        <section class="productCarousel productCarouselCustom"></section>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Rethink Asphalt Section -->
+        <section class="rethinkAsphalt">
+            <div class="container">
+                <h2 class="rethinkAsphalt__heading custom-heading-page white">RETHINK YOUR ASPHALT</h2>
+                <p class="rethinkAsphalt__desc custom-desc-page white">
+                    EZ Street is a technologically advanced, all-temperature asphalt.
+                    <br>
+                    It’s ready to go right out of the bag, or off the stockpile, without heat, or any special treatment.
+                </p>
+
+                <div class="rethinkAsphalt__list">
+                    <div class="rethinkAsphalt__item">
+                        <div class="item-image">
+                            <img src="https://placehold.jp/150x150.png" alt="Guaranteed Permanent">
+                        </div>
+                        <p class="item-text">
+                            Guaranteed Permanent
+                        </p>
+                    </div>
+                    <div class="rethinkAsphalt__item">
+                        <div class="item-image">
+                            <img src="https://placehold.jp/150x150.png" alt="Works in Water & All Weather">
+                        </div>
+                        <p class="item-text">
+                            Works in Water & All Weather
+                        </p>
+                    </div>
+                    <div class="rethinkAsphalt__item">
+                        <div class="item-image">
+                            <img src="https://placehold.jp/150x150.png" alt="Bonds to Asphalt and Concrete">
+                        </div>
+                        <p class="item-text">
+                            Bonds to Asphalt and Concrete
+                        </p>
+                    </div>
+                    <div class="rethinkAsphalt__item">
+                        <div class="item-image">
+                            <img src="https://placehold.jp/150x150.png" alt="Instantly Traffic-Ready">
+                        </div>
+                        <p class="item-text">
+                            Instantly Traffic-Ready
+                        </p>
+                    </div>
+                    <div class="rethinkAsphalt__item">
+                        <div class="item-image">
+                            <img src="https://placehold.jp/150x150.png" alt="“Throw & Go” Approved">
+                        </div>
+                        <p class="item-text">
+                            “Throw & Go” Approved
+                        </p>
+                    </div>
+                    <div class="rethinkAsphalt__item">
+                        <div class="item-image">
+                            <img src="https://placehold.jp/150x150.png" alt="Stockpiles for Months">
+                        </div>
+                        <p class="item-text">
+                            Stockpiles for Months
+                        </p>
+                    </div>
+                    <div class="rethinkAsphalt__item">
+                        <div class="item-image">
+                            <img src="https://placehold.jp/150x150.png" alt="Mixing, No tack">
+                        </div>
+                        <p class="item-text">
+                            Mixing, No tack
+                        </p>
+                    </div>
+                    <div class="rethinkAsphalt__item">
+                        <div class="item-image">
+                            <img src="https://placehold.jp/150x150.png" alt="Always Workable">
+                        </div>
+                        <p class="item-text">
+                            Always Workable
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advantages Section -->
+        <section class="advantages">
+            <div class="advantages__top">
+                <h2 class="custom-heading-page blue">
+                    50LB BAGS | LOOSE BULK | 1 TON SACKS
+                </h2>
+                <p class="custom-desc-page advantages__desc">
+                    Our customers apply EZ Street as a simple, cost-saving, permanent solution to a resourceful spectrum of asphalt and road work, including paving.
+                </p>
+            </div>
+
+            <div class="advantages__wrapper">
+                <div class="advantages__item item--left">
+                    <div class="item-image">
+                        <img src="https://placehold.jp/470x342.png" alt="ALWAYS WORKABLE Image"/>
+                    </div>
+
+                    <div class="item-content">
+                        <h3 class="custom-heading-page blue item-heading">
+                            ALWAYS WORKABLE
+                        </h3>
+                        <ul class="item-list">
+                            <li>Potholes</li>
+                            <li>Utility Cuts</li>
+                            <li>Overlays</li>
+                            <li>Edge Repairs</li>
+                            <li>Manhole/Valve/</li>
+                            <li>Drain Surrounds</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="advantages__item item--right">
+                    <div class="item-image">
+                        <img src="https://placehold.jp/240x363.png" alt="SAVE TIME & MONEY Image"/>
+                    </div>
+
+                    <div class="item-content">
+                        <h3 class="custom-heading-page blue item-heading">
+                            SAVE TIME & MONEY
+                        </h3>
+                        <p class="item-desc">
+                            Permanent, all temperature, asphalt means done is done. No more hot-mix sized crews… or second trip to the patch.
+                        </p>
+
+                        <h4 class="item-subTitle">
+                            Cost Comparison
+                        </h4>
+
+                        <span class="item-subDesc">
+                            EZ Street Permanent AsphaltCold & Hot Mix vs. EZ Street Permanent Asphalt
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         {{/replace}}
     </div>

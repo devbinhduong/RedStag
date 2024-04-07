@@ -436,3 +436,72 @@
         @include image-padding-bottom(1920, 500);
     }
 }
+
+.rethinkAsphalt {
+    background-color: $color-custom-blue;
+    padding: 24px 0 32px;
+    margin-top: 22px;
+
+    &__heading {
+
+    }
+
+    &__desc {
+        
+    }
+
+    &__list {
+        @include flex-layout(8, 20px);
+        margin-top: 45px;
+
+        @include smax-l {
+            justify-content: center;
+        }
+    }
+
+    &__item {
+        @include flexbox($align-items: center, $flex-direction: column);
+
+        @include smax-l {
+            min-width: 90px;
+        }
+        .item-text {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.advantages {
+    &__top {
+        background-color: #84C3F0;
+        padding-top: 14px;
+        padding-bottom: 22px;
+    }
+
+    &__wrapper {
+        width: 100%;
+        @include flex-layout(2, 0px);
+    }
+
+    &__item {
+        @include flexbox();
+
+        &.item--right {
+            background-color: #F5F2F3;
+        }
+
+        .item-image {
+            margin-right: 30px;
+        }
+
+        .item-heading {
+            text-align: left;
+        }
+
+        .item-subTitle {
+            color: $color-custom-blue;
+        }
+    }
+}

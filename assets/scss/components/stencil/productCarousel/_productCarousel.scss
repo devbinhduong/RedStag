@@ -33,6 +33,19 @@
 .productCarousel {
     margin: 0;
 
+    &:not(.slick-initialized) {
+        @include flex-layout(5, 20px);
+        width: 100%;
+        margin-right: 0;
+
+        [data-product-slide] {
+            padding: 0;
+            &:nth-child(n + 6) {
+                display: none;
+            }
+        }
+    }
+
     @include maxWidth(1600px) {
         width: calc(100% - 100px);
         min-width: unset;
