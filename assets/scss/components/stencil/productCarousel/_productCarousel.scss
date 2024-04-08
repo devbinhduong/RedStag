@@ -54,11 +54,23 @@
     }
     .slick-arrow {
         transform: translate(0);
-        top: calc((144 / 407)* 100%);
+        top: calc((144 / 432)* 100%);
+    }
+
+    @include smin-xl {
+        .slick-prev {
+            left: -52px;
+        }
+
+        .slick-next {
+            right: -52px;
+        }
     }
 
     .slick-list {
-        margin-left: -10px;
-        margin-right: -10px;
+        // margin-left: -10px;
+        // margin-right: -10px;
+        padding-left: 2px;
+        padding-right: 2px;
     }
 }

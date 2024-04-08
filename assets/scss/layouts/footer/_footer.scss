@@ -30,6 +30,10 @@
     &__wrapper {
         @include flexbox($align-items: center, $justify-content: space-between);
 
+        @include smin-xxl {
+            padding-left: 50px;
+        }; 
+
         @include smax-m {
             @include flexbox($align-items: center, $justify-content: space-between, $flex-direction: column);
         };
@@ -194,6 +198,8 @@
         letter-spacing: 0;
         font-weight: 500;
         text-transform: uppercase;
+        margin-top: 43px;
+        margin-bottom: 30px;
 
         @include smax-xs {
             margin: 0;
@@ -201,7 +207,7 @@
     }
 
     &-col {
-        padding: 12px 54px 60px;
+        padding: 12px 54px 49px;
         width: 100%;
 
         @include smax-xl {
@@ -253,6 +259,10 @@
             @include smax-xs {
                 background-color: transparent;
             }; 
+
+            .footer-logo {
+                margin-bottom: 32px;
+            }
             
             ul {
                 > li {
@@ -262,6 +272,7 @@
                     > a {
                         max-width: 160px;
                         margin-bottom: 28px;
+                        line-height: 23px;
 
                         @include smax-m {
                             max-width: 270px;
@@ -377,6 +388,9 @@
     }
 
     &__wrapper {
+        padding-left: 16px;
+        padding-right: 20px;
+
         @include flexbox($align-items: center, $justify-content: space-between);
 
         @include smax-xxs {

@@ -27,8 +27,13 @@
 .rating--small {
     display: inline-block;
 
+    > span {
+        display: flex;
+        max-width: 75px;
+    }
+
     .icon {
-        @include square(14px);
+        @include square(15px);
         margin-top: -3px; // 1
     }
 }

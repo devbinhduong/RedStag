@@ -34,6 +34,16 @@
             transform: translate3d(0, 0, 0);
         }
     }
+
+    @include smax-m {
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.161);
+        
+        .card-figcaption-button {
+            opacity: 1;
+            visibility: visible;
+            transform: translate3d(0, 0, 0);
+        }
+    }
 }
 
 .card-figure {
@@ -48,7 +58,7 @@
             display: block;
             height: 0;
             width: 100%;
-            padding-bottom: 100%;
+            padding-bottom: 86%;
         }
 
         @include smax-s {
@@ -91,14 +101,17 @@
 
 .card-body {
     text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
 
     .card-title{
         font-size: $fontSize-root - 2;
         font-weight: $fontWeight-normal;
         letter-spacing: $letterSpacing-base;
         color: #515C6F;
-        line-height: 17px;
+        line-height: 20px;
         font-family: "Open Sans", sans-serif;
+        margin-bottom: 4px;
     }
 }
 
@@ -122,18 +135,29 @@
         display: flex;
     }
 
+    div.slick-list {
+        @include smin-xl {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
     .slick-slide {
         height: inherit;
+        
+        @include smin-xl {
+            padding: 0;
+        }
 
         .card {
             height: 100%;
-            padding-bottom: 105px;
+            padding-bottom: 87px;
             margin-top: 0;
 
             .card-text {
                 &[data-test-info-type="productRating"] {
                     position: absolute;
-                    bottom: 60px;
+                    bottom: 50px;
                     left: 50%;
                     transform: translateX(-50%);
                     margin-bottom: 0;
