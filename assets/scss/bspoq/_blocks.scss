@@ -483,25 +483,161 @@
     &__wrapper {
         width: 100%;
         @include flex-layout(2, 0px);
+
+        @include  smax-m {
+            @include flex-layout(1, 0px);
+        }
+    }
+
+    &__item {
+        @include flexbox();
+        padding: 20px;
+
+        @include smin-xl {
+            padding-top: 35px;
+            padding-bottom: 20px;
+            padding-left: 136px;
+        }
+
+        .item {
+            @include flexbox();
+            width: 100%;
+            max-width: 955px;
+            
+            @include smax-xs {
+                flex-direction: column;
+            }; 
+
+            &-image {
+                margin-right: 30px;
+                min-width: 270px;
+
+                @include smax-xl {
+                    width: 50%;
+                    min-width: unset;
+                }
+
+                @include smax-xs {
+                    width: 100%;
+                }; 
+            }
+
+            &-content {
+                color: #2E2E22;
+                font-size: 24px;
+                font-weight: bold;
+                letter-spacing: 0;
+                line-height: 36px;
+
+                @include smax-xl {
+                    width: 50%;
+                }
+
+                @include smax-xs {
+                    width: 100%;
+                }; 
+            }
+
+            &-list {
+                list-style-type: none;
+                margin-left: 0;
+                padding-left: 40px;
+
+                > li {
+                    position: relative;
+
+                    &::before { 
+                        content: "";
+                        position: absolute;
+                        left: -40px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 27px;
+                        height: 21px;
+                        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Group_3638" data-name="Group 3638" width="27.895" height="21.656" viewBox="0 0 27.895 21.656"><defs><clipPath id="clip-path"><rect id="Rectangle_1114" data-name="Rectangle 1114" width="27.895" height="21.656" fill="%23d81c17"/></clipPath></defs><g id="Group_3637" data-name="Group 3637" clip-path="url(%23clip-path)"><path id="Path_3142" data-name="Path 3142" d="M9.664,14.3c4.4-4.421,8.685-8.735,12.981-13.038,1.73-1.733,2.966-1.687,4.512.151a2.314,2.314,0,0,1-.1,3.479q-8.033,8.052-16.078,16.091a1.66,1.66,0,0,1-2.713-.07c-2.441-2.48-4.94-4.9-7.373-7.393-1.273-1.3-1.166-2.506.212-3.866,1.412-1.394,2.446-1.452,3.846-.1C6.51,11.063,8.009,12.631,9.664,14.3" transform="translate(0 -0.001)" fill="%23d81c17"/></g></svg>');
+                    }
+                }
+            }
+
+            &-heading {
+                text-align: left;
+                max-width: 180px;
+            }
+
+            &-subTitle {
+                color: $color-custom-blue;
+            }
+        }
+
+        &.item--left {
+            justify-content: flex-end;
+
+            @include smin-m {
+                width: calc(50% + 5px);
+            }
+        }
+
+        &.item--right {
+            background-color: #F5F2F3;
+            @include smin-m {
+                width: calc(50% - 5px);
+            }
+
+        }
+
+    }
+}
+
+.howItWork {
+    &__top {
+        background-color: $color-custom-blue;
+        padding-top: 11px;
+        padding-bottom: 15px;
+    }
+
+    &__list {
+        @include flex-layout(3, 0px);
+
+        @include smax-m {
+            @include flex-layout(1, 0px);
+        }
     }
 
     &__item {
         @include flexbox();
 
-        &.item--right {
+        &:nth-child(1),
+        &:nth-child(3) {
             background-color: #F5F2F3;
         }
 
-        .item-image {
-            margin-right: 30px;
-        }
+        .item {
+            @include flexbox();
+            max-width: 639px;
+            width: 100%;
+            padding-top: 33px;
+            padding-left: 40px;
 
-        .item-heading {
-            text-align: left;
-        }
+            &-image {
+                width: 100%;
+                max-width: 275px
+            }
 
-        .item-subTitle {
-            color: $color-custom-blue;
+            &-content {
+                width: 100%;
+                max-width: 278px;
+            }
+        }
+    }
+}
+
+.bannerVideo {
+    .bannerImage {
+        @include image-padding-bottom(1920, 418);
+        background-color: #636362;
+
+        &::after {
+            background-color: #636362;
         }
     }
 }
