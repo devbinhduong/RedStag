@@ -283,3 +283,49 @@
         margin-right: auto;
     }
 }
+
+.home-button-call {
+    position: fixed;
+    right: 12px;
+    top: 500px;
+    @include square(79px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-custom-red;
+    border-radius: 50%;
+    z-index: 999;
+
+    @include smax-s {
+        top: 30%;
+        @include square(60px);
+    }
+
+    @include smax-xs {
+        top: 30%;
+        @include square(50px);
+    }
+
+    .icon {
+        @include square(40px);
+
+        @include smax-s {
+            @include square(30px);
+        }
+
+        @include smax-xs {
+            @include square(25px);
+        }
+
+        svg {
+            fill: #ffffff;
+        }
+    }
+}
+
+input[type="date"].disabled {
+    /* Style for disabled dates */
+    background-color: #e9ecef;
+    color: #6c757d;
+  }
+  
