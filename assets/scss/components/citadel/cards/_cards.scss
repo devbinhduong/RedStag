@@ -104,6 +104,12 @@
     padding-left: 15px;
     padding-right: 15px;
 
+    @include smax-s {
+        padding-top: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }; 
+
     .card-title{
         font-size: $fontSize-root - 2;
         font-weight: $fontWeight-normal;
@@ -112,6 +118,10 @@
         line-height: 20px;
         font-family: "Open Sans", sans-serif;
         margin-bottom: 4px;
+
+        > a {
+            text-decoration: none;
+        }
     }
 }
 
@@ -153,6 +163,10 @@
             height: 100%;
             padding-bottom: 87px;
             margin-top: 0;
+
+            @include smax-s {
+                padding-bottom: 85px;
+            }
 
             .card-text {
                 &[data-test-info-type="productRating"] {

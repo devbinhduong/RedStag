@@ -29,10 +29,8 @@
         .slick-dots {
             bottom: 15px;
 
-            @include smin-xl {
-                .home-layout-2 & {
-                    bottom: 22px;
-                }
+            @include smax-s {
+                bottom: 7px;
             }
         }
     }

@@ -55,6 +55,10 @@
     .slick-arrow {
         transform: translate(0);
         top: calc((144 / 432)* 100%);
+
+        @include smax-s {
+            top: calc((144 / 490)* 100%);
+        }
     }
 
     @include smin-xl {
@@ -65,6 +69,17 @@
         .slick-next {
             right: -52px;
         }
+    }
+
+    @include smax-m {
+        .slick-prev {
+            left: -55px;
+        }
+
+        .slick-next {
+            right: -55px;
+        }
+    
     }
 
     .slick-list {

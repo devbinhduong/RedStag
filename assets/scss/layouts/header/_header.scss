@@ -326,7 +326,7 @@
     padding: 5px 0 11px;
 
     @include smax-m {
-        padding: 0;
+        padding: 0 5px;
         padding-top: 54px;
     }
 
@@ -337,7 +337,8 @@
             @include smax-m {
                 display: flex;
                 width: 100%;
-                flex-direction: row-reverse;    
+                flex-direction: row-reverse;
+                margin-top: 10px;
             }; 
         }
 
@@ -366,8 +367,8 @@
 
             @include smax-m {
                 width: 100%;
-                margin-top: 12px;
-                padding-bottom: 16px;
+                margin-top: 6px;
+                padding-bottom: 14px;
             }; 
         }
 
@@ -409,11 +410,13 @@
                     position: relative;
                     padding: 0;
                     width: 24px;
+                    z-index: 99;
 
                     span {
                         background-color: #ffffff;
                         height: 3px;
                         width: 24px;
+                        top: 44px;
 
                         &::after {
                             background-color: inherit;

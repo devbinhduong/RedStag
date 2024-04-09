@@ -213,4 +213,9 @@
     padding: 3px;
     min-width: 60px;
     text-align: center;
+
+    @include smax-s {
+        top: -11px;
+        right: 7px;
+    }
 }

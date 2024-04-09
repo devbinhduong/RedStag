@@ -3,6 +3,16 @@
 .serviceBlock {
     background-color: $color-custom-black;
     padding: 10px 0;
+
+    @include smax-s {
+        padding: 10px 0 6px;
+    }
+
+    > .container {
+        @include smax-s {
+            padding: 0 25px;
+        }
+    }
     &__list {
         @include flexbox($align-items: center, $justify-content: center);
     }
@@ -17,6 +27,10 @@
             @include smax-m {
                 margin-left: 40px;
                 margin-right: 40px;
+            }
+
+            @include smax-s {
+                margin-left: 8px;
             }
 
             .item-icon {
@@ -59,6 +73,7 @@
 
     @include smax-s {
         padding: 12px;
+        margin-bottom: 8px;
     }
 
     > .container {
@@ -157,6 +172,10 @@
 .homeFeaturedBlock {
     &.custom-section {
         padding-bottom: 27px;
+
+        @include smax-s {
+            padding-bottom: 39px;
+        }; 
     }
 }
 
