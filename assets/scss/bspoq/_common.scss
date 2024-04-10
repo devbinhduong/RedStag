@@ -287,14 +287,15 @@
 .home-button-call {
     position: fixed;
     right: 12px;
-    top: 500px;
+    top: 495px;
+
     @include square(79px);
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $color-custom-red;
     border-radius: 50%;
-    z-index: 999;
+    z-index: 9;
 
     @include smax-s {
         top: 30%;
@@ -319,6 +320,11 @@
 
         svg {
             fill: #ffffff;
+            transform: rotate(180deg) scale(1, -1);
+
+            use {
+                transform: translateX(6px);
+            }
         }
     }
 }
