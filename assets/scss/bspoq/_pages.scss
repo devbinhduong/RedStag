@@ -1,0 +1,448 @@
+//
+// EZ Street Page
+//---------------------------------------------------------------------------- 
+.ezTopBanner {
+    &Image {
+        @include image-padding-bottom(1920, 500);
+    }
+}
+
+
+#list-product-detail-block {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    #list-product-detail {
+        margin-top: 19px;
+    }
+
+    .productCarousel .slick-slide .card {
+        padding-bottom: 105px;
+        .card-body {
+            padding-top: 15px;
+        }
+    }
+}
+
+.rethinkAsphalt {
+    background-color: $color-custom-blue;
+    padding: 24px 0 36px;
+    margin-top: 22px;
+
+    &__heading {
+        margin-bottom: 13px;
+    }
+
+    &__desc {
+        letter-spacing: 0.5px;
+        line-height: 33px;
+    }
+
+    &__list {
+        @include flex-layout(8, 20px);
+        margin-top: 45px;
+
+        @include smax-l {
+            justify-content: center;
+        }
+    }
+
+    &__item {
+        @include flexbox($align-items: center, $flex-direction: column);
+
+        @include smax-l {
+            min-width: 90px;
+        }
+
+        @include smax-m {
+            min-width: 80px;
+        }
+
+        @include smax-s {
+            min-width: 70px;
+        }
+
+
+        .item-image {
+            min-height: 80px;
+        }
+
+        .item-text {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 0;
+            font-size: 18px;
+            letter-spacing: 0;
+            line-height: 21px;
+            font-weight: $fontWeight-medium;
+        }
+    }
+}
+
+.advantages {
+    &__top {
+        background-color: #84C3F0;
+        padding-top: 14px;
+        padding-bottom: 23px;
+
+        > h2 {
+            letter-spacing: 0.4px;
+        }
+    }
+
+    &__desc {
+        margin-top: 5px;
+        letter-spacing: 0.5px;
+    }
+
+    &__wrapper {
+        width: 100%;
+        @include flex-layout(2, 0px);
+
+        @include  smax-m {
+            @include flex-layout(1, 0px);
+        }
+    }
+
+    &__item {
+        @include flexbox();
+        padding: 20px;
+
+        @include smin-xl {
+            padding-top: 35px;
+            padding-bottom: 12px;
+            padding-left: 136px;
+        }
+
+        .item {
+            @include flexbox();
+            width: 100%;
+            max-width: 955px;
+            
+            @include smax-xs {
+                flex-direction: column;
+            }; 
+
+            &-image {
+                position: relative;
+                margin-right: 20px;
+                min-width: 270px;
+
+                @include smax-xl {
+                    width: 50%;
+                    min-width: unset;
+                }
+
+                @include smax-xs {
+                    width: 100%;
+                }; 
+            }
+
+            &-content {
+                color: #2E2E22;
+                font-size: clamp(1rem, 2.5vw, 1.5rem);
+                font-weight: bold;
+                letter-spacing: 0;
+                line-height: 1.5;
+                margin-top: 23px;
+
+                @include smax-xl {
+                    width: 50%;
+                }
+
+                @include smax-xs {
+                    width: 100%;
+                }; 
+            }
+
+            &-heading {
+                line-height: 52px;
+            }
+
+            &-list {
+                list-style-type: none;
+                margin-left: 0;
+                padding-left: 40px;
+                margin-top: 4px;
+
+                > li {
+                    position: relative;
+
+                    &::before { 
+                        content: "";
+                        position: absolute;
+                        left: -40px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 27px;
+                        height: 21px;
+                        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Group_3638" data-name="Group 3638" width="27.895" height="21.656" viewBox="0 0 27.895 21.656"><defs><clipPath id="clip-path"><rect id="Rectangle_1114" data-name="Rectangle 1114" width="27.895" height="21.656" fill="%23d81c17"/></clipPath></defs><g id="Group_3637" data-name="Group 3637" clip-path="url(%23clip-path)"><path id="Path_3142" data-name="Path 3142" d="M9.664,14.3c4.4-4.421,8.685-8.735,12.981-13.038,1.73-1.733,2.966-1.687,4.512.151a2.314,2.314,0,0,1-.1,3.479q-8.033,8.052-16.078,16.091a1.66,1.66,0,0,1-2.713-.07c-2.441-2.48-4.94-4.9-7.373-7.393-1.273-1.3-1.166-2.506.212-3.866,1.412-1.394,2.446-1.452,3.846-.1C6.51,11.063,8.009,12.631,9.664,14.3" transform="translate(0 -0.001)" fill="%23d81c17"/></g></svg>');
+                    }
+                }
+            }
+
+            &-heading {
+                text-align: left;
+
+                @include smin-m {
+                    max-width: 180px;
+                }
+            }
+
+            &-subTitle {
+                color: $color-custom-blue;
+            }
+        }
+
+        &.item--left {
+            justify-content: flex-end;
+
+            @include smin-m {
+                width: calc(50% + 5px);
+            }
+        }
+
+        &.item--right {
+            background-color: #F5F2F3;
+
+            @include smin-m {
+                width: calc(50% - 5px);
+            }
+
+            .item-image {
+                margin-right: 38px;
+            }
+
+            .item-content {
+                max-width: 403px;
+
+                .item-heading {
+                    margin-bottom: 4px;
+                }
+
+                .item-subTitle {
+                    font-size: 24px;
+                    letter-spacing: 0;
+                    line-height: 19px;
+                    font-weight: $fontWeight-bold;
+                    margin-top: 45px;
+                    margin-bottom: 0;
+                }
+                
+                .item-subDesc {
+                    font-family: "Open Sans", sans-serif;
+                    color: #515C6F;
+                    font-weight: 400;
+                    font-size: 14px;
+                    letter-spacing: 0;
+                    line-height: 19px;
+                    display: block;
+                    margin-top: 8px;
+                }
+            }
+        }
+
+    }
+
+    &__button {
+        @include pos($pos: abs, $cb: center);
+        min-width: 146px;
+
+        .button-text-hover {
+            display: none;
+        }
+
+        &:hover {
+            background-color: $color-custom-black;
+            border-color: $color-custom-black;
+            color: #ffffff !important;
+
+            &::after {
+                background-color: $color-custom-black !important;
+            }
+
+            .button-text-hover {
+                display: block;
+            }
+
+            .button-text-default {
+                display: none;
+            }
+        }
+    }
+}
+
+.howItWork {
+    &__top {
+        background-color: $color-custom-blue;
+        padding-top: 11px;
+        padding-bottom: 15px;
+    }
+
+    &__list {
+        @include flex-layout(3, 0px);
+
+        @include smax-m {
+            @include flex-layout(1, 0px);
+        }
+    }
+
+    &__item {
+        @include flexbox($justify-content: center);
+
+        &:nth-child(1),
+        &:nth-child(3) {
+            background-color: #F5F2F3;
+        }
+
+        .item {
+            @include flexbox($align-items: center);
+            max-width: 639px;
+            width: 100%;
+            padding-top: 33px;
+            padding-left: 40px;
+            padding-bottom: 19px;
+            padding: 33px 20px 19px 40px;
+
+            @include maxMinWidth(1025px, 1400px) {
+                flex-direction: column;
+            }
+
+            @include smax-m {
+                padding: 15px;
+            }
+
+            @include maxWidth(375px) {
+                flex-direction: column;
+            }
+            
+            &-image {
+                width: 100%;
+                max-width: 275px;
+                @include flexbox($justify-content: center, $align-items: flex-start);
+                padding-bottom: 20px;
+
+                @include maxMinWidth(1025px, 1400px) {
+                    min-height: 275px;
+                }
+            }
+
+            &-content {
+                width: 100%;
+                max-width: 292px;
+                padding-left: 15px;
+                @include flexbox($flex-direction: column, $justify-content: center);
+
+                @include minWidth(1921px) {
+                    max-width: 100% !important;
+                };
+
+                @include maxWidth(375px) {
+                    padding-left: 0;
+                }
+
+            }
+
+            &-title {
+                color: $color-custom-blue;
+                font-size: 16px;
+                letter-spacing: 0;
+                line-height: 21px;
+                font-weight: $fontWeight-medium;  
+                margin-top: 3px;
+                margin-bottom: 4px;
+            }
+
+            &-desc {
+                font-family: "Open Sans", sans-serif;
+                color: #515C6F;
+                letter-spacing: 0;
+                font-size: 14px;
+                line-height: 21px;
+                font-weight: 400;
+                margin-bottom: 0;
+
+                + .item-desc {
+                    margin-top: 30px;
+                }
+            }
+        }
+
+       @include smin-xl {
+            &:nth-child(2) {
+                .item {
+                    padding-left: 25px;
+
+                    .item-content {
+                        padding-left: 5px;
+                        padding-top: 16px;
+                        padding-bottom: 25px;
+                        max-width: 285px;
+
+                        .item-title {
+                            margin-bottom: 0;
+                        }
+
+                        .item-desc {
+                            line-height: 19px;
+
+                            + .item-desc {
+                                margin-top: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(3) {
+                .item {
+                    padding-left: 16px;
+
+                    .item-content {
+                        padding-left: 35px;
+                        max-width: 315px;
+                        
+                        .item-desc {
+                            line-height: 19px;
+
+                            + .item-desc {
+                                margin-top: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+       }
+    }
+}
+
+.bannerVideo {
+    .videoContainer {
+        @include image-padding-bottom(1920, 535);
+
+        iframe {
+            @include pos($pos: abs, $cb: center);
+            height: 100%;
+        }
+    }
+}
+
+.bottomBanner {
+    &__image {
+        @include image-padding-bottom(1920, 535);
+    }
+}
+
+.getTouch {
+    background-color: $color-custom-blue;
+    padding: 16px 15px 14px;
+
+    &__link {
+        color: #ffffff;
+        text-align: center;
+        letter-spacing: 0;
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+        font-weight: $fontWeight-bold;
+        line-height: 2;
+    }
+}

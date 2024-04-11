@@ -15,7 +15,7 @@ body {
         }
     }
 
-    &:not(.page-type-default):not(.page-type-product) {
+    &:not(.page-type-default):not(.page-type-product):not(.ezStreetPage) {
         .page-heading {
             font-size: $fontSize-root + 10;
             margin-bottom: 25px;

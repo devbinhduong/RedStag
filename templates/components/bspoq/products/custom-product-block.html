@@ -1,9 +1,28 @@
 <div class="productCarousel-slide">
     <article  class="card custom-card
     {{#if alternate}} card--alternate{{/if}} 
+    {{#or product.price.sale_price_with_tax.value product.price.sale_price_without_tax.value}} card--salePrice{{/or}}
     card-text"
      data-product-id="{{product.id}}">
         <div class="card-figure">
+            {{#if theme_settings.show_label_product}}
+                {{#or product.price.sale_price_with_tax.value product.price.sale_price_without_tax.value}}
+                    {{#if theme_settings.pdp_sale_badge_label '===' ''}}
+                        {{> components/products/product-badge
+                            badge-type='sale'
+                            badge_view=theme_settings.product_sale_badges
+                            badge_label=(lang "page_builder.pdp_sale_badge_label")
+                        }}
+                    {{else}}
+                        {{> components/products/product-badge
+                            badge-type='sale'
+                            badge_view=theme_settings.product_sale_badges
+                            badge_label=theme_settings.pdp_sale_badge_label
+                        }}
+                    {{/if}}
+                {{/or}}
+            {{/if}}
+
             <a href="{{product.url}}" class="card-figure__link card-link" aria-label="{{name}},{{> components/products/product-aria-label}}"
                 data-event-type="product-click">
                 <div class="card-img-container{{#if images.length '<' 1}} card-img-container2{{/if}}">
@@ -28,7 +47,7 @@
 
             <h3 class="card-title">
                 <a aria-label="{{> components/products/product-info}}"
-                   href="{{url}}"
+                   href="{{product.url}}"
                    data-event-type="product-click"
                    class="hover-link"
                 >

@@ -108,12 +108,17 @@
                             margin: 0;
                             border: none;
 
+                            &::after {
+                                background-color: $color-custom-black;
+                            }
+
                             &:hover {
-                                color: $color-custom-black;
-                                background-color: #ffffff;
+                                // color: $color-custom-black;
+                                color: #ffffff;
+                                background-color: $color-custom-black;
 
                                 &::after {
-                                    background-color: #ffffff;
+                                    background-color: $color-custom-black;
                                 }
                             }
                         }
@@ -166,6 +171,7 @@
                 @include flexbox($align-items: center, $justify-content: center, $display: inline-flex);
                 margin-left: 2px;
                 cursor: pointer;
+                transition: all .3s ease;
 
                 @include smax-s {
                     margin-left: 0;
@@ -177,6 +183,17 @@
 
                     svg {
                         fill: $color-custom-red;
+                    }
+                }
+
+                &:hover {
+                    transform: translateY(-3px);
+                    background-color: $color-custom-black;
+
+                    .icon {
+                        svg {
+                            fill: #ffffff;
+                        }
                     }
                 }
             }

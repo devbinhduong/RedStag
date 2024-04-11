@@ -162,44 +162,36 @@ export default class Page extends PageManager {
                 infinite: false,
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                dots: true,
-                arrows: false,
+                dots: false,
+                arrows: true,
                 mobileFirst: true,
                 responsive: [
                     {
                         breakpoint: 1200,
                         settings: {
                             slidesToShow: homeProColumn,
-                            slidesToScroll: homeProColumn,
-                            arrows: true,
-                            dots: dots,
+                            slidesToScroll: homeProColumn
                         },
                     },
                     {
                         breakpoint: 1024,
                         settings: {
                             slidesToShow: homeProColumn - 1,
-                            slidesToScroll: homeProColumn - 1,
-                            arrows: true,
-                            dots: dots,
+                            slidesToScroll: homeProColumn - 1
                         },
                     },
                     {
-                        breakpoint: 767,
+                        breakpoint: 768,
                         settings: {
                             slidesToShow: homeProColumn - 2,
-                            slidesToScroll: homeProColumn - 2,
-                            arrows: false,
-                            dots: true,
+                            slidesToScroll: homeProColumn - 2
                         },
                     },
                     {
                         breakpoint: 551,
                         settings: {
                             slidesToShow: homeProColumn - 3,
-                            slidesToScroll: homeProColumn - 3,
-                            arrows: false,
-                            dots: true,
+                            slidesToScroll: homeProColumn - 3
                         },
                     },
                 ],

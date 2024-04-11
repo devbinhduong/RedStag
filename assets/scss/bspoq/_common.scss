@@ -296,6 +296,7 @@
     background-color: $color-custom-red;
     border-radius: 50%;
     z-index: 9;
+    transition: transform 0.1s ease-in-out;
 
     @include smax-s {
         top: 30%;
@@ -305,6 +306,11 @@
     @include smax-xs {
         top: 30%;
         @include square(50px);
+    }
+
+    &:hover {
+        background-color: $color-custom-black;
+        animation: pulseAndVibrate 0.4s infinite;
     }
 
     .icon {
@@ -328,6 +334,25 @@
         }
     }
 }
+
+@keyframes pulseAndVibrate {
+    0% {
+     box-shadow: 0 0 0 0 #23232366;
+     transform: rotate(0deg);
+    }
+   
+    70% {
+     box-shadow: 0 0 0 12px rgba(231, 56, 3, 0);
+     transform: rotate(4deg);
+    }
+   
+    100% {
+     box-shadow: 0 0 0 0 rgba(218, 54, 4, 0);
+     transform: rotate(8deg);
+    }
+}
+
+  
 
 input[type="date"].disabled {
     /* Style for disabled dates */
