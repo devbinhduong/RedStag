@@ -9,11 +9,12 @@
         "slide": "[data-hero-slide]"
     }'
 >
+
     {{#each carousel.slides}}
     {{#if button_text}}
     <div data-hero-slide="{{@index}}">
     {{else}}
-    <a href="{{url}}" data-hero-slide="{{@index}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}">
+    <a rel="preload" href="{{url}}" as="image" data-hero-slide="{{@index}}" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'carousel.slide_number' slide_number=(add @index 1)}}{{/if}}">
     {{/if}}
         <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
             {{#if @index '==' 0}}

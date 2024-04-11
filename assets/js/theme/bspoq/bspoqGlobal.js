@@ -45,9 +45,8 @@ export default function(context) {
             });
         });
 
-        /* Load when DOM ready */
-        window.addEventListener('load', (e) =>{
-            /* Load Section when scroll */
+
+        $(document).ready(function() {
             sectionLoad();
         });
 

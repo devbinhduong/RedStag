@@ -55,8 +55,10 @@
         }
     }
 
-    &.slide-up {
-        transform: translateY(var(--slide-up));
+    &:not(.is-sticky) {
+        &.slide-up {
+            transform: translateY(var(--slide-up));
+        }
     }
 }
 
