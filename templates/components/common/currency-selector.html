@@ -16,7 +16,6 @@
         </a>
         <ul class="dropdown-menu" id="currencySelection" data-dropdown-content aria-hidden="true" tabindex="-1">
             {{#each currency_selector.currencies}}
-                {{#unless @index '==' 0}}
                 <li class="dropdown-menu-item">
                     <a class="hover-link"
                     href="{{{switch_url}}}"
@@ -26,16 +25,15 @@
                     {{/if}}
                     data-warning="{{lang 'common.currency_switch_promotion'}}"
                     >
-                        <span>
+                        <span{{#if is_active}} class="current_currency_active"{{/if}}>
                             {{#if is_active}}
-                                <strong>{{name}}</strong>
+                                {{name}}
                             {{else}}
                                 {{name}}
                             {{/if}}
                         </span>
                     </a>
                 </li>
-                {{/unless}}
             {{/each}}
         </ul>
     </li>
