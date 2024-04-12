@@ -30,29 +30,32 @@ category:
     {{{region name="category_below_header"}}}
 {{/unless}}
 {{{category.description}}}
-<div class="page">
-    {{#if category.faceted_search_enabled}}
-        <aside class="page-sidebar" id="faceted-search-container">
+<div class="container page-category">
+    <div class="page page-listing">
+
+
+        <!-- Sidebar -->
+        <aside class="page-sidebar {{#if theme_settings.customToolbar_viewAs}} has-toolbar{{/if}}" id="faceted-search-container">
+            <div class="page-sidebar-close">
+                <span class="title">{{lang 'common.sidebar'}}</span>
+                <a href="#" class="close">
+                    <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                        <title>{{lang 'common.close'}}</title>
+                        <desc>{{lang 'common.close'}}</desc>
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </a>
+            </div>
             {{> components/category/sidebar}}
         </aside>
-    {{else if category.subcategories}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/sidebar}}
-        </aside>
-    {{else if category.shop_by_price}}
-        {{#if theme_settings.shop_by_price_visibility}}
-             <aside class="page-sidebar" id="faceted-search-container">
-                {{> components/category/sidebar}}
-            </aside>
-        {{/if}}
-    {{/if}}
-
-    <main class="page-content" id="product-listing-container">
-        {{> components/category/product-listing}}
-    </main>
-
-    <div class="page-region">
-        {{{region name="category_below_content"}}}
+    
+        <main class="page-content" id="product-listing-container">
+            {{> components/category/product-listing}}
+        </main>
+    
+        <div class="page-region">
+            {{{region name="category_below_content"}}}
+        </div>
     </div>
 </div>
 

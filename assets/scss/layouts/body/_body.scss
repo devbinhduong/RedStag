@@ -59,3 +59,173 @@ body {
     text-align: center;
     float: none;
 }
+
+.page-sidebar {
+    position: fixed;
+    top: 0;
+    left: -101%;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 102;
+    max-width: 340px;
+    transition: all .5s ease;
+    background-color: $color-white;
+    box-shadow: rgba(50, 50, 50, 0.2) 0 0 10px 0;
+
+    &.has-toolbar {
+        @include smin-m {
+            margin-top: -67px;
+
+            .page-listing & {
+                padding-top: 0;
+            }
+        }
+    }
+
+    .facetedSearch-refineFilters {
+        padding: 0;
+        margin: 0;
+    }
+
+    .page-sidebar-close {
+        position: relative;
+        padding: 15px 15px 10px;
+        margin-bottom: 10px;
+
+        .title {
+            display: block;
+            font-size: $fontSize-root + 4px;
+            font-weight: $fontWeight-bold;
+            letter-spacing: $letterSpacing-base;
+            line-height: 25px;
+            color: stencilColor('color-textBase');
+            text-transform: capitalize;
+            margin: 0;
+        }
+
+        .close {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            line-height: 1;
+
+            svg {
+                width: 16px;
+                height: 16px;
+                fill: $color-textBase;
+            }
+        }
+    }
+
+    >nav {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        padding: 40px 30px 100px 30px;
+    }
+
+    .page-sidebar-content {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        padding: 40px 30px 100px 30px;
+    }
+
+    .accordion--navList {
+        .accordion-block {
+            margin-bottom: 20px;
+            padding-bottom: 0;
+
+            .accordion-title {
+                font-size: $fontSize-root + 2;
+                text-transform: uppercase;
+            }
+
+            .accordion-navigation-actions {
+                .icon {
+                    padding: 3px;
+                }
+            }
+
+            .toggleLink-text {
+                font-weight: $fontWeight-bold;
+            }
+        }
+    }
+
+    @include smax-m {
+        &.is-open {
+            .openSidebar & {
+                left: 0;
+            }
+        }
+
+        >nav {
+            padding: 15px 15px 100px;
+        }
+
+        .page-sidebar-content {
+            padding: 15px 15px 100px;
+        }
+    }
+
+    @include smin-m {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        z-index: 5;
+        float: left;
+        width: 255px;
+        display: inline-block;
+        box-shadow: none;
+        background-color: transparent;
+        max-width: none;
+        transition: unset;
+
+        .page-sidebar-close {
+            display: none;
+        }
+
+        .page-sidebar-content {
+            padding: 0;
+            overflow: visible;
+        }
+
+        >nav {
+            padding: 0;
+            overflow: visible;
+        }
+
+        +.page-content {
+            padding-left: 30px;
+            width: calc(100% - 255px);
+        }
+
+        &.u-hiddenVisually {
+            +.page-content {
+                padding-left: 0;
+                width: 100%;
+            }
+        }
+
+        &.u-hidden {
+            +.page-content {
+                padding-left: 0;
+                width: 100%;
+            }
+        }
+
+        .page-listing & {
+            position: sticky;
+            top: 80px;
+            padding-top: 17px;
+            padding-bottom: 42px;
+        }
+    }
+}
+

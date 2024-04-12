@@ -1,5 +1,5 @@
-<nav>
-    {{#if category.subcategories}}
+<nav class="customScrollbar">
+    {{#and (if category.subcategories) (if theme_settings.show_subcategories_sidebar)}}
         <div class="sidebarBlock">
             <h2 class="sidebarBlock-heading">{{category.name}}</h2>
             <ul class="navList">
@@ -10,11 +10,11 @@
                 {{/each}}
             </ul>
         </div>
-    {{/if}}
+    {{/and}}
 
     {{#if category.faceted_search_enabled}}
         {{> components/faceted-search/index category}}
     {{else}}
-        {{> components/category/shop-by-price}}
+        {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
     {{/if}}
 </nav>
