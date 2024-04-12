@@ -32,10 +32,8 @@ category:
 {{{category.description}}}
 <div class="container page-category">
     <div class="page page-listing">
-
-
-        <!-- Sidebar -->
-        <aside class="page-sidebar {{#if theme_settings.customToolbar_viewAs}} has-toolbar{{/if}}" id="faceted-search-container">
+         <!--  -------------------------- Sidebar -------------------------- -->
+         <aside class="page-sidebar{{#if theme_settings.customToolbar_viewAs}} has-toolbar{{/if}}" id="faceted-search-container">
             <div class="page-sidebar-close">
                 <span class="title">{{lang 'common.sidebar'}}</span>
                 <a href="#" class="close">
@@ -49,8 +47,15 @@ category:
             {{> components/category/sidebar}}
         </aside>
     
+         <!--  -------------------------- Content -------------------------- -->
         <main class="page-content" id="product-listing-container">
-            {{> components/category/product-listing}}
+            <div class="product-listing-content">
+                {{#if category.products}}
+                    {{> components/category/product-listing productsnew=products.new show_compare=category.show_compare}}
+                {{else}}
+                    <p class="page-no-products">{{lang 'categories.no_products'}}</p>
+                {{/if}}
+            </div>
         </main>
     
         <div class="page-region">
