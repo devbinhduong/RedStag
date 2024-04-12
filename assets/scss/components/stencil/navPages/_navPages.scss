@@ -310,6 +310,10 @@
     /* Menu Items Lv3 */
     &.navPage-childList-action  {
         color: stencilColor("navPages-lv3-color");
+        font-size: 12px !important;
+        letter-spacing: 0;
+        line-height: 17px;
+        font-weight: 400 !important;
 
         &:hover {
             color: stencilColor("navPages-lv3-color-hover");
@@ -404,7 +408,7 @@
     
         @include smin-m {
             background-color: stencilColor("navPages-subMenu-backgroundColor");
-            padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
+            padding: 8px 20px 24px 23px;
             position: absolute;
             text-align: left;
         }
@@ -422,11 +426,13 @@
     
     /* Hover Desktop */
     @include smin-m {
+        position: relative;
         > .navPages-list {
             > .navPages-item {
                 >.navPage-subMenu {
-                    left: 0;
+                    left: 15px;
                     width: 100%;
+                    max-width: 1197px;
                     opacity: 0;
                     visibility: hidden;
                     pointer-events: none;
@@ -435,6 +441,10 @@
                     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
                     max-height: 60vh;
                     overflow: auto;
+
+                    @include smax-l {
+                        left: 0;
+                    }; 
                 }
                 &:hover {
                     >.navPage-subMenu {
@@ -555,16 +565,20 @@
     }
 }
 
+/* Menu Lv2 */
 .navPage-subMenu-item {
     padding: spacing("half") 0;
 
     @include smin-m {
         @include grid-column(3);
-        padding: 0 0.75rem !important; // 1
+        font-size: $fontSize-root;
+        font-weight: $fontWeight-medium;
 
         .navPages-action {
             text-transform: none;
             width: 100%;
+            font-size: inherit;
+            font-weight: inherit;
         }
 
         > .navPage-subMenu-action {
@@ -812,3 +826,242 @@
         }
     }
 }; 
+
+//
+// Start Custom Mege Menu
+//---------------------------------------------------------------------------- 
+.navPages-list-megamenu {
+    .has-megamenu {
+        >.navPage-subMenu {
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-height: 70vh;
+            width: 100%;
+            transition-property: transform, opacity, visibility;
+            border: 0;
+
+            > .container {
+                padding: 27px 0 15px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .custom-viewAll-navPage {
+                font-size: $fontSize-root;
+                font-weight: $fontWeight-medium;
+                text-align: center;
+                color: stencilColor("navPages-lv2-color");
+                line-height: 131.25%;
+                letter-spacing: 0;
+                background-color: #D6D6D6;
+                text-decoration: none;
+                padding: 2px 15px 3px;
+            }
+        }
+
+        .navPage-subMenu-list {
+            .navPage-subMenu-item-child {
+                >.navPage-subMenu {
+                    opacity: 1;
+                    visibility: visible;
+                    position: relative;
+                    top: unset;
+                    left: unset;
+                    right: unset;
+                    bottom: unset;
+                    transform: unset;
+                    width: 100%;
+                    margin: 0;
+                    box-shadow: unset;
+                    background-color: transparent;
+                    border: 0;
+                    padding-top: 2px;
+                    padding-bottom: 0;
+                    pointer-events: unset;
+                }
+
+                .navPage-subMenu-action {
+                    font-size: $fontSize-root;
+                    font-weight: $fontWeight-normal;
+                    border-bottom: 0;
+                    transition: unset;
+                    display: block;
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    line-height: 1.5;
+                    padding: 6px 0;
+
+                    .text {
+                        padding: 0 0 1px 0;
+                    }
+
+                    .navPages-action-moreIcon {
+                        display: none;
+                    }
+                }
+            }
+
+            &:not(.navPage-subMenu-links) {
+                padding: 0 !important;
+                margin: 0;
+                float: none;
+                font-size: 0;
+                list-style: none;
+
+                >li {
+                    width: 100%;
+                    overflow: hidden;
+                    padding: 0 28px;
+                    background-color: transparent;
+
+                    .navPage-subMenu-item-parent,
+                    .navPage-subMenu-item-child {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+
+        .navPage-subMenu-links {
+            width: 25%;
+            margin: 0;
+            padding: 0;
+            background-color: stencilColor("navPages-subMenu-backgroundColor");
+
+            .navPage-subMenu-item-child {
+                padding-right: 0;
+            }
+        }
+    }
+
+    .cateArea {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+
+        >.navPage-subMenu-list {
+            position: relative;
+
+            >.navPage-subMenu-item-child {
+
+                >.image {
+                    padding: 7px 0;
+                }
+            }
+
+            &:not(.navPage-subMenu-links) {
+                padding-top: 0;
+                padding-bottom: 0;
+                margin-left: -28px;
+            }
+        }
+
+        &.columns-2 {
+            >.navPage-subMenu-list {
+                &:not(.navPage-subMenu-links) {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    max-width: 100%;
+
+                    >li {
+                        flex: 0 0 50%;
+                    }
+                }
+            }
+        }
+
+        &.columns-3 {
+            >.navPage-subMenu-list {
+                &:not(.navPage-subMenu-links) {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    max-width: 100%;
+
+                    >li {
+                        flex: 0 0 33.333333%;
+                    }
+                }
+            }
+        }
+
+        &.columns-4 {
+            >.navPage-subMenu-list {
+                &:not(.navPage-subMenu-links) {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    max-width: 100%;
+
+                    >li {
+                        flex: 0 0 25%;
+                    }
+                }
+            }
+        }
+
+        &.columns-5 {
+            >.navPage-subMenu-list {
+                &:not(.navPage-subMenu-links) {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    flex-wrap: wrap;
+                    max-width: 100%;
+
+                    >li {
+                        flex: 0 0 20%;
+                    }
+                }
+            }
+        }
+
+        >.navPage-subMenu-list {
+            >.navPage-subMenu-item-child {
+                >.navPage-subMenu-action {
+                    font-size: $fontSize-root;
+                    font-weight: 400;
+                    padding-left: 0;
+
+                    @include smin-m {
+                        padding-bottom: 18px;
+                        border-bottom: 1px solid #cccccc;
+                    }
+
+                    >.text:not(.hover-link) {
+                        &:before {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .imageArea {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
+
+    .style-custom {
+        .imageArea {
+            .megamenu-right-item {
+                width: 100%;
+                display: flex;
+
+                .image {
+                    position: relative;
+                    height: fit-content;
+                }
+            }
+        }
+    }
+}
+

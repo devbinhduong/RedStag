@@ -1,6 +1,7 @@
 import utils from '@bigcommerce/stencil-utils';
 import quickShop from './quickShop';
 import ajaxAddToCart from './ajaxAddToCart';
+import megaMenuEditor from './megaMenuEditor';
 
 export default function(context) {
     const themeSettings = context.themeSettings;
@@ -22,6 +23,9 @@ export default function(context) {
             quickShop(context);
             openMenuMobileEffect();
             toogleFooterMobile();
+
+            /* Mega Menu Editor */
+            megaMenuEditor(context);
         }
     }
 
@@ -59,6 +63,10 @@ export default function(context) {
 
         window.matchMedia('(max-width: 1400px)').addEventListener('change', () => {
             recentlyPostSlick();
+        });
+
+        window.matchMedia('(min-width: 1024px)').addEventListener('change', () => {
+            megaMenuEditor(context);
         });
 
          /* Load When Match Media Function For Tablet */

@@ -207,6 +207,30 @@
 }
 
 
+//
+// Custom Scrollbar
+//---------------------------------------------------------------------------- 
+.customScrollbar {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f5f5f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #000000;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555555;
+    }
+}
+
+
 // CSS for product skeleton
 // -----------------------------------------------------------------------------
 .productSkeleton {
