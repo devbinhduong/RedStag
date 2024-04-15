@@ -16,24 +16,30 @@ category:
 
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 {{#if category.image}}
     {{> components/common/responsive-img
         image=category.image
         fallback_size=theme_settings.zoom_size
-        lazyload=theme_settings.lazyload_mode
+        lazyload='disabled'
         class="category-header-image"
     }}
 {{/if}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
 {{#unless theme_settings.hide_category_page_heading }}
     <h1 class="page-heading">{{category.name}}</h1>
     {{{region name="category_below_header"}}}
 {{/unless}}
+
+{{> components/bspoq/category/custom-subcategories }}
+
 {{{category.description}}}
-<div class="container page-category">
+<div class="container container-2 page-category">
     <div class="page page-listing">
-         <!--  -------------------------- Sidebar -------------------------- -->
-         <aside class="page-sidebar{{#if theme_settings.customToolbar_viewAs}} has-toolbar{{/if}}" id="faceted-search-container">
+        <!--  -------------------------- Sidebar -------------------------- -->
+        {{#if theme_settings.custom_category_sidebar}}
+        <aside class="page-sidebar{{#if theme_settings.customToolbar_viewAs}} has-toolbar{{/if}}" id="faceted-search-container">
             <div class="page-sidebar-close">
                 <span class="title">{{lang 'common.sidebar'}}</span>
                 <a href="#" class="close">
@@ -46,8 +52,9 @@ category:
             </div>
             {{> components/category/sidebar}}
         </aside>
+        {{/if}}
     
-         <!--  -------------------------- Content -------------------------- -->
+        <!--  -------------------------- Content -------------------------- -->
         <main class="page-content" id="product-listing-container">
             <div class="product-listing-content">
                 {{#if category.products}}

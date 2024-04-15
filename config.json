@@ -422,7 +422,7 @@
       "settings": {
         "hide_breadcrumbs": false,
         "hide_page_heading": true,
-        "hide_category_page_heading": false,
+        "hide_category_page_heading": true,
         "hide_blog_page_heading": false,
         "hide_contact_us_page_heading": false,
         "homepage_new_products_count": 5,
@@ -881,7 +881,9 @@
         "mega_menu_styleCustom_item4_cateWidth": "60%",
         "mega_menu_styleCustom_item4_imgWidth": "40%",
         "mega_menu_styleCustom_img4": "save-time-money-banner.png",
-        "mega_menu_styleCustom_link4": "#"
+        "mega_menu_styleCustom_link4": "#",
+        "custom_category_sidebar": true,
+        "customToolbar_viewAs": true
       }
     }
   ]

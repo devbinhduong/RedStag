@@ -1,0 +1,31 @@
+{{#if category.subcategories}}
+    <div class="customSubcategories">
+        <div class="container container-2 customSubcategories__container">
+            <div class="customSubcategories__list">
+                {{#each category.subcategories}}
+                    <div class="customSubcategories__item">
+                        {{#if image}}
+                            <div class="customSubcategories__image">
+                                <a href="{{url}}" class="hover-image" aria-label="Button Go To Sub Category {{name}}">
+                                    <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage image '80x80'}}" alt="{{name}}">
+                                </a>
+                            </div>
+                        {{else}}
+                            <div class="customSubcategories__icon">
+                                <a href="{{url}}" class="hover-image" aria-label="Button Go To Sub Category {{name}}">
+                                    <img class="lazyload" src="{{cdn 'img/CategoryDefault.png'}}" alt="{{name}}">
+                                </a>
+                            </div>
+                        {{/if}}
+
+                        <div class="customSubcategories__content">
+                            <a class="customSubcategories__name hover-link" href="{{url}}" aria-label="Button Go To Sub Category {{name}}">
+                                <span>{{name}}</span>
+                            </a>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+{{/if}}

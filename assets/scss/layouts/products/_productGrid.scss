@@ -46,88 +46,20 @@
         .product { // 1
             @include breakpoint("small") {
                 width: grid-calc(4, $total-columns);
+
+                .productGrid--maxCol1 & {
+                    width: grid-calc(12, $total-columns);
+                }
+
+                .productGrid--maxCol4 & {
+                    width: grid-calc(3, $total-columns);
+                }
+                
+                .productGrid--maxCol5 & {
+                    width: grid-calc(2.4, $total-columns);
+                }
             }
         }
     }
 
-}
-
-
-//
-// Product Grid with masonry layout
-//
-// Purpose: Display products in a masonry grid, with a display inline-block for
-// older browsers that don't support css multicolumn
-//
-// -----------------------------------------------------------------------------
-
-.productMasonry {
-    column-count: 2;
-    column-fill: auto;
-    column-gap: remCalc(20px);
-    margin: 0 0 spacing("single");
-    overflow: hidden;
-
-    @include breakpoint("small") {
-        column-count: 3;
-    }
-
-    @include breakpoint("medium") {
-        column-count: 4;
-    }
-
-    .product {
-        break-inside: avoid;
-        display: block;
-        margin-bottom: spacing("double");
-        padding: 0;
-        page-break-inside: avoid; // for firefox
-        width: 100%;
-    }
-
-    .card {
-        margin: 0;
-    }
-}
-
-
-// Product grid view variation
-// -----------------------------------------------------------------------------
-
-.productGrid--maxCol6 {
-    .no-csscolumns & {
-        .product {
-            @include breakpoint("medium") {
-                width: grid-calc(2, $total-columns);
-            }
-        }
-    }
-
-    .csscolumns & {
-        @include breakpoint("medium") {
-            column-count: 6;
-        }
-    }
-}
-
-.productGrid--maxCol3 {
-    .no-csscolumns & {
-        .product {
-            @include breakpoint("medium") {
-                width: grid-calc(4, $total-columns);
-            }
-        }
-    }
-
-    .csscolumns & {
-        @include breakpoint("medium") {
-            @include grid-column(12);
-
-            float: none;
-
-            .product {
-                @include grid-column(4, $float: none);
-            }
-        }
-    }
 }

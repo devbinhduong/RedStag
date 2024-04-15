@@ -4,3 +4,42 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
+
+@keyframes pulseAndVibrate {
+    0% {
+     box-shadow: 0 0 0 0 #23232366;
+     transform: rotate(0deg);
+    }
+   
+    70% {
+     box-shadow: 0 0 0 12px rgba(231, 56, 3, 0);
+     transform: rotate(4deg);
+    }
+   
+    100% {
+     box-shadow: 0 0 0 0 rgba(218, 54, 4, 0);
+     transform: rotate(8deg);
+    }
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-80px);
+        opacity: 0.7;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

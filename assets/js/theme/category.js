@@ -3,6 +3,7 @@ import CatalogPage from './catalog';
 import compareProducts from './global/compare-products';
 import FacetedSearch from './common/faceted-search';
 import { createTranslationDictionary } from '../theme/common/utils/translations-utils';
+import viewAsLayout from './bspoq/viewAsLayout';
 
 export default class Category extends CatalogPage {
     constructor(context) {
@@ -37,6 +38,9 @@ export default class Category extends CatalogPage {
         compareProducts(this.context);
 
         this.initFacetedSearch();
+
+        /* View As layout */
+        viewAsLayout();
 
         if (!$('#facetedSearch').length) {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);

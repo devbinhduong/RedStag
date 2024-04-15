@@ -1,0 +1,14 @@
+<div class="toolbar-wrapper flex flex-center-x flex-between">
+    {{#if pageType '==' 'category'}}    
+        <div class="toolbar-left">
+            <div class="pagination-info">
+                {{> components/products/filter sort=pagination.category.sort}}
+            </div>
+        </div>
+        <div class="toolbar-right hide-on-mobile">
+            {{#if theme_settings.customToolbar_viewAs}}
+                {{> components/bspoq/category/custom-view-as}}
+            {{/if}}
+        </div>
+    {{/if}}
+</div>

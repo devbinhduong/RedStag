@@ -16,9 +16,13 @@ ol.breadcrumbs {
     display: none; // 1
     font-size: 0; // 2
     overflow: visible;
-    text-align: center;
-    @include breakpoint("small") {
-        display: block; // 1
+    margin-top: 16px;
+    margin-bottom: 10px;
+    font-family: "Open Sans", sans-serif;
+
+
+    @include smin-xs {
+        display: block;
     }
 }
 
@@ -26,21 +30,28 @@ ol.breadcrumbs {
     display: inline-block;
     float: none;
     margin-right: 0.25rem;
+    font-size: 12px;
+
+    > .breadcrumb-label {
+        color: $color-custom-black;
+    }
 
     &.is-active {
         > .breadcrumb-label {
+            color: $color-custom-black;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 500;
         }
     }
 
     // needs to override common bigcommerce styles for accessibility improvements
     &:not(:first-child)::before {
-        border-right: 0.1em solid $primary-color;
-        content: "";
+        content: ">";
+        color: $color-custom-red;
         display: inline-block;
-        height: 0.8em;
-        margin: 0 0.25rem;
-        transform: rotate(15deg);
+        width: 7px;
+        height: 17px;
+        font-weight: 600;
+        margin: 0 12px;
     }
 }

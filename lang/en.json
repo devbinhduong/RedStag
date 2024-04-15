@@ -189,6 +189,7 @@
         "sorter": {
             "relevance": "Relevance",
             "sort_by": "Sort By:",
+            "view": "View As",
             "featured": "Featured Items",
             "top_sellers": "Best Selling",
             "newest": "Newest Items",

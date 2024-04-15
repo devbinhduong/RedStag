@@ -184,28 +184,6 @@
     animation: skeleton-loading 4s infinite linear;
 }
 
-@keyframes skeleton-loading {
-    0% {
-        background-position: 200% 0;
-    }
-
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-@keyframes fadeInDown {
-    from {
-        transform: translateY(-80px);
-        opacity: 0.7;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
 
 //
 // Custom Scrollbar
@@ -358,28 +336,165 @@
     }
 }
 
-@keyframes pulseAndVibrate {
-    0% {
-     box-shadow: 0 0 0 0 #23232366;
-     transform: rotate(0deg);
+
+//
+// View As Button Group
+//---------------------------------------------------------------------------- 
+.view-as-btn {
+    font-size: 0;
+    display: inline-block;
+    vertical-align: middle;
+    > a {
+        height: 40px;
+        min-width: 35px;
+        margin-left: 5px;
+        position: relative;
+        vertical-align: top;
+        display: inline-block;
+        border: 1px solid #dcdcdc;
+        &:first-child {
+            margin-left: 0;
+        }
+        &:before {
+            top: 3px;
+            left: 5px;
+            content: "";
+            position: absolute;
+            background: #dcdcdc;
+            transition: all 0.3s ease;
+        }
     }
-   
-    70% {
-     box-shadow: 0 0 0 12px rgba(231, 56, 3, 0);
-     transform: rotate(4deg);
+    > #list-view {
+        &:before {
+            width: 24px;
+            height: 7px;
+            box-shadow: 0px 9px 0 #dcdcdc, 0px 17px 0 #dcdcdc, 0px 26px 0 #dcdcdc;
+        }
+        .productGrid--maxCol1 & {
+            border-color: #323232;
+            &:before {
+                background-color: #323232;
+                box-shadow: 0px 9px 0 #323232, 0px 17px 0 #323232, 0px 26px 0 #323232;
+            }
+        }
     }
-   
-    100% {
-     box-shadow: 0 0 0 0 rgba(218, 54, 4, 0);
-     transform: rotate(8deg);
+    > #grid-view-3 {
+        width: 35px;
+        display: none;
+        &:before {
+            left: 4px;
+            width: 7px;
+            height: 32px;
+            box-shadow: 9px 0 0 #dcdcdc, 18px 0 0 #dcdcdc;
+        }
+        @include breakpoint("small") {
+            display: inline-block;
+            .productGrid--maxCol5 &,
+            .productGrid--maxCol3 & {
+                border-color: #323232;
+                &:before {
+                    background-color: #323232;
+                    box-shadow: 9px 0 0 #323232, 18px 0 0 #323232;
+                }
+            }
+        }
+        @media (min-width: 993px) {
+            .productGrid--maxCol5 & {
+                border-color: #dcdcdc;
+                &:before {
+                    background-color: #dcdcdc;
+                    box-shadow: 9px 0 0 #dcdcdc, 18px 0 0 #dcdcdc;
+                }
+            }
+        }
+    }
+
+    > #grid-view-4 {
+        width: 45px;
+        display: none;
+        &:before {
+            width: 7px;
+            height: 32px;
+            box-shadow: 9px 0 0 #dcdcdc, 18px 0 0 #dcdcdc, 27px 0 0 #dcdcdc;
+        }
+        @media (min-width: 1025px) {
+            display: inline-block;
+            .productGrid--maxCol4 & {
+                border-color: #323232;
+                &:before {
+                    background-color: #323232;
+                    box-shadow: 9px 0 0 #323232, 18px 0 0 #323232, 27px 0 0 #323232;
+                }
+            }
+        }
+    }
+
+    > #grid-view-5 {
+        width: 55px;
+        display: none;
+        &:before {
+            width: 7px;
+            height: 32px;
+            box-shadow: 9px 0 0 #dcdcdc, 18px 0 0 #dcdcdc, 27px 0 0 #dcdcdc, 36px 0 0 #dcdcdc;
+        }
+        @media (min-width: 1025px) {
+            display: inline-block;
+            .productGrid--maxCol5 & {
+                border-color: #323232;
+                &:before {
+                    background-color: #323232;
+                    box-shadow: 9px 0 0 #323232, 18px 0 0 #323232, 27px 0 0 #323232, 36px 0 0 #323232;
+                }
+            }
+        }
     }
 }
 
-  
+//
+// Custom Toolbar
+//---------------------------------------------------------------------------- 
+.toolbar-wrapper {
+    font-family: "Open Sans", sans-serif;
 
-input[type="date"].disabled {
-    /* Style for disabled dates */
-    background-color: #e9ecef;
-    color: #6c757d;
-  }
-  
+    .toolbar-left {
+        .pagination-info {
+            .actionBar {
+                margin: 0;
+
+                .form-label {
+                    color: #515C6F;
+                    font-size: 14px;
+                    letter-spacing: 0;
+                    line-height: 19px;
+                }
+
+                select {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    background: transparent;
+                    background-image: url('data:image/svg+xml,<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="%23d81c17"></path></g></svg>');
+                    background-repeat: no-repeat;
+                    background-position-x: 100%;
+                    background-position-y: 5px;
+                    background-size: 20px 20px;
+                  }
+            }
+        }
+    }
+
+    .toolbar-right {
+        .view-as-group {
+            .form-label {
+                margin-right: 8px;
+                margin-bottom: 0;
+                line-height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .view-as-btn {
+
+            }
+        }
+    }
+}
