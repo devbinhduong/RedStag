@@ -20,7 +20,8 @@
     transition: $anchor-transition;
     background-color: rgba(59, 59, 59, .7);
 
-    .has-openCartSidebar &{
+    .openSidebar &,
+    .has-openCartSidebar & {
         z-index: 102;
         opacity: 1;
         display: block;

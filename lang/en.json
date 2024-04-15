@@ -179,6 +179,7 @@
         "public": "Public",
         "private": "Private",
         "view_all": "View All",
+        "no_more_products": "No more products",
         "all": "All",
         "paginator": {
             "page_of": "Page {current} of {total}"

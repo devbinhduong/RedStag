@@ -63,15 +63,16 @@ body {
 .page-sidebar {
     position: fixed;
     top: 0;
-    left: -101%;
     bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 102;
-    max-width: 340px;
-    transition: all .5s ease;
-    background-color: $color-white;
-    box-shadow: rgba(50, 50, 50, 0.2) 0 0 10px 0;
+    padding: 0;
+    height: 100vh;
+    width: calc(100% - 44px);
+    max-width: 375px;
+    transition: all 0.5s ease, z-index 0s ease;
+    box-shadow: rgba(50, 50, 50, 0.2) 0 0 2px 0;
+    background-color: #ffffff;
+    z-index: 999;
+    left: -101%;
 
     &.has-toolbar {
         @include smin-m {
@@ -89,32 +90,47 @@ body {
     }
 
     .page-sidebar-close {
-        position: relative;
-        padding: 15px 15px 10px;
-        margin-bottom: 10px;
+        position: absolute;
+        top: 0;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        background-color: $buttonStyle-primary-backgroundColor;
+        right: -44px;
+        left: auto;
+
+        svg {
+            transition: all 0.3s ease;
+            fill: $buttonStyle-primary-color;
+            width: 24px;
+            height: 24px;
+        }
+
+        &:hover {
+            background-color: $buttonStyle-primary-backgroundColor;
+
+            svg {
+                transform: rotate(180deg) scale(1.2);
+            }
+        }
 
         .title {
-            display: block;
-            font-size: $fontSize-root + 4px;
-            font-weight: $fontWeight-bold;
-            letter-spacing: $letterSpacing-base;
-            line-height: 25px;
-            color: stencilColor('color-textBase');
-            text-transform: capitalize;
-            margin: 0;
+            font-size: 0;
         }
 
         .close {
             position: absolute;
             top: 50%;
-            right: 15px;
             transform: translateY(-50%);
             line-height: 1;
 
             svg {
-                width: 16px;
-                height: 16px;
-                fill: $color-textBase;
+                width: 20px;
+                height: 20px;
+                fill: #ffffff;
             }
         }
     }

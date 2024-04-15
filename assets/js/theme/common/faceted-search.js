@@ -7,6 +7,9 @@ import collapsibleFactory from './collapsible';
 import { Validators } from './utils/form-utils';
 import nod from './nod';
 
+import viewAsLayout from '../bspoq/viewAsLayout';
+import productListingShowMore from '../bspoq/productListingShowMore';
+
 
 const defaultOptions = {
     accordionToggleSelector: '#facetedSearch .accordion-navigation, #facetedSearch .facetedSearch-toggle',
@@ -117,6 +120,9 @@ class FacetedSearch {
 
         // Bind events
         this.bindEvents();
+
+        viewAsLayout();
+        productListingShowMore();
     }
 
     updateView() {

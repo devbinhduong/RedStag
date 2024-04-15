@@ -37,6 +37,18 @@ category:
 {{{category.description}}}
 <div class="container container-2 page-category">
     <div class="page page-listing">
+        {{#if theme_settings.custom_category_sidebar}}
+        <div class="page-sidebar-mobile-wrapper">
+            <div class="page-sidebar-mobile">
+                <span class="text">{{lang 'common.sidebar'}}</span>
+                <svg class="icon" role="img" aria-label="{{lang 'common.sidebar'}}">
+                    <title>{{lang 'common.sidebar'}}</title>
+                    <desc>{{lang 'common.sidebar'}}</desc>
+                    <use xlink:href="#icon-sidebar"></use>
+                </svg>
+            </div>
+        </div>
+        {{/if}}
         <!--  -------------------------- Sidebar -------------------------- -->
         {{#if theme_settings.custom_category_sidebar}}
         <aside class="page-sidebar{{#if theme_settings.customToolbar_viewAs}} has-toolbar{{/if}}" id="faceted-search-container">
