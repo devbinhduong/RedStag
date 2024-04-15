@@ -883,7 +883,8 @@
         "mega_menu_styleCustom_img4": "save-time-money-banner.png",
         "mega_menu_styleCustom_link4": "#",
         "custom_category_sidebar": true,
-        "customToolbar_viewAs": true
+        "customToolbar_viewAs": true,
+        "custom-product-show-more": true
       }
     }
   ]

@@ -1,52 +1,231 @@
-<nav class="pagination" aria-label="pagination">
-    <ul class="pagination-list">
-        {{#if previous}}
-            <li class="pagination-item pagination-item--previous">
-                <a class="pagination-link"
-                   href="{{previous}}"
-                   {{#unless reload}}data-faceted-search-facet{{/unless}}
-                   aria-label="{{lang 'common.previous'}}"
-                >
-                    <i class="icon" aria-hidden="true">
-                        <svg>
-                            <use href="#icon-chevron-left"></use>
-                        </svg>
-                    </i>
-                    {{lang 'common.previous'}}
-                </a>
-            </li>
+<nav class="pagination{{#if theme_settings.custom-product-show-more}} pagination-2{{/if}}" aria-label="pagination">
+    {{#if page_type '==' 'category'}}
+        {{#if theme_settings.custom-product-show-more}}
+            <div class="custom-product-show-more flex-center" id="listing-showmoreBtn">
+                {{#if next}}
+                    <a class="button button--primary" href="#">
+                        <svg class="icon" title="icon refresh"><use xlink:href="#icon-refresh"></use></svg><span class="text">{{lang 'search.faceted.show-more'}}</span>
+                    </a>
+                {{else}}
+                    <a class="button button--primary disable" href="#">
+                        <span class="text">{{lang 'common.no_more_products'}}</span>
+                    </a>
+                {{/if}}
+            </div> 
         {{/if}}
-        {{#each links}}
-            <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}}">
-                <a class="pagination-link"
-                   href="{{this.url}}"
-                   {{#unless reload}}data-faceted-search-facet{{/unless}}
-                   {{#if this.number '==' ../current}}
-                   aria-current="page"
-                   data-pagination-current-page-link
-                   {{/if}}
-                   aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
-                >
-                    {{this.number}}
-                </a>
-            </li>
-        {{/each}}
+        <div class="pagination-wrapper{{#if theme_settings.custom-product-show-more}} hide-on-all{{/if}}">
+            <ul class="pagination-list">
+                {{#if previous}}
+                    <li class="pagination-item pagination-item--previous">
+                        <a class="pagination-link"
+                        href="{{previous}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        aria-label="{{lang 'common.previous'}}"
+                        >
+                            <svg class="icon">
+                                <use xlink:href="#icon-chevron-left"></use>
+                            </svg>
+                            <span>{{lang 'common.prev'}}</span>
+                        </a>
+                    </li>
+                {{/if}}
+    
+                {{#each links}}
+                    <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}}">
+                        <a class="pagination-link"
+                        href="{{this.url}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        {{#if this.number '==' ../current}}aria-current="page"{{/if}}
+                        aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
+                        >
+                            {{this.number}}
+                        </a>
+                    </li>
+                {{/each}}
+    
+                {{#if next}}
+                    <li class="pagination-item pagination-item--next">
+                        <a class="pagination-link"
+                        href="{{next}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        aria-label="{{lang 'common.next'}}"
+                        >
+                            <span>{{lang 'common.next'}}</span>
+                            <svg class="icon">
+                                <use xlink:href="#icon-chevron-right"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    {{/if}}
+    {{#if page_type '==' 'brand'}}
+        {{#if theme_settings.custom-product-show-more}}
+            <div class="custom-product-show-more flex-center" id="listing-showmoreBtn">
+                {{#if next}}
+                    <a class="button button--primary" href="#">
+                        <svg class="icon" title="icon refresh"><use xlink:href="#icon-refresh"></use></svg><span class="text">{{lang 'search.faceted.show-more'}}</span>
+                    </a>
+                {{else}}
+                    <a class="button button--primary disable" href="#">
+                        <span class="text">{{lang 'common.no_more_products'}}</span>
+                    </a>
+                {{/if}}
+            </div> 
+        {{/if}}
+        <div class="pagination-wrapper{{#if theme_settings.custom-product-show-more}} hide-on-all{{/if}}">
+            <ul class="pagination-list">
+                {{#if previous}}
+                    <li class="pagination-item pagination-item--previous">
+                        <a class="pagination-link"
+                        href="{{previous}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        aria-label="{{lang 'common.previous'}}"
+                        >
+                            <svg class="icon">
+                                <use xlink:href="#icon-chevron-left"></use>
+                            </svg>
+                            <span>{{lang 'common.prev'}}</span>
+                        </a>
+                    </li>
+                {{/if}}
+    
+                {{#each links}}
+                    <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}}">
+                        <a class="pagination-link"
+                        href="{{this.url}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        {{#if this.number '==' ../current}}aria-current="page"{{/if}}
+                        aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
+                        >
+                            {{this.number}}
+                        </a>
+                    </li>
+                {{/each}}
+    
+                {{#if next}}
+                    <li class="pagination-item pagination-item--next">
+                        <a class="pagination-link"
+                        href="{{next}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        aria-label="{{lang 'common.next'}}"
+                        >
+                            <span>{{lang 'common.next'}}</span>
+                            <svg class="icon">
+                                <use xlink:href="#icon-chevron-right"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    {{/if}}
+    {{#if page_type '==' 'search'}}
+        {{#if theme_settings.custom-product-show-more}}
+            <div class="custom-product-show-more flex-center" id="listing-showmoreBtn">
+                {{#if next}}
+                    <a class="button button--primary" href="#">
+                        <svg class="icon" title="icon refresh"><use xlink:href="#icon-refresh"></use></svg><span class="text">{{lang 'search.faceted.show-more'}}</span>
+                    </a>
+                {{else}}
+                    <a class="button button--primary disable" href="#">
+                        <span class="text">{{lang 'common.no_more_products'}}</span>
+                    </a>
+                {{/if}}
+            </div> 
+        {{/if}}
+        <div class="pagination-wrapper{{#if theme_settings.custom-product-show-more}} hide-on-all{{/if}}">
+            <ul class="pagination-list">
+                {{#if previous}}
+                    <li class="pagination-item pagination-item--previous">
+                        <a class="pagination-link"
+                        href="{{previous}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        aria-label="{{lang 'common.previous'}}"
+                        >
+                            <svg class="icon">
+                                <use xlink:href="#icon-chevron-left"></use>
+                            </svg>
+                            <span>{{lang 'common.prev'}}</span>
+                        </a>
+                    </li>
+                {{/if}}
+    
+                {{#each links}}
+                    <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}}">
+                        <a class="pagination-link"
+                        href="{{this.url}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        {{#if this.number '==' ../current}}aria-current="page"{{/if}}
+                        aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
+                        >
+                            {{this.number}}
+                        </a>
+                    </li>
+                {{/each}}
+    
+                {{#if next}}
+                    <li class="pagination-item pagination-item--next">
+                        <a class="pagination-link"
+                        href="{{next}}"
+                        {{#unless reload}}data-faceted-search-facet{{/unless}}
+                        aria-label="{{lang 'common.next'}}"
+                        >
+                            <span>{{lang 'common.next'}}</span>
+                            <svg class="icon">
+                                <use xlink:href="#icon-chevron-right"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    {{/if}}
+    {{#all (if page_type '!=' 'category') (if page_type '!=' 'brand') (if page_type '!=' 'search')}}
+        <ul class="pagination-list">
+            {{#if previous}}
+                <li class="pagination-item pagination-item--previous">
+                    <a class="pagination-link"
+                    href="{{previous}}"
+                    {{#unless reload}}data-faceted-search-facet{{/unless}}
+                    aria-label="{{lang 'common.previous'}}"
+                    >
+                        <svg class="icon">
+                            <use xlink:href="#icon-chevron-left"></use>
+                        </svg>
+                        <span>{{lang 'common.prev'}}</span>
+                    </a>
+                </li>
+            {{/if}}
 
-        {{#if next}}
-            <li class="pagination-item pagination-item--next">
-                <a class="pagination-link"
-                   href="{{next}}"
-                   {{#unless reload}}data-faceted-search-facet{{/unless}}
-                   aria-label="{{lang 'common.next'}}"
-                >
-                    {{lang 'common.next'}}
-                    <i class="icon" aria-hidden="true">
-                        <svg>
-                            <use href="#icon-chevron-right"></use>
+            {{#each links}}
+                <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}}">
+                    <a class="pagination-link"
+                    href="{{this.url}}"
+                    {{#unless reload}}data-faceted-search-facet{{/unless}}
+                    {{#if this.number '==' ../current}}aria-current="page"{{/if}}
+                    aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
+                    >
+                        {{this.number}}
+                    </a>
+                </li>
+            {{/each}}
+
+            {{#if next}}
+                <li class="pagination-item pagination-item--next">
+                    <a class="pagination-link"
+                    href="{{next}}"
+                    {{#unless reload}}data-faceted-search-facet{{/unless}}
+                    aria-label="{{lang 'common.next'}}"
+                    >
+                        <span>{{lang 'common.next'}}</span>
+                        <svg class="icon">
+                            <use xlink:href="#icon-chevron-right"></use>
                         </svg>
-                    </i>
-                </a>
-            </li>
-        {{/if}}
-    </ul>
+                    </a>
+                </li>
+            {{/if}}
+        </ul>
+    {{/all}}
 </nav>

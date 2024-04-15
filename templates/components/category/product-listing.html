@@ -11,7 +11,8 @@
         {{/if}}
     </div>
 
-    {{> components/common/paginator pagination.category}}
+    {{> components/common/paginator pagination.category total=category.total_products page_type=page_type theme_settings=theme_settings}}
+
 {{else}}
     {{#if category.search_error}}
         <p>{{lang 'search.errorMessage'}}</p>
