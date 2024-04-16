@@ -7,7 +7,7 @@
     .form-field {
         background-color: $input-bg-color;
         border: $actionBar-form-field-border;
-        border-radius: $actionBar-form-field-radius;
+        
 
         &:hover {
             border-color: stencilColor("input-border-color-active");
@@ -37,6 +37,6 @@
 
     .form-select {
         color: stencilColor("color-textLink");
-        height: $input-small-height - remCalc($input-border-width * 2);
+        height: 40px;
     }
 }

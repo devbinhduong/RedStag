@@ -151,28 +151,6 @@ body {
         padding: 40px 30px 100px 30px;
     }
 
-    .accordion--navList {
-        .accordion-block {
-            margin-bottom: 20px;
-            padding-bottom: 0;
-
-            .accordion-title {
-                font-size: $fontSize-root + 2;
-                text-transform: uppercase;
-            }
-
-            .accordion-navigation-actions {
-                .icon {
-                    padding: 3px;
-                }
-            }
-
-            .toggleLink-text {
-                font-weight: $fontWeight-bold;
-            }
-        }
-    }
-
     @include smax-m {
         &.is-open {
             .openSidebar & {

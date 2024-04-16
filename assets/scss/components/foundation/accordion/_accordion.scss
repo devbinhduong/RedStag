@@ -21,10 +21,12 @@
 }
 
 .accordion-title {
-    color: stencilColor("color-textHeading");
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
-    font-size: remCalc(15px);
+    color: $color-custom-black;
+    font-size: $fontSize-root;
+    line-height: 1.3125rem;
     margin: 0;
+    text-transform: unset;
+    font-weight: $fontWeight-medium;
 }
 
 .accordion-navigation {
@@ -36,6 +38,39 @@
     position: relative;
     text-decoration: none;
     width: 100%;
+
+    /* Custom indicator */
+    &::before {
+        top: 50%;
+        right: 7px;
+        z-index: 2;
+        content: "";
+        width: 3px;
+        height: 18px;
+        position: absolute;
+        transition: all .4s ease;
+        transform: translateY(-50%);
+        background-color: #D81C17;
+    }
+
+    &::after {
+        top: 50%;
+        right: 0;
+        z-index: 2;
+        content: "";
+        width: 18px;
+        height: 3px;
+        position: absolute;
+        transition: all .4s ease;
+        transform: translateY(-50%);
+        background-color: #D81C17;
+    }
+
+    &.is-open {
+        &::before {
+            transform: translateY(-50%) rotate(90deg);
+        }
+    }
 }
 
 
@@ -46,18 +81,18 @@
 //
 // -----------------------------------------------------------------------------
 .accordion--navList {
-    @include breakpoint("medium") {
+    @include smin-m {
         border: 0;
     }
 
     .sidebarBlock + & {
-        @include breakpoint("medium") {
+        @include smin-m {
             margin-top: $accordion-navList-spacing;
         }
     }
 
     .accordion-block {
-        @include breakpoint("medium") {
+        @include smin-m {
             margin-top: $accordion-navList-spacing;
         }
     }
@@ -65,33 +100,34 @@
     .accordion-content {
         padding: $accordion-navList-padding;
 
-        @include breakpoint("medium") {
+        @include smin-m {
             padding: 0;
         }
     }
 
     .accordion-navigation {
-        @include breakpoint("medium") {
+        @include smin-m {
             background-position: right 0 top 50%;
             border: 0;
-            margin-bottom: spacing("half") !important;
+            margin-bottom: 12px !important;
             padding: 0;
         }
     }
 
     .accordion-title {
-        font-weight: normal;
         padding: $accordion-navList-padding;
         text-decoration: none;
         text-transform: inherit;
 
-        @include breakpoint("medium") {
+        @include smin-m {
             padding: 0;
         }
     }
 
     .accordion-indicator {
-        fill: color("greys", "light");
+        @include square(24px);
+        fill: #D81C17;
+        display: none !important;
     }
 }
 
@@ -128,21 +164,29 @@
 
 .accordion-nav-clear-holder {
     position: relative;
+    border-bottom: 1px solid #707070;
+
 }
 
 .facetedSearch-clearLink {
-    color: stencilColor("color-textSecondary");
+    color: $color-custom-black;
     position: absolute;
     right: 40px;
     top: 50%;
     transform: translateY(-50%);
-    @include breakpoint("medium") {
-        right: 20px;
-        top: 3px;
+
+    font-size: 16px;
+    line-height: 1.3125rem;
+    margin: 0;
+    text-transform: unset;
+
+    @include smin-m {
+        right: 32px;
+        top: -1px;
         transform: none;
     }
 
     &:hover {
-        color: stencilColor("color-textSecondary--hover");
+        color: $color-custom-red;
     }
 }

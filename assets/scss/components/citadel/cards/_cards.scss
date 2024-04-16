@@ -4,7 +4,17 @@
     margin-top: 10px;
     padding: 15px 15px 48px;
 
-
+    @include smin-xs {
+        .productGrid--maxCol1  & {
+            padding-bottom: 0;
+            display: flex !important;
+            align-items: center;
+    
+            .card-figure {
+                width: 242px;
+            }
+        }
+    }
 
     &:focus-within {
         .card-figcaption {
@@ -23,6 +33,17 @@
         visibility: hidden;
         transition: all .3s ease;
         transform: translate3d(0, 30px, 0);
+
+        @include smin-xs {
+            .productGrid--maxCol1  & {
+                width: 242px;
+                bottom: unset;
+                left: unset;
+                right: 44px;
+                top: 50%;
+                transform: translateY(-50%) translate3d(0, -30px, 0);
+            }
+        }
     }
 
     &:hover {
@@ -32,6 +53,12 @@
             opacity: 1;
             visibility: visible;
             transform: translate3d(0, 0, 0);
+
+            @include smin-xs {
+                .productGrid--maxCol1  & {
+                    transform: translateY(-50%) translate3d(0, 0, 0);
+                }
+            }
         }
     }
 

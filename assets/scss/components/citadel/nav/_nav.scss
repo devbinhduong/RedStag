@@ -13,11 +13,18 @@
 .navList,
 .navBar {
     margin-left: 0; // 1
+    font-family: "Open Sans", sans-serif;
+
+}
+
+.navList {
+    padding-top: 18px;
 }
 
 .navList-action,
 .navBar-action {
     text-decoration: none;
+    color: #515C6F;
 }
 
 .navList-action.is-active {
@@ -45,11 +52,15 @@
     }
 
     &::before {
-        margin-top: -$checkRadio-outerSize / 2;
+        margin-top: -$checkRadio-outerSize + remCalc(3);
+        border-radius: 0;
+        @include square(23px);
     }
 
     &::after {
-        margin-top: -$checkRadio-outerSize / 2 + remCalc(1);
+        @include square(18px);
+        left: 3px;
+        margin-top: -10px;
     }
 
     &:focus {
@@ -64,6 +75,12 @@
     &.is-selected {
         @include checkRadioBase--checked();
     }
+
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 19px;
+    font-weight: 400;
+    padding-left: 35px;
 }
 
 

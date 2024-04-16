@@ -46,4 +46,8 @@
             font-size: 12px;
         }
     }
+
+    .productGrid--maxCol1 & {
+        justify-content: flex-start;
+    }
 }

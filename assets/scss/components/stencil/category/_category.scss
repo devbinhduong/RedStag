@@ -14,7 +14,7 @@
 .page-type-category {
     .body {
         .container.container-2 {
-            max-width: 1414px;
+            max-width: 1424px;
         }
     }
 }
@@ -80,6 +80,7 @@
 
     &__description {
         font-size: $fontSize-root - 2;
+        font-family: "Open Sans", sans-serif;
         line-height: 1.5;
         letter-spacing: 0;
         text-align: center;
@@ -109,6 +110,10 @@
             line-height: 1.3125;
             text-transform: uppercase;
             font-weight: $fontWeight-medium;
+
+            &:hover {
+                color: $color-custom-white;
+            }
         }
     }
 }

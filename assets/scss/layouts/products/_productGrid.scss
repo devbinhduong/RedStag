@@ -44,20 +44,38 @@
 .page-sidebar + .page-content {
     .productGrid {
         .product { // 1
-            @include breakpoint("small") {
-                width: grid-calc(4, $total-columns);
+            width: grid-calc(4, $total-columns);
 
-                .productGrid--maxCol1 & {
+            @include smax-s {
+                width: grid-calc(6, $total-columns);
+            }
+
+            @include smax-xs {
+                width: grid-calc(12, $total-columns);
+            }
+
+            .productGrid--maxCol1 & {
+                width: grid-calc(12, $total-columns);
+            }
+
+            .productGrid--maxCol4 & {
+                width: grid-calc(3, $total-columns);
+
+                @include smax-m {
+                    width: grid-calc(4, $total-columns);
+                }
+
+                @include smax-s {
+                    width: grid-calc(6, $total-columns);
+                }
+
+                @include smax-xs {
                     width: grid-calc(12, $total-columns);
                 }
-
-                .productGrid--maxCol4 & {
-                    width: grid-calc(3, $total-columns);
-                }
-                
-                .productGrid--maxCol5 & {
-                    width: grid-calc(2.4, $total-columns);
-                }
+            }
+            
+            .productGrid--maxCol5 & {
+                width: grid-calc(2.4, $total-columns);
             }
         }
     }
