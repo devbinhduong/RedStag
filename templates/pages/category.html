@@ -16,14 +16,31 @@ category:
 
 {{#partial "page"}}
 
-{{#if category.image}}
-    {{> components/common/responsive-img
-        image=category.image
-        fallback_size=theme_settings.zoom_size
-        lazyload='disabled'
-        class="category-header-image"
-    }}
-{{/if}}
+<div class="categoryHeader">
+    {{#if category.image}}
+        <div class="categoryHeader__image">
+            {{> components/common/responsive-img
+                image=category.image
+                fallback_size=theme_settings.zoom_size
+                lazyload='disabled'
+                class="category-header-image"
+            }} 
+        </div>
+    {{/if}}
+
+    <div class="categoryHeader__content">
+        <div class="container container-2">
+            <h1 class="categoryHeader__title">{{category.name}}</h1>
+        {{#if category.description}}
+            <div class="categoryHeader__description">
+                <span class="categoryHeader__description--wrapper">{{{category.description}}}</span>
+            </div>
+            <a href="#" class="categoryHeader__description--viewMore uppercsae">Read More</a>
+        {{/if}}
+        </div>
+    </div>
+</div>
+
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
 
@@ -34,7 +51,6 @@ category:
 
 {{> components/bspoq/category/custom-subcategories }}
 
-{{{category.description}}}
 <div class="container container-2 page-category">
     <div class="page page-listing">
         {{#if theme_settings.custom_category_sidebar}}

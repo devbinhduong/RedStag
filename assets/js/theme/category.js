@@ -74,6 +74,8 @@ export default class Category extends CatalogPage {
                     /* View More product */
                     productListingShowMore();
                     toogleSidebarMobile();
+
+                    this.toogleReadMoreBanner();
                 }
             });
         });
@@ -130,6 +132,35 @@ export default class Category extends CatalogPage {
                 maxPriceNotEntered,
                 onInvalidPrice,
             },
+        });
+    }
+
+    /* Read More Category Description */
+    toogleReadMoreBanner() {
+        const readMoreButton = document.querySelector('.categoryHeader__description--viewMore');
+        const categoryDescription = document.querySelector('.categoryHeader__description');
+        const categoryDescriptionContent = document.querySelector('.categoryHeader__description--wrapper');
+
+        const defaultDescriptionHeight = 42;
+
+        if (!readMoreButton || !categoryDescription || !categoryDescriptionContent) return;
+
+        if (categoryDescriptionContent.clientHeight <= defaultDescriptionHeight) {
+            readMoreButton.remove();
+        }
+
+        readMoreButton.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            if (categoryDescriptionContent.clientHeight > categoryDescription.clientHeight) {
+                categoryDescription.style.height = categoryDescriptionContent.clientHeight + 'px';
+                readMoreButton.innerHTML = 'Read Less';
+            } else {
+                categoryDescription.style.height = defaultDescriptionHeight + 'px';
+                readMoreButton.innerHTML = 'Read More';
+            }
+
+            categoryDescription.style.transition = 'height 0.3s ease-in-out';
         });
     }
 }
