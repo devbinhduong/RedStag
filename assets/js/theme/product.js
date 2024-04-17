@@ -38,6 +38,22 @@ export default class Product extends PageManager {
 
         this.bulkPricingHandler();
 
+        /* Custom Function Start */
+        var check_JS_load = true;
+
+        ['keydown', 'mousemove', 'touchstart'].forEach(event => {
+            document.addEventListener(event, () => {
+                if(check_JS_load) {
+                    check_JS_load = false;
+                    this.toggleTabs();  
+                    this.showBrandImage();
+                    if(this.context.themeSettings.show_custom_tabs) {
+                        this.customTab();
+                    }
+                }
+            });
+        });
+
         const $reviewForm = classifyForm('.writeReview-form');
 
         if ($reviewForm.length === 0) return;
@@ -81,5 +97,82 @@ export default class Product extends PageManager {
         if (this.url.indexOf('#bulk_pricing') !== -1) {
             this.$bulkPricingLink.trigger('click');
         }
+    }
+
+    /* Get Brand Image On Product Page */
+    async showBrandImage() {
+        const productBrand = document.querySelector('.productView-brand');
+
+        if (!productBrand) return;
+
+        let brandUrl = productBrand.querySelector('a').getAttribute('href');
+
+        try {
+            const response = await fetch(brandUrl);
+            const data = await response.text();
+
+            const tempElement = document.createElement('div');
+            tempElement.innerHTML = data;
+
+            const brandImage = tempElement.querySelector('.brand-image-container img');
+
+            if (brandImage) {
+                const brandImageSrc = brandImage.getAttribute('src');
+
+                if (brandImageSrc !== undefined) {
+                    const imageElement = `
+                        <a href="${brandUrl}">
+                            <img src="${brandImageSrc}" alt="${brandImage.getAttribute('alt')}">
+                        </a>
+                    `;
+                    productBrand.insertAdjacentHTML('afterbegin', imageElement);
+                }
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    /* Toggle Tabs */
+    toggleTabs() {
+        const toggleTabTitle = document.querySelectorAll('.tab-titleMobile');
+
+        toggleTabTitle.forEach((tabTitle) => {
+            tabTitle.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const target = e.currentTarget;
+                const tabContentWrapper = target.closest('.tab-content');
+                const tabContent = tabContentWrapper.querySelector('.tabContent');
+
+                $(tabContent).slideToggle();
+                tabContentWrapper.classList.toggle('is-active');
+            });
+        });
+    }
+
+    /* Custom Tab */
+    customTab() {
+        const customContents = document.querySelectorAll("#tab-description .techSheet");
+        const customContentsWrapper = document.querySelector('#tab-custom .tabContent');
+
+        if (!customContents.length) {
+            document.querySelector('#tab-custom').style.display = 'none';
+            return;
+        }
+
+        customContents.forEach(customContent => {
+            customContentsWrapper.appendChild(customContent);
+
+            /* handle PDF file */
+            const pdfLink = customContent.getAttribute('data-pdf');
+            const pdfLinkButton = customContentsWrapper.querySelector(".download-file-button");
+
+            /* Download PDF file when click button */
+            pdfLinkButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(pdfLink, '_blank');
+            });
+        });
     }
 }

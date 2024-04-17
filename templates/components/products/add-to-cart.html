@@ -9,7 +9,7 @@
                         <span class="is-srOnly">{{lang 'products.quantity_decrease' name=product.title}}</span>
                         <i class="icon" aria-hidden="true">
                             <svg>
-                                <use href="#icon-keyboard-arrow-down"/>
+                                <use href="#icon-qty-minus"/>
                             </svg>
                         </i>
                     </button>
@@ -27,7 +27,7 @@
                         <span class="is-srOnly">{{lang 'products.quantity_increase' name=product.title}}</span>
                         <i class="icon" aria-hidden="true">
                             <svg>
-                                <use href="#icon-keyboard-arrow-up"/>
+                                <use href="#icon-qty-plus"/>
                             </svg>
                         </i>
                     </button>
@@ -44,13 +44,14 @@
     {{#or customer (unless settings.hide_price_from_guests)}}
         <div class="add-to-cart-buttons {{#if product.pre_order}}pre-order-buttons{{/if}}">
             <div class="form-action">
-                <input
+                <button
                         id="form-action-addToCart"
                         data-wait-message="{{lang 'products.adding_to_cart'}}"
                         class="button button--primary"
                         type="submit"
-                        value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
                 >
+                {{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}
+                </button>
                 <span class="product-status-message aria-description--hidden">{{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}</span>
             </div>
             {{#if this.with_wallet_buttons}}

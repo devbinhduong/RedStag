@@ -478,7 +478,7 @@
         "product_size": "500x659",
         "productview_thumb_size": "50x50",
         "productthumb_size": "100x100",
-        "thumb_size": "100x100",
+        "thumb_size": "173x70",
         "zoom_size": "1280x1280",
         "blog_size": "190x250",
         "default_image_brand": "img/BrandDefault.gif",
@@ -884,7 +884,11 @@
         "mega_menu_styleCustom_link4": "#",
         "custom_category_sidebar": true,
         "customToolbar_viewAs": true,
-        "custom-product-show-more": true
+        "custom-product-show-more": true,
+        "show_description_tab": true,
+        "show_custom_tabs": true,
+        "show_shipping_tabs": true,
+        "show_product_sku": false
       }
     }
   ]
