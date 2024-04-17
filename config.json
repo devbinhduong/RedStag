@@ -888,7 +888,8 @@
         "show_description_tab": true,
         "show_custom_tabs": true,
         "show_shipping_tabs": true,
-        "show_product_sku": false
+        "show_product_sku": false,
+        "show_product_bulk_discount": true
       }
     }
   ]

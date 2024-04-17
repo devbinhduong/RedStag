@@ -561,3 +561,39 @@
         }
     }
 }
+
+
+$color_1: white;
+$background-color_1: #f8f8f8;
+$background-color_2: #f2f2f2;
+$background-color_3: #ddd;
+$background-color_4: #4CAF50;
+
+.custom-bulkPricing-table {
+	width: 100%;
+	border-collapse: collapse;
+	th {
+		background-color: $background-color_1;
+		border: 1px solid #ddd;
+		padding: 8px;
+		text-align: left;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: $background-color_4;
+		color: $color_1;
+	}
+	td {
+		border: 1px solid #ddd;
+		padding: 8px;
+		text-align: left;
+	}
+	tr {
+		&:nth-child(even) {
+			background-color: $background-color_2;
+		}
+		&:hover {
+			background-color: $background-color_3;
+		}
+	}
+}
