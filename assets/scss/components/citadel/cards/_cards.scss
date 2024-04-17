@@ -4,7 +4,7 @@
     margin-top: 10px;
     padding: 15px 15px 48px;
 
-    @include smin-xs {
+    @include smin-l {
         .productGrid--maxCol1  & {
             padding-bottom: 0;
             display: flex !important;
@@ -13,6 +13,13 @@
             .card-figure {
                 width: 242px;
             }
+        }
+    }
+
+    @include smax-xs {
+        .productGrid--maxCol1 & {
+            padding-left: 0;
+            padding-right: 0;
         }
     }
 
@@ -36,6 +43,21 @@
 
         @include smin-xs {
             .productGrid--maxCol1  & {
+                left: unset;
+                width: calc(100% - 295px);
+                bottom: unset;
+            }
+        }
+
+        @include smin-m {
+            .productGrid--maxCol1  & {
+                width: calc(100% - 450px);
+                right: 15px;
+            }
+        }
+
+        @include smin-l {
+            .productGrid--maxCol1  & {
                 width: 242px;
                 bottom: unset;
                 left: unset;
@@ -44,6 +66,8 @@
                 transform: translateY(-50%) translate3d(0, -30px, 0);
             }
         }
+
+       
     }
 
     &:hover {
@@ -54,7 +78,7 @@
             visibility: visible;
             transform: translate3d(0, 0, 0);
 
-            @include smin-xs {
+            @include smin-l {
                 .productGrid--maxCol1  & {
                     transform: translateY(-50%) translate3d(0, 0, 0);
                 }
@@ -135,6 +159,11 @@
         padding-top: 0;
         padding-left: 20px;
         padding-right: 20px;
+
+        .productGrid--maxCol1 & {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }; 
 
     .card-title{
