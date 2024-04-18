@@ -66,8 +66,10 @@
                     {{/if}}
                 </div>
             </figure>
-            <div class="productView-thumbnails"{{#gt product.images.length 3}} data-slick='{
-                    "infinite": false,
+
+            <div class="productView-thumbnail-wrapper">
+                <div class="productView-thumbnails"{{#gt product.images.length 3}} data-slick='{
+                    "infinite": true,
                     "mobileFirst": true,
                     "dots": false,
                     "accessibility": false,
@@ -85,23 +87,24 @@
                         ]
                 }'{{/gt}}>
                 {{#each product.images}}
-                    <div class="productView-thumbnail">
-                        <a
+                <div class="productView-thumbnail">
+                    <a
                             class="productView-thumbnail-link"
                             href="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
                             data-image-gallery-item
                             data-image-gallery-new-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.product_size}}"
                             data-image-gallery-new-image-srcset="{{getImageSrcset this use_default_sizes=true}}"
                             data-image-gallery-zoom-image-url="{{getImageSrcset this (cdn ../theme_settings.default_image_product) 1x=../theme_settings.zoom_size}}"
-                        >
+                    >
                         {{> components/common/responsive-img
-                            image=this
-                            fallback_size=../theme_settings.productview_thumb_size
-                            lazyload=../theme_settings.lazyload_mode
+                        image=this
+                        fallback_size=../theme_settings.productview_thumb_size
+                        lazyload=../theme_settings.lazyload_mode
                         }}
-                        </a>
-                    </div>
+                    </a>
+                </div>
                 {{/each}}
+            </div>
             </div>
         </section>
     </div>
@@ -109,32 +112,25 @@
     <div class="custom-productView-right">
         <section class="productView-details product-data product-data--top">
             <div class="productView-product">
+                <h1 class="productView-title">{{product.title}}</h1>
+
                 <div class="productView-rating">
-                    <h1 class="productView-title">{{product.title}}</h1>
                     {{#if settings.show_product_rating}}
                         {{> components/products/ratings rating=product.rating}}
 
-                        <a href="#tab-reviews" class="viewReviewsContent__button">{{product.reviews.total}}{{#if product.reviews.total '<' 2}} Review{{else}} Reviews{{/if}}</a>
+                        <a href="#tab-reviews" class="viewReviewsContent__button">
+                            {{product.reviews.total}}{{#if product.reviews.total '<' 2}} Review{{else}} Reviews{{/if}}
+                            <span class="icon icon--arrow-down">
+                                <svg><use xlink:href="#icon-chevron-down2"></use></svg>
+                            </span>
+                        </a>
                     {{/if}}
                 </div>
                 {{#if product.brand}}
                     <h2 class="productView-brand">
-                        <a href="{{product.brand.url}}"><span>{{product.brand.name}}</span></a>
+                        <a href="{{product.brand.url}}" class="productView-brand-image"></a>
                     </h2>
                 {{/if}}
-                {{#if product.call_for_price}}
-                    <p class="productView-price">
-                        <span>{{product.call_for_price}}</span>
-                    </p>
-                {{/if}}
-                <div class="productView-price">
-                    {{#or customer (unless settings.hide_price_from_guests)}}
-                        {{> components/products/price price=product.price}}
-                    {{else}}
-                        {{> components/common/login-for-pricing}}
-                    {{/or}}
-                </div>
-                {{{region name="product_below_price"}}}
             </div>
         </section>
         <section class="productView-details product-options">
@@ -152,6 +148,25 @@
                             {{{dynamicComponent 'components/products/options'}}}
                         {{/each}}
                     </div>
+
+                    {{#if product.call_for_price}}
+                    <p class="productView-price">
+                        <span>{{product.call_for_price}}</span>
+                    </p>
+                    {{/if}}
+                    <div class="productView-price">
+                        {{#or customer (unless settings.hide_price_from_guests)}}
+                        {{> components/products/price price=product.price}}
+                        {{else}}
+                        {{> components/common/login-for-pricing}}
+                        {{/or}}
+                    </div>
+                    {{{region name="product_below_price"}}}
+
+                    {{#and (if settings.bulk_discount_enabled) (if theme_settings.show_product_bulk_discount)}}
+                    {{> components/bspoq/products/bulk-discount-table }}
+                    {{/and}}
+
                     <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
                         <label class="form-label form-label--alternate">
                             {{lang 'products.current_stock'}}
@@ -294,9 +309,6 @@
                             </div>
                         {{/if}}
                     {{/if}}
-                {{/and}}
-                {{#and (if settings.bulk_discount_enabled) (if theme_settings.show_product_bulk_discount)}}
-                        {{> components/bspoq/products/bulk-discount-table }}
                 {{/and}}
 
                 <!-- Productview Description -->

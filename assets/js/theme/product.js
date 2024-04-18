@@ -47,7 +47,7 @@ export default class Product extends PageManager {
             document.addEventListener(event, () => {
                 if(check_JS_load) {
                     check_JS_load = false;
-                    this.toggleTabs();  
+                    this.toggleTabs();
                     this.showBrandImage();
                     if(this.context.themeSettings.show_custom_tabs) {
                         this.customTab();
@@ -114,10 +114,11 @@ export default class Product extends PageManager {
     /* Get Brand Image On Product Page */
     async showBrandImage() {
         const productBrand = document.querySelector('.productView-brand');
+        const productBrandImageWrapper =  document.querySelector('.productView-brand-image');
 
-        if (!productBrand) return;
+        if (!productBrand ||  !productBrandImageWrapper) return;
 
-        let brandUrl = productBrand.querySelector('a').getAttribute('href');
+        let brandUrl = productBrandImageWrapper.getAttribute('href');
 
         try {
             const response = await fetch(brandUrl);
@@ -137,7 +138,7 @@ export default class Product extends PageManager {
                             <img src="${brandImageSrc}" alt="${brandImage.getAttribute('alt')}">
                         </a>
                     `;
-                    productBrand.insertAdjacentHTML('afterbegin', imageElement);
+                    productBrandImageWrapper.insertAdjacentHTML('afterbegin', imageElement);
                 }
             }
         } catch (error) {
@@ -191,7 +192,7 @@ export default class Product extends PageManager {
     productChartReview() {
         const chartReview = document.querySelector('.reviewChart__list');
         if (!chartReview) return;
-    
+
         const reviewCounts = {
             5: 0,
             4: 0,
@@ -199,23 +200,23 @@ export default class Product extends PageManager {
             2: 0,
             1: 0
         };
-    
+
         // Count reviews of each rating
         for (let i = 1; i <= 5; i++) {
             reviewCounts[i] = document.querySelectorAll(`.get-review-count .review${i}`).length;
         }
-    
+
         // Calculate total review count
         const totalReview = Object.values(reviewCounts).reduce((total, count) => total + count, 0);
-    
+
         // Update chart items with review counts
         for (let i = 1; i <= 5; i++) {
             const chartItem = chartReview.querySelector(`.reviewChart__item--${i}`);
             const countElement = chartItem.querySelector('.item-count');
             const percentElement = chartItem.querySelector('.process-percent');
-    
+
             countElement.textContent = `(${reviewCounts[i]})`;
-    
+
             const reviewPercent = (reviewCounts[i] / totalReview) * 100;
             percentElement.style.width = `${reviewPercent}%`;
         }
@@ -328,10 +329,9 @@ export default class Product extends PageManager {
         this.getStock(idProduct).then(data => {
             const proVariant = data.site.products.edges[0].node.variants.edges;
             const trackLvProductInventory = data.site.products.edges[0].node.inventory.aggregated != null ? data.site.products.edges[0].node.inventory.aggregated.availableToSell : undefined;
-            const hasVariantInventory = data.site.products.edges[0].node.inventory.hasVariantInventory;
             let stockMessage = '';
-            
-            const stockTotal = proVariant.reduce((acc, item) => { 
+
+            const stockTotal = proVariant.reduce((acc, item) => {
                 return acc + item.node.inventory.aggregated.availableToSell;
             }, 0);
 
@@ -352,7 +352,7 @@ export default class Product extends PageManager {
                     $('.productView-info-value.stock-indicator-value').addClass('availabel-stock').html(stockMessage);
                 }
             }
-            
+
         });
 
     }

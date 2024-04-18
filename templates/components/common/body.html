@@ -1,10 +1,10 @@
 <div class="body" id="main-content" data-currency-code="{{currency_selector.active_currency_code}}">
     {{#block "hero"}} {{/block}}
-    
+
     {{#or (if page_type '===' 'default') (if page_type '===' 'category') (if page.title '===' 'About Us') (if page.title '===' 'Contact Us') (if (toLowerCase page.title) '==' 'ez street')}}
         {{#block "page"}} {{/block}}
     {{else}}
-        <div class="container">
+        <div class="container container-2">
             {{#block "page"}} {{/block}}
         </div>
     {{/or}}

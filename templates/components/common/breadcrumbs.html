@@ -1,21 +1,19 @@
-<div class="container container-2">
-    <nav aria-label="Breadcrumb">
-        <ol class="breadcrumbs">
-            {{#unless theme_settings.hide_breadcrumbs }}
-                {{#each breadcrumbs}}
-                    <li class="breadcrumb {{#if @last}}is-active{{/if}}">
-                        <a class="breadcrumb-label hover-link"
-                           href="{{url}}"
-                           {{#if @last}}aria-current="page"{{/if}}
-                        >
-                            <span>{{name}}</span>
-                        </a>
-                    </li>
-                {{/each}}
-            {{/unless}}
-        </ol>
-    </nav>
-</div>
+<nav aria-label="Breadcrumb">
+    <ol class="breadcrumbs">
+        {{#unless theme_settings.hide_breadcrumbs }}
+            {{#each breadcrumbs}}
+                <li class="breadcrumb {{#if @last}}is-active{{/if}}">
+                    <a class="breadcrumb-label hover-link"
+                       href="{{url}}"
+                       {{#if @last}}aria-current="page"{{/if}}
+                    >
+                        <span>{{name}}</span>
+                    </a>
+                </li>
+            {{/each}}
+        {{/unless}}
+    </ol>
+</nav>
 
 <script type="application/ld+json">
 {
