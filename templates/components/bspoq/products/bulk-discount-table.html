@@ -41,11 +41,11 @@
 
             {{#if type '===' 'percent'}}
                 {{#if ../product.price.without_tax}}
-                    <td>{{trim (strReplace ../product.price.without_tax.formatted (add (toFixed ../product.price.without_tax.value 2) '') " ")}} {{toFixed (subtract ../product.price.without_tax.value (multiply ../product.price.without_tax.value (divide discount.value 100))) 2}}</td>
+                    <td>{{trim (strReplace ../product.price.without_tax.formatted (add (toFixed ../product.price.without_tax.value 2) '') (add (toFixed (subtract ../product.price.without_tax.value (multiply ../product.price.without_tax.value (divide discount.value 100))) 2) ''))}}</td>
                 {{/if}}
 
                 {{#if ../product.price.with_tax}}
-                    <td>{{trim (strReplace ../product.price.without_tax.formatted (add (toFixed ../product.price.without_tax.value 2) '') " ")}} {{toFixed (subtract ../product.price.with_tax.value (multiply ../product.price.with_tax.value (divide discount.value 100))) 2}}</td>
+                    <td>{{trim (strReplace ../product.price.without_tax.formatted (add (toFixed ../product.price.without_tax.value 2) '') (add (toFixed (subtract ../product.price.with_tax.value (multiply ../product.price.with_tax.value (divide discount.value 100))) 2) ''))}}</td>
                 {{/if}}
                
                 <td class="discount-percent">{{discount.formatted}}</td>

@@ -887,10 +887,15 @@
         "custom-product-show-more": true,
         "show_description_tab": true,
         "show_custom_tabs": true,
-        "show_shipping_tabs": true,
         "show_product_sku": false,
         "show_product_bulk_discount": true,
-        "show_bulk_discount_table": true
+        "show_bulk_discount_table": true,
+        "show_shipping_tabs": true,
+        "show_shipping_tabs_type": "all",
+        "show_shipping_tab_link": "/shipping-returns/",
+        "in_stock_label": "10+ In Stock",
+        "available_stock_label": "Available to Order",
+        "contact_to_buy_label": "Please contact us directly"
       }
     }
   ]

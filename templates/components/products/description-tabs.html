@@ -59,8 +59,37 @@
             {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
                 <a class="tab-titleMobile productView-reviewTabLink" href="#tab-reviews"><span>{{lang 'products.reviews.header' total=product.reviews.total}}</span></a>
             {{/all}}
-            <div class="tabContent">
-                {{> components/products/reviews reviews=product.reviews product=product urls=urls rating=product.rating}}
+
+            <div class="tabContent tabContent--review">
+                <div class="review__header">
+                    {{> components/products/ratings rating=product.rating}}
+                    <span>Based on {{product.reviews.total}}{{#if product.reviews.total '<' 2}} Review{{else}} Reviews{{/if}}</span>
+                </div>
+
+                {{> components/bspoq/products/chart-review product=product rating=product.rating reviews=product.reviews urls=urls}}
+                {{> components/products/reviews reviews=product.reviews product=product urls=urls}}
+
+                <div class="review-button-group">
+                    <a href="#" class="button button-secondary view-all-review uppercase {{#if product.reviews.total '<' 3}}button-disable{{/if}}">
+                        {{#if product.reviews.total '<' 3}}
+                            No More Review
+                        {{else}}
+                            View All Review
+                        {{/if}}
+                    </a>
+                    {{#if settings.show_product_reviews}}
+                        <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
+                           class="productView-reviewLink productView-reviewLink--new"
+                           {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}}
+                           role="button"
+                        >
+                           {{lang 'products.reviews.new'}}
+                        </a>
+                        {{#unless is_ajax}}
+                            {{> components/products/modals/writeReview}}
+                        {{/unless}}
+                    {{/if}}
+                </div>
             </div>
         </div>
     {{/all}}
