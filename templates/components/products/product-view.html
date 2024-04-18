@@ -298,36 +298,7 @@
                     {{/if}}
                 {{/and}}
                 {{#and (if settings.bulk_discount_enabled) (if theme_settings.show_product_bulk_discount)}}
-                    <div class="productView-info-bulkPricing">
-                        <table class="custom-bulkPricing-table">
-                            <tr>
-                                <th>Quantity</th>
-                                <th>Price(Inc VAT)</th>
-                                <th>Price(Ex VAT)</th>
-
-                                {{#get "0" product.bulk_discount_rates}}
-                                    {{#if type '===' 'percent'}}
-                                        <th>Discount</th>
-                                    {{/if}}
-                                {{/get}}
-                            </tr>
-
-                            {{#each product.bulk_discount_rates}}
-                                <tr>
-                                    {{#unless @last}}
-                                        <td>{{min}} - {{max}}</td>
-                                    {{else}}
-                                        <td>{{min}}+</td>
-                                    {{/unless}}
-                                    <td>{{toFixed (subtract ../product.price.with_tax.value (multiply ../product.price.with_tax.value (divide discount.value 100))) 2}}</td>
-                                    <td>{{toFixed (subtract ../product.price.without_tax.value (multiply ../product.price.without_tax.value (divide discount.value 100))) 2}}</td>
-                                    {{#if type '===' 'percent'}}
-                                        <td>{{discount.formatted}}</td>
-                                    {{/if}}
-                                </tr>
-                            {{/each}}
-                        </table>
-                    </div>
+                        {{> components/bspoq/products/bulk-discount-table }}
                 {{/and}}
 
                 <!-- Productview Description -->

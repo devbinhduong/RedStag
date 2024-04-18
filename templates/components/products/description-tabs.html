@@ -10,9 +10,9 @@
     {{/if}}
 
     {{#if product.description}}
-        <div class="tab-content{{#unless product.videos.list.length}} is-active{{/unless}}{{#unless theme_settings.show_description_tab}} hide-on-all{{/unless}}" id="tab-description">
-            <a class="tab-titleMobile{{#unless product.videos.list.length}} is-active{{/unless}}" href="#tab-description"><span>{{lang 'products.description'}}</span></a>
-            <div class="tabContent{{#unless product.videos.list.length}} is-active{{/unless}}">
+        <div class="tab-content{{#unless theme_settings.show_description_tab}} hide-on-all{{/unless}}" id="tab-description">
+            <a class="tab-titleMobile" href="#tab-description"><span>{{lang 'products.description'}}</span></a>
+            <div class="tabContent">
                 {{{product.description}}}
             </div>
         </div>

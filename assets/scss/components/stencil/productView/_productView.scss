@@ -563,37 +563,47 @@
 }
 
 
-$color_1: white;
-$background-color_1: #f8f8f8;
-$background-color_2: #f2f2f2;
-$background-color_3: #ddd;
-$background-color_4: #4CAF50;
-
+/* Bulk Discount table */
 .custom-bulkPricing-table {
 	width: 100%;
 	border-collapse: collapse;
+
 	th {
-		background-color: $background-color_1;
-		border: 1px solid #ddd;
-		padding: 8px;
-		text-align: left;
-		padding-top: 12px;
-		padding-bottom: 12px;
-		text-align: left;
-		background-color: $background-color_4;
-		color: $color_1;
+        border: none;
+		text-align: center;
+        font-size: $fontSize-root - 2;
+        font-weight: $fontWeight-medium;
+        line-height: 1.3125rem;
+        padding: 9px 8px 8px;
+		background-color: #d6d6d6;
+		color: $color-custom-black;
+
+        @include smin-m {
+            font-size: $fontSize-root;
+        }
+
+        &.discount-percent {
+            background-color: $color-custom-red;
+            color: $color-custom-white;
+        }
 	}
 	td {
-		border: 1px solid #ddd;
+        font-family: "Open Sans", sans-serif;
+		border: 1px solid #d6d6d6;
 		padding: 8px;
-		text-align: left;
-	}
-	tr {
-		&:nth-child(even) {
-			background-color: $background-color_2;
-		}
-		&:hover {
-			background-color: $background-color_3;
-		}
+		text-align: center;
+        color: #515C6F;
+        font-size: $fontSize-root - 4;
+        font-weight: $fontWeight-semibold;
+        letter-spacing: 0;
+        line-height: 1.1875rem;
+
+        @include smin-m {
+            font-size: $fontSize-root - 2;
+        }
+
+        &.discount-percent {
+            color: $color-custom-red;
+        }
 	}
 }

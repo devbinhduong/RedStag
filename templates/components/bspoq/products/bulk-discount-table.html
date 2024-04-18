@@ -1,0 +1,68 @@
+<table class="custom-bulkPricing-table">
+    <tr class="table__heading">
+        <th>QTY</th>
+
+        {{#get "0" product.bulk_discount_rates}}
+            {{#if type '===' 'percent'}}
+                {{#if ../product.price.without_tax}}
+                    <th>Price Per Unit (Ex. VAT)</th>
+                {{/if}}
+            
+                {{#if ../product.price.with_tax}}
+                    <th>Price Per Unit (Inc. VAT)</th>
+                {{/if}}
+
+                <th class="discount-percent">Discount</th>
+            {{/if}}
+
+            {{#if type '===' 'fixed'}}
+                <th>Unit Price</th>
+            {{/if}}
+            
+            {{#if type '===' 'price'}}
+                {{#if ../product.price.without_tax}}
+                    <th>Price Per Unit (Ex. VAT)</th>
+                {{/if}}
+            
+                {{#if ../product.price.with_tax}}
+                    <th>Price Per Unit (Inc. VAT)</th>
+                {{/if}}
+            {{/if}}
+        {{/get}}
+    </tr>
+
+    {{#each product.bulk_discount_rates}}
+        <tr class="table__body">
+            {{#unless @last}}
+                <td>Buy {{min}} - {{max}}</td>
+            {{else}}
+                <td>Buy {{min}}+</td>
+            {{/unless}}
+
+            {{#if type '===' 'percent'}}
+                {{#if ../product.price.without_tax}}
+                    <td>{{trim (strReplace ../product.price.without_tax.formatted (add (toFixed ../product.price.without_tax.value 2) '') " ")}} {{toFixed (subtract ../product.price.without_tax.value (multiply ../product.price.without_tax.value (divide discount.value 100))) 2}}</td>
+                {{/if}}
+
+                {{#if ../product.price.with_tax}}
+                    <td>{{trim (strReplace ../product.price.without_tax.formatted (add (toFixed ../product.price.without_tax.value 2) '') " ")}} {{toFixed (subtract ../product.price.with_tax.value (multiply ../product.price.with_tax.value (divide discount.value 100))) 2}}</td>
+                {{/if}}
+               
+                <td class="discount-percent">{{discount.formatted}}</td>
+            {{/if}}
+
+            {{#if type '===' 'fixed'}}
+                <td>{{discount.formatted}}</td>
+            {{/if}}
+            
+            {{#if type '===' 'price'}}
+                {{#if ../product.price.without_tax}}
+                    <td>{{trim (strReplace ../product.price.without_tax.formatted (add (toFixed ../product.price.without_tax.value 2) '') " ")}} {{subtract ../product.price.without_tax.value discount.value}}</td>
+                {{/if}}
+                {{#if ../product.price.with_tax}}
+                    <td>{{trim (strReplace ../product.price.without_tax.formatted (add (toFixed ../product.price.without_tax.value 2) '') " ")}} {{subtract ../product.price.with_tax.value discount.value}}</td>
+                {{/if}}
+            {{/if}}
+        </tr>
+    {{/each}}
+</table>
