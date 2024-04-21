@@ -268,6 +268,8 @@ export default class Product extends PageManager {
         const viewAllReview = document.querySelector('.review-button-group .view-all-review');
         const reviewList = document.querySelectorAll('.productReviews-list .productReview');
 
+        if (!viewAllReview || reviewList.length <= 2) return;
+
         for (let i = 2; i < reviewList.length; i++) {
             reviewList[i].style.display = 'none';
         }

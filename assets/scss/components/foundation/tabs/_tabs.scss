@@ -162,6 +162,17 @@
 
         .tabContent {
             display: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            letter-spacing: 0.84px;
+            line-height: 17px;
+            color: $color-custom-black;
+            font-weight: $fontWeight-normal;
+            padding-bottom: 16px;
+
+            p {
+                margin-bottom: 0;
+            }
         }
 
         &#tab-description {
@@ -175,6 +186,33 @@
                 .icon--file-download {
                     width: 32px;
                     height: 39px;
+                }
+            }
+        }
+
+        &#tab-reviews {
+            .tabContent--review {
+                position: relative;
+                
+                .review__header {
+                    margin-bottom: 10px;
+                }
+            }
+            .review-button-group {
+                .productView-reviewLink {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    padding: 2px 18px;
+                }
+
+                .view-all-review {
+                    color: $color-custom-red;
+                    text-decoration: none;
+                    font-size: $fontSize-root;
+                    letter-spacing: 0;
+                    line-height: 21px;
+                    font-family: $body-font-family;
                 }
             }
         }

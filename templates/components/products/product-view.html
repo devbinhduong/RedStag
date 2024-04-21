@@ -167,6 +167,18 @@
                     {{> components/bspoq/products/bulk-discount-table }}
                     {{/and}}
 
+                    <!-- Stock indicator -->
+                    <div class="productView-info-item custom-indicator">
+                        <span class="productView-info-name stock-indicator-label">Availability:</span>
+                        <span class="productView-info-value stock-indicator-value">10+ IN STOCK</span>
+                    </div>
+
+                    <!-- Credit Plans Availale -->
+                    <div class="productView-info-item custom-credit">
+                        <span class="productView-info-name custom-credit-label">Credit Plans Available:</span>
+                        <span class="productView-info-value custom-credit-value"></span>
+                    </div>
+
                     <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
                         <label class="form-label form-label--alternate">
                             {{lang 'products.current_stock'}}
@@ -191,12 +203,6 @@
             {{/if}}
         </section>
         <section class="productView-details product-data product-data--bottom">
-            <!-- Stock indicator -->
-            <div class="productView-info-item custom-indicator">
-                <span class="productView-info-name stock-indicator-label">Stock Indicator:</span>
-                <span class="productView-info-value stock-indicator-value"></span>
-            </div>
-
             {{product.detail_messages}}
             <div class="productView-info">
                 {{#if theme_settings.show_product_information}}

@@ -81,9 +81,9 @@
 
 .productView-thumbnail {
     @include grid-column(3);
-    padding: spacing('quarter');
     text-align: center;
-
+    padding: 12px;
+    
     @include breakpoint('large') {
         width: 20%;
     }
@@ -150,21 +150,30 @@
 
 .productView-info-name {
     clear: both;
-    margin-bottom: spacing('eighth');
-    margin-right: spacing('quarter');
+    font-size: 12px;
+    letter-spacing: 0.98px;
+    line-height: 1.3;
+    color: $color-custom-black;
+    font-weight: $fontWeight-bold;
 
-    @include breakpoint('small') {
-        font-family: fontFamily('headingSans');
-        font-size: fontSize('smallest');
-        font-weight: fontWeight('normal');
+    @include smin-s {
+        font-size: 14px;
+        line-height: 24px;
     }
 }
 
 .productView-info-value {
-    margin-bottom: spacing('quarter');
+    font-size: 12px;
+    letter-spacing: 0.98px;
+    line-height: 1.3;
+    font-weight: $fontWeight-normal;
+    color: $color-greyDark;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
 
-    @include breakpoint('small') {
-        margin-bottom: spacing('base');
+    @include smin-s {
+        font-size: 14px;
+        line-height: 24px;
     }
 }
 
@@ -179,7 +188,6 @@
 
 .productView-options {
     @include clearfix;
-    text-align: center;
 
     @include breakpoint('small') {
         text-align: left;
@@ -195,7 +203,34 @@
         display: inline;
 
         .add-to-cart-wrapper {
-            display: inline;
+            margin-top: 12px;
+            clear: both;    
+            .form-increment {
+                > button {
+                    background-color: #E3E5E8;
+                    @include square(25px);
+                    border: 1px solid transparent;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    svg {
+                        fill: #636362 !important;
+                        stroke: #636362 !important;
+                    }
+
+                    &::after {
+                        background-color: $color-custom-white;
+                    }
+
+                    &:hover {
+                        background-color: $color-custom-white;
+                        border-color: $color-custom-red;
+                    }
+                }
+            }
+
         }
     }
 
@@ -205,7 +240,6 @@
 
     .form-field {
         font-size: 0; // 2
-        margin-bottom: 2rem;
 
         &--error > .form-inlineMessage {
             font-size: 1rem;
@@ -345,6 +379,17 @@
 
 
 /* Bulk Discount table */
+.custom-bulkPricing-heading {
+    color: $color-custom-black;
+    font-size: 12px;
+    line-height: 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.84px;
+    margin-bottom: 6px;
+    margin-top: 0;
+}
+
 .custom-bulkPricing-table {
 	width: 100%;
 	border-collapse: collapse;
@@ -491,25 +536,75 @@
 .review-button-group {
     display: flex;
     flex-direction: column;
-    padding-bottom: 12px;
     padding-top: 12px;
-
-    .button + .button {
-        margin-top: 10px;
-    }
 }
 
 
 /* Stock Indicator */
 .productView-info-value.stock-indicator-value {
-    font-weight: 600;
     &.in-stock {
-        color: green;
+        color: #10A716;
     }
     &.availabel-stock {
         color: orange;
     }
     &.contact-stock {
         color: red;
+    }
+}
+
+/* Add to cart buttons */
+.add-to-cart-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    --f-gap: 8px;
+    margin-bottom: calc(-1 * var(--f-gap));
+
+    @include smin-xs {
+        margin-left: calc(-1 * var(--f-gap));
+    }
+
+    .form-action {
+        width: 100%;
+    }
+
+    .b2b-add-to-quote,
+    .b2b-add-to-list {
+        background-color: transparent !important;
+        color: $color-custom-red !important;
+
+        &::after {
+            background-color:  $color-custom-white !important;
+        }
+
+        &:hover {
+            color: $color-custom-white !important;
+
+            &::after {
+                background-color:  $color-custom-red !important;
+            }
+        }
+    }
+
+    .b2b-add-to-list {
+        order: 3;
+    }
+
+    .button {
+        min-width: 275px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 !important;
+        margin-bottom: var(--f-gap) !important;
+
+        @include smin-xs {
+            margin-left: var(--f-gap) !important;
+        }
+
+        @media (max-width: 1300px) {
+            min-width: 200px;
+        }
     }
 }

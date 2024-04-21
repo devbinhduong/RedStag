@@ -2,8 +2,6 @@
     {{#if product.show_quantity_input}}
         {{inject 'productQuantityErrorMessage'  (lang 'products.quantity_error_message')}}
         <div class="form-field form-field--increments">
-            <label class="form-label form-label--alternate"
-                   for="qty[]">{{lang 'products.quantity'}}</label>
                 <div class="form-increment" data-quantity-change>
                     <button class="button button--icon" data-action="dec">
                         <span class="is-srOnly">{{lang 'products.quantity_decrease' name=product.title}}</span>
@@ -42,23 +40,41 @@
         <p class="alertBox-column alertBox-message"></p>
     </div>
     {{#or customer (unless settings.hide_price_from_guests)}}
-        <div class="add-to-cart-buttons {{#if product.pre_order}}pre-order-buttons{{/if}}">
-            <div class="form-action">
-                <button
+        {{#if theme_settings.showDemoB2BGroup}}
+            <div class="add-to-cart-buttons ">
+                <div class="form-action">
+                    <button
                         id="form-action-addToCart"
                         data-wait-message="{{lang 'products.adding_to_cart'}}"
                         class="button button--primary"
                         type="submit"
-                >
-                {{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}
-                </button>
-                <span class="product-status-message aria-description--hidden">{{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}</span>
-            </div>
-            {{#if this.with_wallet_buttons}}
-                <div class="add-to-cart-wallet-buttons" data-add-to-cart-wallet-buttons>
-                    {{> components/common/wallet-buttons}}
+                    >
+                    {{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}
+                    </button>
+                    <span class="product-status-message aria-description--hidden">Adding to cart… The item has been added</span>
                 </div>
-            {{/if}}
-        </div>
+                    <div class="add-to-cart-wallet-buttons" data-add-to-cart-wallet-buttons="" style="display: none;">
+                                        </div>
+            <div style="margin-top: 0.5rem; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" class="b2b-add-to-list button">Add to shopping list</div><div style="margin-top: 0.5rem; background-color: rgb(68, 68, 68); color: rgb(255, 255, 255);" class="b2b-add-to-quote button">Add to quote</div></div>
+            {{else}}
+            <div class="add-to-cart-buttons {{#if product.pre_order}}pre-order-buttons{{/if}}">
+                <div class="form-action">
+                    <button
+                            id="form-action-addToCart"
+                            data-wait-message="{{lang 'products.adding_to_cart'}}"
+                            class="button button--primary"
+                            type="submit"
+                    >
+                    {{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}
+                    </button>
+                    <span class="product-status-message aria-description--hidden">{{lang 'products.adding_to_cart'}} {{lang 'category.add_cart_announcement'}}</span>
+                </div>
+                {{#if this.with_wallet_buttons}}
+                    <div class="add-to-cart-wallet-buttons" data-add-to-cart-wallet-buttons>
+                        {{> components/common/wallet-buttons}}
+                    </div>
+                {{/if}}
+            </div>
+        {{/if}}
     {{/or}}
 </div>
