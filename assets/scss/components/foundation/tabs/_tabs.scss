@@ -112,6 +112,16 @@
 
         .videoGallery {
             border-top: 0;
+            margin-bottom: 0;
+
+            .videoGallery-main {
+                max-width: 463px;
+
+                &.widescreen {
+                    padding-bottom: 40.5%;
+                    margin-bottom: 4px;
+                }
+            }
         }
 
         .tab-titleMobile {
@@ -124,11 +134,14 @@
             text-decoration: none;
             display: block;
             width: 100%;
-            padding: 6px 0 17px;
+            // padding: 6px 0 17px;
+            padding: 0;
+            margin-top: 6px;
+            margin-bottom: 18px;
 
             &::before {
                 top: 50%;
-                right: 7px;
+                right: 13px;
                 z-index: 2;
                 content: "";
                 width: 2px;
@@ -142,7 +155,7 @@
             
             &::after {
                 top: 50%;
-                right: 0;
+                right: 6px;
                 z-index: 2;
                 content: "";
                 width: 16px;
@@ -169,9 +182,16 @@
             color: $color-custom-black;
             font-weight: $fontWeight-normal;
             padding-bottom: 16px;
+            max-width: 600px;
 
             p {
                 margin-bottom: 0;
+            }
+
+            strong, b {
+                letter-spacing: 1.3px;
+                display: inline-block;
+                margin-bottom: 3px;
             }
         }
 
@@ -186,6 +206,13 @@
                 .icon--file-download {
                     width: 32px;
                     height: 39px;
+                    margin-bottom: 12px;
+                }
+
+                .techSheet {
+                    span {
+                        font-style: italic;
+                    }
                 }
             }
         }

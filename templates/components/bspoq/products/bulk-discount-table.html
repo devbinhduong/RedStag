@@ -1,8 +1,9 @@
+{{#if product.bulk_discount_rates}}
 <h4 class="custom-bulkPricing-heading">BULK PRICING</h4>
 <table class="custom-bulkPricing-table">
     <tr class="table__heading">
         <th>QTY</th>
-
+        
         {{#get "0" product.bulk_discount_rates}}
             {{#if type '===' 'percent'}}
                 {{#if ../product.price.without_tax}}
@@ -66,4 +67,5 @@
             {{/if}}
         </tr>
     {{/each}}
-</table>
+</table>    
+{{/if}}

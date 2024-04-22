@@ -263,4 +263,8 @@
    <symbol id="icon-file-download" width="32.5" height="39" viewBox="0 0 32.5 39">
       <path id="file-download" d="M22.173,0H6.875A4.881,4.881,0,0,0,2,4.875V39H34.5V12.327Zm.952,5.548,5.827,5.827H23.125Zm8.125,30.2h-26V4.875A1.627,1.627,0,0,1,6.875,3.25h13V14.625H31.25ZM19.875,27.636,23.6,23.9l2.3,2.3-5.361,5.361a3.237,3.237,0,0,1-4.569,0L10.6,26.193l2.3-2.3,3.723,3.723V17.873h3.25Z" transform="translate(-2)" fill="#d81c17"/>
    </symbol>
+
+   <symbol viewBox="0 0 24 24" id="icon-stock-check">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#10A716" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g>
+   </symbol>
 </svg>

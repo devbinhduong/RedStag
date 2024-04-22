@@ -54,6 +54,14 @@
             </div>
         </div>
     {{/all}}
+    {{#if theme_settings.show_shipping_tabs}}
+        <div class="tab-content" id="tab-shipping">
+            <a class="tab-titleMobile" href="#tab-shipping" data-tab-load="{{theme_settings.show_shipping_tab_link}}" data-tab-check="true"><span>{{lang 'products.shipping_returns'}}</span></a>
+            <div class="tabContent">
+                <img class="icon-loading" src="{{cdn 'img/loading.svg'}}" alt="Icon Loading">
+            </div>
+        </div>
+    {{/if}}
     {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
         <div class="tab-content" id="tab-reviews">
             {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
@@ -96,12 +104,4 @@
             </div>
         </div>
     {{/all}}
-    {{#if theme_settings.show_shipping_tabs}}
-        <div class="tab-content" id="tab-shipping">
-            <a class="tab-titleMobile" href="#tab-shipping" data-tab-load="{{theme_settings.show_shipping_tab_link}}" data-tab-check="true"><span>{{lang 'products.shipping_returns'}}</span></a>
-            <div class="tabContent">
-                <img class="icon-loading" src="{{cdn 'img/loading.svg'}}" alt="Icon Loading">
-            </div>
-        </div>
-    {{/if}}
 </div>

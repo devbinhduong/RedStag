@@ -156,7 +156,7 @@
                     {{/if}}
                     <div class="productView-price">
                         {{#or customer (unless settings.hide_price_from_guests)}}
-                        {{> components/products/price price=product.price}}
+                        {{> components/products/price price=product.price isProductPage=true}}
                         {{else}}
                         {{> components/common/login-for-pricing}}
                         {{/or}}
@@ -170,21 +170,29 @@
                     <!-- Stock indicator -->
                     <div class="productView-info-item custom-indicator">
                         <span class="productView-info-name stock-indicator-label">Availability:</span>
-                        <span class="productView-info-value stock-indicator-value">10+ IN STOCK</span>
+                        <span class="productView-info-value stock-indicator-value"></span>
+
+                        <span class="icon icon--stock-check">
+                            <svg><use xlink:href="#icon-stock-check"></use></svg>
+                        </span>
                     </div>
 
                     <!-- Credit Plans Availale -->
                     <div class="productView-info-item custom-credit">
                         <span class="productView-info-name custom-credit-label">Credit Plans Available:</span>
-                        <span class="productView-info-value custom-credit-value"></span>
+                        <span class="productView-info-value custom-credit-value">
+                            <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/klarna-image.png" alt="klarna Logo">
+                        </span>
                     </div>
 
+                    {{#if theme_settings.show_default_stock_message}}
                     <div class="form-field form-field--stock{{#unless product.stock_level}} u-hiddenVisually{{/unless}}">
                         <label class="form-label form-label--alternate">
                             {{lang 'products.current_stock'}}
                             <span data-product-stock>{{product.stock_level}}</span>
                         </label>
                     </div>
+                    {{/if}}
                     {{> components/products/add-to-cart with_wallet_buttons=true}}
                     {{#if product.out_of_stock}}
                         {{#if product.out_of_stock_message}}
@@ -197,6 +205,11 @@
                 {{#and settings.show_wishlist theme_settings.custom_show_wish}}
                     {{> components/common/wishlist-dropdown}}
                 {{/and}}
+
+                <!-- order for delivery time -->
+                <div class="order-for-delivery">
+                    <span class="text">Order within 4 hrs for NEXT DAY DELIVERY</span>
+                </div>
             </div>
             {{#if theme_settings.custom_show_productShare}}
                 {{> components/common/share url=product.url}}

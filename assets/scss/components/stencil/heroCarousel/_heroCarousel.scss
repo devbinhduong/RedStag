@@ -275,14 +275,14 @@
     position: absolute;
     background-color: stencilColor('carousel-bgColor');
     top: 50%;
-    left: 0;
+    left: 50%;
     right: 0;
     z-index: 3;
     width: 100%;
     max-width: 500px;
     text-align: center;
     padding: 20px 15px 45px;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     white-space: normal;
     margin: 0;
 
@@ -310,10 +310,6 @@
             .heroCarousel-countdown {
                 justify-content: flex-start;
             }
-
-            .home-layout-2 & {
-                left: 25px;
-            }
         }
 
         &.heroCarousel-content--center {
@@ -331,15 +327,12 @@
                 justify-content: flex-end;
             }
 
-            .home-layout-2 & {
-                right: 25px;
-            }
         }
     }
 
     @include smin-xxl {
         &.heroCarousel-content--left {
-            left: calc((100% - 1230px)/ 2);
+            left: calc((100% - 1394px)/ 2);
 
             .home-layout-2 & {
                 left: 55px;
@@ -347,7 +340,7 @@
         }
 
         &.heroCarousel-content--right {
-            right: calc((100% - 1230px)/ 2);
+            right: calc((100% - 1394px)/ 2);
 
             .home-layout-2 & {
                 right: 55px;

@@ -32,7 +32,11 @@ If you are making a change here or in price-range.html, you probably want to mak
                 </span>
                 <span data-product-price-without-tax class="price price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}}">{{price.without_tax.formatted}}</span>
                 {{#if price.with_tax}}
-                    <span title="{{lang 'products.excluding_tax'}}">{{lang 'products.price_without_tax' tax_label=price.tax_label}}</span>
+                    {{#if isProductPage}}
+                    <span title="{{lang 'products.excluding_tax'}}">(Ex. VAT)</span>
+                    {{else}}
+                        <span title="{{lang 'products.excluding_tax'}}">{{lang 'products.price_without_tax' tax_label=price.tax_label}}</span>
+                    {{/if}}
                 {{/if}}
             </div>
         </div>
@@ -57,7 +61,12 @@ If you are making a change here or in price-range.html, you probably want to mak
                 </span>
                 <span data-product-price-with-tax class="price price--withTax">{{price.with_tax.formatted}}</span>
                 {{#if price.without_tax}}
+                
+                {{#if isProductPage}}
+                    <span title="{{lang 'products.including_tax'}}">(Inc. VAT)</span>
+                {{else}}
                     <span title="{{lang 'products.including_tax'}}">{{lang 'products.price_with_tax' tax_label=price.tax_label}}</span>
+                {{/if}}
                 {{/if}}
             </div>
         </div>

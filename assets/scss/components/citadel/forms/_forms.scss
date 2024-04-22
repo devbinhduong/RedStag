@@ -212,6 +212,7 @@
     }
 
     .form-input {
+        border: none;
         @include breakpoint("large") {
             width: auto;
         }
@@ -284,8 +285,7 @@
     padding: 0;
     text-align: center;
     vertical-align: middle;
-    width: remCalc(35px);
-
+    width: remCalc(48px);
     .form-field--success & {
         float: none;
     }
