@@ -16,8 +16,8 @@ category:
 
 {{#partial "page"}}
 
+{{#if category.image}}
 <div class="categoryHeader">
-    {{#if category.image}}
         <div class="categoryHeader__image">
             {{> components/common/responsive-img
                 image=category.image
@@ -26,7 +26,6 @@ category:
                 class="category-header-image"
             }} 
         </div>
-    {{/if}}
 
     <div class="categoryHeader__content">
         <div class="container container-2">
@@ -40,9 +39,12 @@ category:
         </div>
     </div>
 </div>
+{{/if}}
 
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<div class="container container-2">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+</div>
 
 {{#unless theme_settings.hide_category_page_heading }}
     <h1 class="page-heading">{{category.name}}</h1>

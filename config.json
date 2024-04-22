@@ -782,6 +782,7 @@
         "custom_add_to_cart_popup": "sidebar",
         "enable_cart_sidebar": true,
         "bspoq_quick_shop": true,
+        "bspoq_quick_shop_quickView": true,
         "show_topPromotion": true,
         "topPromotion_background": "#D6D6D6",
         "topPromotion_textColor": "#D81C17",
@@ -898,7 +899,9 @@
         "in_stock_label": "10+ In Stock",
         "available_stock_label": "Available to Order",
         "contact_to_buy_label": "Please contact us directly",
-        "showDemoB2BGroup": true
+        "showDemoB2BGroup": true,
+        "sidebar_banner_link": "#",
+        "sidebar_banner_image": "category-image-sidebar.jpg"
       }
     }
   ]

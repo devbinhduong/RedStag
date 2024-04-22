@@ -479,12 +479,16 @@ export default class ProductDetails extends ProductDetailsBase {
 
                     $body.trigger('cart-quantity-update', quantity);
                 });
+
+                if(this.context.themeSettings.bspoq_quick_shop_quickView) {
+                    this.previewModal.close();
+                } 
                 
             } else {
                 // Open preview modal and update content
                 if (this.previewModal) {
                     this.previewModal.open();
-    
+
                     if (window.ApplePaySession) {
                         this.previewModal.$modal.addClass('apple-pay-supported');
                     }

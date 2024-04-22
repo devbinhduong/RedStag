@@ -17,4 +17,10 @@
     {{else}}
         {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
     {{/if}}
+
+    {{#if theme_settings.sidebar_banner_image}}
+    <a class="sidebarBanner hover-image shine-effect" href="{{theme_settings.sidebar_banner_link}}">
+        <img class="lazyload" src="{{cdn 'img/loading.svg'}}" data-src="/product_images/uploaded_images/{{theme_settings.sidebar_banner_image}}" alt="{{theme_settings.sidebar_banner_image}}">
+    </a>    
+    {{/if}}
 </nav>

@@ -895,8 +895,8 @@
             "toggleSection": "Toggle {title} filter section",
             "clear": "Clear",
             "more": "More",
-            "show-more": "Show More",
-            "show-less": "Show Less",
+            "show-more": "View More",
+            "show-less": "View Less",
             "show-filters": "Show Filters",
             "hide-filters": "Hide Filters",
             "browse-by": "Browse by"

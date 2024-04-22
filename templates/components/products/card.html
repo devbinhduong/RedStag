@@ -63,6 +63,16 @@
             {{/if}}
         {{/if}}
 
+        <!-- Custom product Badge -->
+        {{#each custom_fields}}
+            {{#if name '==' '__eco_badge'}}
+                {{> components/products/product-badge
+                    badge-type='eco'
+                    badge_view='eco_badge'
+                }}
+            {{/if}}
+        {{/each}}
+
         <a href="{{url}}"
            class="card-figure__link"
            aria-label="{{> components/products/product-info}}"
@@ -99,7 +109,7 @@
             <div class="card-figcaption-top">
                 {{#unless hide_product_quick_view}}
                     {{#if theme_settings.show_product_quick_view}}
-                        <button type="button" class="button button--small quickview" data-event-type="product-click" data-product-id="{{id}}">
+                        <button type="button" class="button button--small quickview quickviewButton hide-on-all" data-event-type="product-click" data-product-id="{{id}}">
                             <svg><use xlink:href="#icon-quick-view"/></svg>
                             {{lang 'products.quick_view'}}
                         </button>

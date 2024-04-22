@@ -10,18 +10,32 @@ export default function (context) {
     $('body').on('click', '.button--quickShop', event => {
         event.preventDefault();
 
-        const productId = $(event.currentTarget).data('productId');
+        if(context.themeSettings.bspoq_quick_shop_quickView) {
+            const currentCard = event.target.closest('.card');
+            const quickViewButton = currentCard.querySelector('.quickviewButton');
+            
+            if(!quickViewButton) {
+                const productLink = currentCard.querySelector('.card-figure__link');
+                window.location.href = productLink.href;
+                return;
+            }
 
-        modal.$modal.removeClass().addClass('modal modal--quickShop');
-        modal.open({ size: 'small' });
+            quickViewButton.click();
 
-        utils.api.product.getById(productId, { template: 'bspoq/products/quick-shop' }, (err, response) => {
-            modal.updateContent(response);
-
-            var productDetails = new ProductDetails(modal.$content.find('.quickShop'), context);
-            productDetails.setProductVariant(modal.$content.find('.quickShop'));
-
-            return productDetails;
-        });
+        } else {
+            const productId = $(event.currentTarget).data('productId');
+    
+            modal.$modal.removeClass().addClass('modal modal--quickShop');
+            modal.open({ size: 'small' });
+    
+            utils.api.product.getById(productId, { template: 'bspoq/products/quick-shop' }, (err, response) => {
+                modal.updateContent(response);
+    
+                var productDetails = new ProductDetails(modal.$content.find('.quickShop'), context);
+                productDetails.setProductVariant(modal.$content.find('.quickShop'));
+    
+                return productDetails;
+            });
+        }
     });
 }

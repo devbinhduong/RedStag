@@ -203,8 +203,6 @@
     position: absolute;
     z-index: 9;
     right: 0;
-    background: stencilColor("color_badge_product_sale_badges");
-    color: stencilColor("color_text_product_sale_badges");
     text-transform: uppercase;
     font-size: $fontSize-root;
     line-height: 21px;
@@ -213,6 +211,11 @@
     padding: 3px;
     min-width: 60px;
     text-align: center;
+
+    &.sale-badge {
+        background: stencilColor("color_badge_product_sale_badges");
+        color: stencilColor("color_text_product_sale_badges");
+    }
 
     @include smax-s {
         top: -11px;
