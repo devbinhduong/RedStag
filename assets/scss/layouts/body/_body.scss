@@ -19,12 +19,12 @@ body {
         .page-heading {
             font-size: $fontSize-root + 10;
             margin-bottom: 25px;
-            text-align: left;
+            text-align: center;
         }
 
         .body {
             padding-bottom: 30px;
-            
+
             @include smin-m {
                 padding-bottom: 100px;
             }

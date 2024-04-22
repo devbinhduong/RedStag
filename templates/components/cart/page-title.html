@@ -1,3 +1,6 @@
-<h1 class="page-heading" data-cart-page-title>
-    {{lang 'cart.label' quantity=cart.quantity}}
+<h1 class="page-heading text-center page-cart-heading" data-cart-page-title>
+    {{lang 'cart.title'}}
+    <span class="cart-count" data-cart-count>
+        ({{cart.quantity}}{{#if cart.quantity '>' 1}} items{{else}} item{{/if}})
+    </span>
 </h1>

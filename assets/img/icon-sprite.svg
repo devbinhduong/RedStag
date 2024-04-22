@@ -267,4 +267,11 @@
    <symbol viewBox="0 0 24 24" id="icon-stock-check">
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="#10A716" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g>
    </symbol>
+
+   <symbol id="icon_minus" data-id="14" viewBox="0 0 100 99.07">
+      <path d="M83.6 56.6L83.6 42.9L6.1 42.9L6.1 56.6L83.6 56.6Z" id="path_000011" />
+   </symbol>
+   <symbol id="icon_plus" data-id="13" viewBox="0 0 100 99.07">
+         <path d="M51.7 56.6L83.6 56.6L83.6 42.9L51.7 42.9L51.7 10.9L38.0 11.0L38.0 42.9L6.1 42.9L6.1 56.6L38.0 56.6L38.0 88.5L51.7 88.5L51.7 56.6Z" id="path_000010" />
+   </symbol>
 </svg>

@@ -69,6 +69,8 @@
             "view_cart": "View Cart"
         },
         "label": "Your Cart ({quantity, plural, one {# item} other {# items}})",
+        "title": "Your Cart",
+        "count": "({quantity, plural, one {# item} other {# items}})",
         "is_empty": "Your cart is empty",
         "invalid_entry_message": "[ENTRY] is not a valid entry",
         "coupon_code": "Coupon Code",
@@ -164,7 +166,7 @@
         "or": "or",
         "and": "and",
         "compare": "Compare",
-        "change": "Change",
+        "change": "Update",
         "sign_up": "Register",
         "login": "Sign in",
         "login_for_pricing": "Log in for pricing",
