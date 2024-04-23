@@ -264,6 +264,7 @@ export default function(context) {
         
         menuMobileIcon.addEventListener('click', (event) => {
             event.preventDefault();
+            
             if(!body.classList.contains('has-activeNavPages')) {
                 $('header.header').removeClass('slide-up');
             } else {

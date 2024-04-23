@@ -118,11 +118,17 @@
     }
 }
 
+.page-category {
+    .page-listing {
+        padding-top: 16px;
+    }
+}
+
 
 // SubCategories
 // -----------------------------------------------------------------------------
 .customSubcategories {
-    padding: 20px 0 45px;
+    padding: 20px 0;
 
 
     &__container {

@@ -140,9 +140,10 @@
     {{{region name="header_navigation_bottom--global"}}}
 </header>
 
-{{#unless page_type '===' 'default'}}
+{{#or (if page_type '===' 'default') (if page_type '===' 'category')}}
+{{else}}
     {{> components/bspoq/home/service-section }}
-{{/unless}}
+{{/or}}
 
 {{{region name="header_bottom--global"}}}
 {{{region name="header_bottom"}}}

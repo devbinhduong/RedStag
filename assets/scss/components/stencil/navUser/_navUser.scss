@@ -77,15 +77,17 @@
     padding: 0 10px;
     text-decoration: none;
 
-    &:hover,
-    &.is-open {
-        color: stencilColor("navUser-color-hover");
+   @include smin-m {
+        &:hover,
+        &.is-open {
+            color: stencilColor("navUser-color-hover");
 
-        svg {
-            fill: stencilColor("navUser-color-hover");
-            // stroke: stencilColor("navUser-color-hover");
+            svg {
+                fill: stencilColor("navUser-color-hover");
+                // stroke: stencilColor("navUser-color-hover");
+            }
         }
-    }
+   }
 
     .icon {
         @include square(20px);

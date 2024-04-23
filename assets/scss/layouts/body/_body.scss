@@ -15,7 +15,7 @@ body {
         }
     }
 
-    &:not(.page-type-default):not(.page-type-product):not(.ezStreetPage) {
+    &:not(.page-type-default):not(.page-type-product):not(.ezStreetPage):not(.page-type-cart) {
         .page-heading {
             font-size: $fontSize-root + 10;
             margin-bottom: 25px;
@@ -174,7 +174,7 @@ body {
         left: auto;
         z-index: 5;
         float: left;
-        width: 255px;
+        width: 265px;
         display: inline-block;
         box-shadow: none;
         background-color: transparent;
@@ -197,7 +197,7 @@ body {
 
         +.page-content {
             padding-left: 30px;
-            width: calc(100% - 255px);
+            width: calc(100% - 265px);
         }
 
         &.u-hiddenVisually {

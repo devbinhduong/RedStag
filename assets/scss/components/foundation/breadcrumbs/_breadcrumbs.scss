@@ -17,6 +17,11 @@ ol.breadcrumbs {
     font-size: 0; // 2
     overflow: visible;
     margin-top: 26px;
+
+    .page-type-category & {
+        margin-top: 17px;
+    }
+
     margin-bottom: 10px;
     font-family: "Open Sans", sans-serif;
 

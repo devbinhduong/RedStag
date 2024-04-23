@@ -16,6 +16,7 @@
     @include grid-row($behavior: "nest");
     font-size: 0; // 1
     margin-bottom: spacing("single");
+    padding-top: 8px;
 
     .product {
         @include grid-column(6, $float: none);
@@ -29,6 +30,15 @@
 
         @include breakpoint("medium") {
             width: grid-calc(3, $total-columns);
+        }
+    }
+
+    .card {
+        padding-bottom: 26px;
+        .card-text {
+            &[data-test-info-type="productRating"] {
+                margin-top: 10px;
+            }
         }
     }
 }

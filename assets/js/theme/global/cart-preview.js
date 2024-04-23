@@ -50,9 +50,10 @@ export default function (secureBaseUrl, cartId, context) {
         //
         // https://developer.mozilla.org/en-US/docs/Browser_detection_using_the_user_agent
         // In summary, we recommend looking for the string 'Mobi' anywhere in the User Agent to detect a mobile device.
-        if (/Mobi/i.test(navigator.userAgent)) {
-            return event.stopPropagation();
-        }
+        
+        // if (/Mobi/i.test(navigator.userAgent)) {
+        //     return event.stopPropagation();
+        // }
 
         event.preventDefault();
         
