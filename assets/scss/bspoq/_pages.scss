@@ -446,3 +446,15 @@
         line-height: 2;
     }
 }
+
+/* Contact us page */
+.form-field  {
+    .form-label {
+        display: inline-flex;
+        align-items: center;
+
+        small {
+            margin-left: 10px;
+        }
+    }
+}

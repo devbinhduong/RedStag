@@ -480,7 +480,7 @@
         "productthumb_size": "133x100",
         "thumb_size": "173x70",
         "zoom_size": "1280x1280",
-        "blog_size": "190x250",
+        "blog_size": "900x450",
         "default_image_brand": "img/BrandDefault.gif",
         "default_image_product": "img/ProductDefault.gif",
         "default_image_gift_certificate": "img/GiftCertificate.png",
@@ -805,7 +805,7 @@
         "footer_col3_text2": "Find A Stockist",
         "footer_col3_link2": "#",
         "footer_col3_text3": "Blog",
-        "footer_col3_link3": "/blog/",
+        "footer_col3_link3": "/knowledge-base/",
         "footer_col3_text4": "Contact Us",
         "footer_col3_link4": "/contact-us/",
         "footer_col4_heading": "INFORMATION",
@@ -901,7 +901,8 @@
         "contact_to_buy_label": "Please contact us directly",
         "showDemoB2BGroup": true,
         "sidebar_banner_link": "#",
-        "sidebar_banner_image": "category-image-sidebar.jpg"
+        "sidebar_banner_image": "category-image-sidebar.jpg",
+        "home_recently_post_viewall": "/knowledge-base/"
       }
     }
   ]
