@@ -448,13 +448,15 @@
 }
 
 /* Contact us page */
-.form-field  {
-    .form-label {
-        display: inline-flex;
-        align-items: center;
-
-        small {
-            margin-left: 10px;
+.page-type-page_contact_form {
+    .form-field  {
+        .form-label {
+            display: inline-flex;
+            align-items: center;
+    
+            small {
+                margin-left: 10px;
+            }
         }
     }
 }

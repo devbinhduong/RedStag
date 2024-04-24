@@ -18,6 +18,12 @@
     @include u-listBullets("none");
     @include grid-row($behavior: "nest");
     font-size: 0;
+
+    .video {
+        &.is-active {
+            display: none;
+        }
+    }
 }
 
 .videoGallery-item {

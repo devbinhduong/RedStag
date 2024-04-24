@@ -42,6 +42,8 @@ export default class Product extends PageManager {
 
         /* Custom Function Start */
         var check_JS_load = true;
+        this.startCountdown();
+
 
         ['keydown', 'mousemove', 'touchstart'].forEach(event => {
             document.addEventListener(event, () => {
@@ -402,5 +404,53 @@ export default class Product extends PageManager {
                     `
             }),
         }).then(res => res.json()).then(res => res.data);
+    }
+
+    /* Product Countdown timer */
+    startCountdown() {
+        var now = new Date();
+        var targetTime = new Date();
+        targetTime.setHours(10, 38, 0); // Set target time to 10:20
+
+        console.log(targetTime);
+
+        // Check if current time is after target time
+        if (now > targetTime) {
+            // Set target time to next day
+            // targetTime.setDate(targetTime.getDate() + 1);
+            console.log("now > target Time")
+        }   
+
+        var countdownElement = document.querySelector('.countdown__hours');
+        var minutesElement = document.querySelector('.countdown__minutes');
+        var timeEndElement = document.querySelector('.order-for-delivery .text');
+
+        function updateCountdown() {
+            var currentTime = new Date();
+            var timeDifference = targetTime - currentTime;
+
+            // Calculate hours and minutes remaining
+            var hours = Math.floor(timeDifference / (1000 * 60 * 60));
+            var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Update countdown elements
+            countdownElement.textContent = hours.toString().padStart(2, '0');
+            minutesElement.textContent = minutes.toString().padStart(2, '0');
+
+            // Check if countdown has ended
+            if (timeDifference <= 0) {
+                countdownElement.textContent = '00';
+                minutesElement.textContent = '00';
+                // timeEndElement.textContent = 'Time End: ' + targetTime.toLocaleTimeString('en-US', { timeZone: timezone });
+                timeEndElement.textContent = 'Time End';
+                clearInterval(countdownInterval);
+            }
+        }
+
+        // Update countdown immediately
+        updateCountdown();
+
+        // Update countdown every minute
+        var countdownInterval = setInterval(updateCountdown, 60000);
     }
 }

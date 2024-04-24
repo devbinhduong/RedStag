@@ -207,9 +207,15 @@
                 {{/and}}
 
                 <!-- order for delivery time -->
-                <div class="order-for-delivery">
-                    <span class="text">Order within 4 hrs for NEXT DAY DELIVERY</span>
-                </div>
+                {{#each product.custom_fields}}
+                    {{#startsWith '__' name}}
+                        {{#if name '==' '__countdown'}}
+                            <div class="order-for-delivery">
+                                <span class="text">Order within <span class="countdown__hours">00</span>hrs <span class="countdown__minutes">00 </span>minutes for NEXT DAY DELIVERY</span>
+                            </div>
+                        {{/if}}
+                    {{/startsWith}}
+                {{/each}}
             </div>
             {{#if theme_settings.custom_show_productShare}}
                 {{> components/common/share url=product.url}}
