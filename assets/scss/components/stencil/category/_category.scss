@@ -230,8 +230,10 @@
 }
 
 .sidebarBanner {
-    display: block;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
+
 }
 
 

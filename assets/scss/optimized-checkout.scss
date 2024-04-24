@@ -709,3 +709,9 @@ $optimizedCheckout-input--error-boxShadow: 0 0 3px transparentize(stencilColor("
         }
     }
 }
+
+.customerEmail-container + p,
+#checkout-customer-login {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}

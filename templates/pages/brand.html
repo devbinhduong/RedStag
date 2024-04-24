@@ -26,23 +26,50 @@ brand:
 {{/if}}
 <h1 class="page-heading">{{brand.name}}</h1>
 {{{region name="brand_below_header"}}}
-<div class="page">
-    <aside class="page-sidebar" id="faceted-search-container">
-        {{> components/brand/sidebar}}
-    </aside>
-
-    <main class="page-content" id="product-listing-container">
-        {{#if brand.search_error }}
-            <p>{{lang 'search.errorMessage'}}</p>
-        {{else}}
-            {{#if brand.products}}
-                {{> components/brand/product-listing}}
-            {{else}}
-                <p>{{lang 'brands.no_products'}}</p>
-            {{/if}}
-            {{{region name="brand_below_content"}}}
+<div class="container container-2 page-brands">
+    <div class="page page-listing">
+        {{#if theme_settings.custom_category_sidebar}}
+        <div class="page-sidebar-mobile-wrapper">
+            <div class="page-sidebar-mobile">
+                <span class="text">{{lang 'common.sidebar'}}</span>
+                <svg class="icon" role="img" aria-label="{{lang 'common.sidebar'}}">
+                    <title>{{lang 'common.sidebar'}}</title>
+                    <desc>{{lang 'common.sidebar'}}</desc>
+                    <use xlink:href="#icon-sidebar"></use>
+                </svg>
+            </div>
+        </div>
         {{/if}}
-    </main>
+        <!--  -------------------------- Sidebar -------------------------- -->
+        {{#if theme_settings.custom_category_sidebar}}
+        <aside class="page-sidebar{{#if theme_settings.customToolbar_viewAs}} has-toolbar{{/if}}" id="faceted-search-container">
+            <div class="page-sidebar-close">
+                <span class="title">{{lang 'common.sidebar'}}</span>
+                <a href="#" class="close">
+                    <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                        <title>{{lang 'common.close'}}</title>
+                        <desc>{{lang 'common.close'}}</desc>
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </a>
+            </div>
+            {{> components/brand/sidebar}}
+        </aside>
+        {{/if}}
+    
+        <main class="page-content" id="product-listing-container">
+            {{#if brand.search_error }}
+                <p>{{lang 'search.errorMessage'}}</p>
+            {{else}}
+                {{#if brand.products}}
+                    {{> components/brand/product-listing}}
+                {{else}}
+                    <p>{{lang 'brands.no_products'}}</p>
+                {{/if}}
+                {{{region name="brand_below_content"}}}
+            {{/if}}
+        </main>
+    </div>
 </div>
 
 {{/partial}}

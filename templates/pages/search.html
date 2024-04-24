@@ -57,87 +57,113 @@ product_results:
     {{/unless}}
 </section>
 
-<section class="page">
-    {{#if product_results.faceted_search_enabled}}
-        <aside class="page-sidebar{{#if forms.search.section '!=' 'product'}} u-hiddenVisually{{/if}}" id="faceted-search-container">
-            {{> components/faceted-search/index product_results}}
+<div class="container container-2 page-search">
+    <section class="page page-listing">
+        {{#if theme_settings.custom_category_sidebar}}
+        <div class="page-sidebar-mobile-wrapper">
+            <div class="page-sidebar-mobile">
+                <span class="text">{{lang 'common.sidebar'}}</span>
+                <svg class="icon" role="img" aria-label="{{lang 'common.sidebar'}}">
+                    <title>{{lang 'common.sidebar'}}</title>
+                    <desc>{{lang 'common.sidebar'}}</desc>
+                    <use xlink:href="#icon-sidebar"></use>
+                </svg>
+            </div>
+        </div>
+        {{/if}}
+        <!--  -------------------------- Sidebar -------------------------- -->
+        {{#if theme_settings.custom_category_sidebar}}
+        <aside class="page-sidebar{{#if theme_settings.customToolbar_viewAs}} has-toolbar{{/if}}" id="faceted-search-container">
+            <div class="page-sidebar-close">
+                <span class="title">{{lang 'common.sidebar'}}</span>
+                <a href="#" class="close">
+                    <svg class="icon" role="img" aria-label="{{lang 'common.close'}}">
+                        <title>{{lang 'common.close'}}</title>
+                        <desc>{{lang 'common.close'}}</desc>
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </a>
+            </div>
+            {{> components/search/sidebar}}
         </aside>
-    {{/if}}
-    <main class="page-content">
-        {{#if forms.search.has_suggestions}}
-            <div class="panel panel--large">
-                <div class="panel-body">
-                    {{#if forms.search.suggested_query}}
-                        <div class="search-suggestion">
-                            {{lang 'forms.search.did_you_mean'}} <strong>{{forms.search.suggested_query.query}}</strong>
-                            <a href="{{forms.search.suggested_query.url}}" class="search-refine">{{lang 'forms.search.refine'}}</a>
-                        </div>
-
-                        {{#if result_count '===' 0}}
+        {{/if}}
+        
+        <main class="page-content">
+            {{#if forms.search.has_suggestions}}
+                <div class="panel panel--large">
+                    <div class="panel-body">
+                        {{#if forms.search.suggested_query}}
                             <div class="search-suggestion">
-                                <p>
-                                    {{lang 'forms.search.your_search_for'}}
-                                    "<strong>{{{sanitize forms.search.query}}}</strong>"
-                                    {{lang 'forms.search.no_match'}}
-                                </p>
+                                {{lang 'forms.search.did_you_mean'}} <strong>{{forms.search.suggested_query.query}}</strong>
+                                <a href="{{forms.search.suggested_query.url}}" class="search-refine">{{lang 'forms.search.refine'}}</a>
+                            </div>
+    
+                            {{#if result_count '===' 0}}
+                                <div class="search-suggestion">
+                                    <p>
+                                        {{lang 'forms.search.your_search_for'}}
+                                        "<strong>{{{sanitize forms.search.query}}}</strong>"
+                                        {{lang 'forms.search.no_match'}}
+                                    </p>
+                                </div>
+                            {{/if}}
+                        {{/if}}
+    
+                        {{#if category_results.length}}
+                            <div class="search-suggestion">
+                                <h5 class="suggestion-title">{{lang 'forms.search.categories'}}</h5>
+                                <ul class="category-suggestion-list">
+    
+                                    {{#each category_results}}
+                                    <li class="category-suggestion">
+    
+                                        {{#each this}}
+                                            <a href="{{url}}">{{name}}</a>
+                                            {{#unless @last}} > {{/unless}}
+                                        {{/each}}
+    
+                                    </li>
+                                    {{/each}}
+                                </ul>
                             </div>
                         {{/if}}
-                    {{/if}}
-
-                    {{#if category_results.length}}
-                        <div class="search-suggestion">
-                            <h5 class="suggestion-title">{{lang 'forms.search.categories'}}</h5>
-                            <ul class="category-suggestion-list">
-
-                                {{#each category_results}}
-                                <li class="category-suggestion">
-
-                                    {{#each this}}
-                                        <a href="{{url}}">{{name}}</a>
-                                        {{#unless @last}} > {{/unless}}
-                                    {{/each}}
-
-                                </li>
+    
+                        {{#if brand_results.length}}
+                            <div class="search-suggestion">
+                                <h5 class="suggestion-title">{{lang 'forms.search.brand'}}</h5>
+                                {{#each brand_results}}
+                                    <a href="{{url}}">{{name}}</a>
+                                    {{#unless @last}}, {{/unless}}
                                 {{/each}}
-                            </ul>
-                        </div>
-                    {{/if}}
-
-                    {{#if brand_results.length}}
-                        <div class="search-suggestion">
-                            <h5 class="suggestion-title">{{lang 'forms.search.brand'}}</h5>
-                            {{#each brand_results}}
-                                <a href="{{url}}">{{name}}</a>
-                                {{#unless @last}}, {{/unless}}
-                            {{/each}}
-                        </div>
-                    {{/if}}
-
-                    {{#if result_count '===' 0}}
-                        <div class="search-suggestion">
-                            <h5 class="suggestion-title">{{lang 'forms.search.suggestions.title'}}</h5>
-                            <ul>
-                                <li>{{lang 'forms.search.suggestions.line1'}}</li>
-                                <li>{{lang 'forms.search.suggestions.line2'}}</li>
-                                <li>{{lang 'forms.search.suggestions.line3'}}</li>
-                            </ul>
-                        </div>
-                    {{/if}}
+                            </div>
+                        {{/if}}
+    
+                        {{#if result_count '===' 0}}
+                            <div class="search-suggestion">
+                                <h5 class="suggestion-title">{{lang 'forms.search.suggestions.title'}}</h5>
+                                <ul>
+                                    <li>{{lang 'forms.search.suggestions.line1'}}</li>
+                                    <li>{{lang 'forms.search.suggestions.line2'}}</li>
+                                    <li>{{lang 'forms.search.suggestions.line3'}}</li>
+                                </ul>
+                            </div>
+                        {{/if}}
+                    </div>
                 </div>
+            {{/if}}
+    
+            <div role="tabpanel" id="search-results-content" aria-labelledby="search-results-content-count" {{#if forms.search.section '!=' 'content'}}class="u-hidden"{{/if}}>
+                {{> components/search/content-listing}}
             </div>
-        {{/if}}
-
-        <div role="tabpanel" id="search-results-content" aria-labelledby="search-results-content-count" {{#if forms.search.section '!=' 'content'}}class="u-hidden"{{/if}}>
-            {{> components/search/content-listing}}
-        </div>
-
-        <div role="tabpanel" id="product-listing-container" aria-labelledby="search-results-product-count" {{#if forms.search.section '!=' 'product'}}class="u-hidden"{{/if}}>
-            {{> components/search/product-listing}}
-        </div>
-
-        {{{region name="search_below_content"}}}
-    </main>
-</section>
+    
+            <div role="tabpanel" id="product-listing-container" aria-labelledby="search-results-product-count" {{#if forms.search.section '!=' 'product'}}class="u-hidden"{{/if}}>
+                {{> components/search/product-listing}}
+            </div>
+    
+            {{{region name="search_below_content"}}}
+        </main>
+    </section>
+</div>
 
 {{/partial}}
 {{> layout/base}}

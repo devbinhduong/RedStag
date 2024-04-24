@@ -51,6 +51,10 @@
         transition: all .4s ease;
         transform: translateY(-50%);
         background-color: #D81C17;
+
+        @include smax-m {
+            right: 22px;
+        }
     }
 
     &::after {
@@ -64,6 +68,10 @@
         transition: all .4s ease;
         transform: translateY(-50%);
         background-color: #D81C17;
+
+        @include smax-m {
+            right: 15px;
+        }
     }
 
     &.is-open {

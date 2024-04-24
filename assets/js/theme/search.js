@@ -8,6 +8,7 @@ import Url from 'url';
 import collapsibleFactory from './common/collapsible';
 import 'jstree';
 import nod from './common/nod';
+import toogleSidebarMobile from './bspoq/toogleSidebarMobile';
 
 const leftArrowKey = 37;
 const rightArrowKey = 39;
@@ -144,6 +145,8 @@ export default class Search extends CatalogPage {
         this.$productListingContainer = $('#product-listing-container');
         this.$facetedSearchContainer = $('#faceted-search-container');
         this.$contentResultsContainer = $('#search-results-content');
+        
+        toogleSidebarMobile();
 
         // Init faceted search
         if ($('#facetedSearch').length > 0) {
