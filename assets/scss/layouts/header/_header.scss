@@ -55,9 +55,11 @@
         }
     }
 
-    &:not(.is-sticky) {
-        &.slide-up {
-            transform: translateY(var(--slide-up));
+    @include smax-m {
+        &:not(.is-sticky) {
+            &.slide-up {
+                transform: translateY(var(--slide-up));
+            }
         }
     }
 }

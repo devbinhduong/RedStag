@@ -14,28 +14,13 @@ export default function (context) {
 			mega_menu_styleCustom_item4 = parseInt(settings.mega_menu_styleCustom_item4);
 
 	    function SetItemMegaMenu(){
-	        if(window.innerWidth > 1024){
-                $('.navPages-list-megamenu > li:not(.navPages-item-toggle)').mouseover(event => {
-                    var numberItem = $(event.currentTarget).index() + 1;
-    
-                    if (!$(event.currentTarget).hasClass('has-megamenu')) {
-                        LoadMegaMenu(numberItem);
-                    }
-                });
+			 $('.navPages-list-megamenu > li:not(.navPages-item-toggle)').mouseover(event => {
+				var numberItem = $(event.currentTarget).index() + 1;
 
-                console.log("Desktop");
-            }
-             else {
-                console.log("Mobile");
-             }
-
-	        $(document).on('click','#custom-menu-mobile .navPages-list:not(.navPages-list--user) > li > .navPages-action' , event => {
-	            var numberItem = $(event.currentTarget).parent().index() + 1;
-
-	            if (!$(event.currentTarget).parent().hasClass('has-megamenu')) {
-	                LoadMegaMenu(numberItem);
-	            }
-	        });
+				if (!$(event.currentTarget).hasClass('has-megamenu')) {
+					LoadMegaMenu(numberItem);
+				}
+			});
 	    }
 	        
 	    function LoadMegaMenu(numberItem){
