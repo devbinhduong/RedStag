@@ -28,7 +28,7 @@
 
 .has-activeNavPages {
     overflow: hidden; // 2
-    -webkit-overflow-scrolling: auto; // 3
+    padding-inline-end: var(--scrollbar-width);
 }
 
 //

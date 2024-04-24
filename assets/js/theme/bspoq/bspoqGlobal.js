@@ -30,6 +30,8 @@ export default function(context) {
             /* Logion  / Register Modal */
             authPopup();
             authSidebarMobile();
+
+            getScrollbarWidth();
         }
     }
 
@@ -281,19 +283,19 @@ export default function(context) {
     function headerSticky(tScroll, $header, height_header, header_top_height) {
         if (themeSettings.show_sticky_header) {
             if (tScroll > header_top_height && tScroll < scroll_position) {
-                if (!$('.header-height').length) {
-                    $header.before(
-                        '<div class="header-height" style="height: ' +
-                            height_header +
-                            'px"></div>'
-                    );
-                }
+                // if (!$('.header-height').length) {
+                //     $header.before(
+                //         '<div class="header-height" style="height: ' +
+                //             height_header +
+                //             'px"></div>'
+                //     );
+                // }
                 $header.addClass('is-sticky');
                 $header.css('animation-name', 'fadeInDown');
 
             } else {
                 $header.removeClass('is-sticky');
-                $('.header-height').remove();
+                // $('.header-height').remove();
                 $header.css('animation-name', '');
             }
 
@@ -393,4 +395,16 @@ export default function(context) {
             }
         })
     }
+
+    /* Get Scrollbar width */
+    function getScrollbarWidth() {
+        const width = window.innerWidth - document.documentElement.clientWidth;
+        
+        if (width > 17) return;
+        document.documentElement.style.setProperty('--scrollbar-width', `${width}px`);
+    }
+      
+    window.matchMedia('(max-width: 1024px)').addEventListener('change', () => {
+        getScrollbarWidth();
+    });
 } 
