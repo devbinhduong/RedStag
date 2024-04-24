@@ -108,9 +108,9 @@
                 <div class="items item--account">
                     {{#if customer}}
                         <a class="navUser-action flex-center-y hover-link" href="{{urls.account.index}}" aria-label="{{customer.name}}" data-login-form>
-                            <span class="navUser-icon flex-center-inline">
-                                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
-                            </span>
+                            <div class="navUser-avatar flex-center-inline">
+                                <img src="/product_images/uploaded_images/customer-avatar-{{customer.id}}.png" alt="{{customer.name}} Avatar">
+                            </div>
                             <span>{{customer.name}}</span>
                         </a>
                     {{else}}

@@ -380,6 +380,13 @@
             width: 100%;
             text-align: left;
 
+            &.item--account {
+                .navUser-avatar > img {
+                    width: 32px;
+                    margin-right: 8px;
+                }
+            }
+
             .header-logo {
                 margin: 0;
             }

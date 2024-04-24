@@ -407,7 +407,7 @@
     
         @include smin-m {
             background-color: stencilColor("navPages-subMenu-backgroundColor");
-            padding: 8px 20px 24px 23px;
+            padding: 10px 25px 24px 23px;
             position: absolute;
             text-align: left;
         }
@@ -583,6 +583,22 @@
         > .navPage-subMenu-action {
             border-bottom: 1px solid stencilColor("navPages-subMenu-separatorColor");
             margin-bottom: spacing("half") + spacing("quarter");
+        }
+
+        &.navPage-subMenu-item--lv2 {
+            .navPage-subMenu-action {
+                margin-bottom: 1px;
+                padding-bottom: 13px !important;
+            }
+        }
+
+        .navPage-childList {
+            .navPage-childList-item {
+                > .navPage-childList-action  {
+                    padding-top: 2px !important;
+                    padding-bottom: 2px !important;
+                }
+            }
         }
     }
 }
@@ -842,7 +858,7 @@
             border: 0;
 
             > .container {
-                padding: 27px 0 15px;
+                padding: 15px 0;
                 display: flex;
                 justify-content: space-between;
             }
@@ -1047,6 +1063,7 @@
         display: flex;
         align-items: stretch;
         justify-content: flex-start;
+        padding-top: 5px;
     }
 
     .style-custom {
