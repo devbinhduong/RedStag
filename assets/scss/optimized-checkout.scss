@@ -549,17 +549,163 @@ $optimizedCheckout-input--error-boxShadow: 0 0 3px transparentize(stencilColor("
     }
 }
 
-#checkout-customer-returning {
-    .form-actions {
-        display: flex;
 
-        .button {
-            max-width: 138px;
-            height: 44px;
+@media (min-width: 1261px) {
+   
+} 
+
+.redeemable-label {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.layout > div {
+    display: flex;
+    justify-content: space-between;
+}
+.layout-main {
+    #checkout-customer-returning {
+        max-width: 600px;
+        margin-bottom: 5px;
+        
+        .form-field + .form-field {
+            margin-bottom: 3px;
         }
 
-        #checkout-customer-cancel {
-            display: none;
+        .form-legend-container {
+            a {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 14px;
+            }
+
+            + .form-actions {
+                margin-top: 1px;
+
+                @media (max-width: 550px) {
+                    .button + .button {
+                        margin-left: 12px;
+                    }
+                }
+            }
+        }
+
+        .form-actions {
+            display: flex;
+            margin-bottom: 0;
+    
+            .button {
+                max-width: 138px;
+                height: 44px;
+                min-width: 120px;
+                font-size: 16px;
+                letter-spacing: 0.98px;
+            }
+        }
+    }
+
+    .optimizedCheckout-checkoutStep:not(.checkout-step--customer) {
+        padding-top: 13px;
+        padding-bottom: 6px;
+
+        &.checkout-step--billing {
+            padding-bottom: 0;
+        }
+    }
+}
+
+.layout-cart {
+    max-width: 370px;
+
+    .cart-header {
+        padding-top: 22px;
+        padding-right: 14px;
+        padding-bottom: 18px;
+
+        .cart-header-link {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+        }
+    }
+
+    .cart-section {
+        padding-right: 15px;
+        padding-bottom: 10px;
+
+        .cart-section-heading {
+            padding-top: 0;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .productList-item {
+            .product-figure {
+                width: 47%;
+            }
+            .product-title {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 14px;
+                padding-top: 15px;
+            }
+
+            .product-price {
+                font-size: 16px;
+                font-weight: 400;
+                padding-top: 12px;
+            }
+        }
+
+        &.optimizedCheckout-orderSummary-cartSection {
+            .cart-priceItem {
+                padding-top: 9px;
+                padding-bottom: 0;
+                .cart-priceItem-label {
+                    font-size: 14px;
+                    font-family: 'Open Sans', sans-serif;
+                }
+
+                .cart-priceItem-value {
+                    font-size: 14px;
+                    font-family: 'Open Sans', sans-serif;
+
+                }
+            }
+        }
+
+        [data-test="cart-subtotal"] {
+            .cart-priceItem {
+                margin-bottom: 0;
+            }
+        }
+
+        [data-test="cart-shipping"] {
+            .cart-priceItem {
+                padding-top: 6px;
+                margin-bottom: 0;
+            }
+        }
+
+        [data-test="cart-taxes"] {
+            .cart-priceItem {
+                padding-top: 6px;
+
+                .cart-priceItem-value {
+                    font-size: 14px;
+                    transform: translateY(-4px);
+                }
+            }
+        }
+
+        &:nth-child(3){
+            padding-bottom: 12px;
+        }
+
+        [data-test="cart-total"] {
+            .cart-priceItem-value {
+                font-size: 16px !important;
+                transform: translateY(-2px);
+                font-family: "Oswald", Arial, Helvetica, sans-serif !important;
+            }
         }
     }
 }
