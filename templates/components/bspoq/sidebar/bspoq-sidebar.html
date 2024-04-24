@@ -15,3 +15,17 @@
     </a>
     <div class="custom-sidebar-wrapper"></div>
 </div>
+
+<!-- Account Sidebar -->
+{{#if page_type '!=' 'login'}}
+    <div class="custom-sidebar custom-auth-sidebar custom-sidebar-right" id="{{#if customer}}custom-account-mobile{{else}}custom-login-mobile{{/if}}">
+        <a href="#" class="custom-sidebar-close" aria-label="Close Account Sidebar">
+            <svg class="icon" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+        </a>
+        <div class="custom-sidebar-wrapper">
+            {{#if customer}}
+                {{> components/bspoq/custom-account-popup data="account-mb"}}
+            {{/if}}
+        </div>
+    </div>
+{{/if}}

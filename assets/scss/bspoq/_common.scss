@@ -21,6 +21,7 @@
     background-color: rgba(59, 59, 59, .7);
 
     .openSidebar &,
+    .openAuthSidebar &,
     .has-openCartSidebar & {
         z-index: 102;
         opacity: 1;
@@ -28,6 +29,16 @@
         visibility: visible;
     }
 }
+
+.openAuthSidebar {
+    overflow: hidden;
+
+    #custom-account-mobile {
+        right: 0;
+        z-index: 105;
+    }
+}
+
 
 
 /* ----------------- Load Animation ----------------------*/

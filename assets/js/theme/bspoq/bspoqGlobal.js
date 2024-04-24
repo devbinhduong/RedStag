@@ -90,7 +90,7 @@ export default function(context) {
     /* Hide all Sidebar */
     function hideAllSidebar() {
         const body = document.body;
-        const removeClassArray = ['has-activeNavPages', 'openCartSidebar'];
+        const removeClassArray = ['has-activeNavPages', 'openCartSidebar', 'openAuthSidebar'];
         const menuMobileIcon = document.querySelector('.mobileMenu-toggle');
 
         /* Hide menu sidebar */
@@ -366,7 +366,7 @@ export default function(context) {
     }
     
     function authSidebarMobile() {
-        const loginMobileButton = document.querySelector("[data-login-form-mobile]"),
+        const loginMobileButton = document.querySelector("[data-login-form]"),
             authSidebar = document.querySelector('.custom-auth-sidebar');
 
         if(!loginMobileButton || !authSidebar) return;
