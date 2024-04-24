@@ -26,6 +26,10 @@ export default function(context) {
 
             /* Mega Menu Editor */
             megaMenuEditor(context);
+
+            /* Logion  / Register Modal */
+            authPopup();
+            authSidebarMobile();
         }
     }
 
@@ -319,5 +323,74 @@ export default function(context) {
                 $thisFooterInfo_list.slideUp(400);
             }
         });
+    }
+
+    function authPopup() {
+        let authButton = document.querySelector("[data-login-form]");
+
+        if(!authButton) return;
+
+        authButton.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const target = e.currentTarget;
+
+            if (!document.body.classList.contains('page-type-login')) {
+                if (!target.nextElementSibling) return;
+
+                target.nextElementSibling.classList.toggle('is-open'); 
+            } else {
+                $('html, body').animate(
+                    {
+                        scrollTop: $('.login').offset().top,
+                    },
+                    700
+                );
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            const customAuthPopup = document.querySelector('.custom-auth-popup');
+
+            if (!customAuthPopup) return;
+        
+            if (customAuthPopup.classList.contains('is-open')) {
+                if (
+                    !event.target.closest('.custom-auth-popup') &&
+                    !event.target.closest('[data-login-form]')
+                ) {
+                    customAuthPopup.classList.remove('is-open');
+                }
+            }
+        });
+    }
+    
+    function authSidebarMobile() {
+        const loginMobileButton = document.querySelector("[data-login-form-mobile]"),
+            authSidebar = document.querySelector('.custom-auth-sidebar');
+
+        if(!loginMobileButton || !authSidebar) return;
+
+        loginMobileButton.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            if (!document.body.classList.contains('page-type-login')) {
+                if(authSidebar.classList.contains('is-open')) {
+                    authSidebar.classList.remove('is-open');
+                    document.body.classList.remove('openAuthSidebar');
+                } else {
+                    authSidebar.classList.add('is-open');
+                    document.body.classList.add('openAuthSidebar');
+                }
+                
+            } else {
+                $('html, body').animate(
+                    {
+                        scrollTop: $('.login').offset().top,
+                    },
+                    700
+                );
+            }
+        })
     }
 } 

@@ -113,8 +113,11 @@
                             </div>
                             <span>{{customer.name}}</span>
                         </a>
+
+                        {{> components/bspoq/custom-account-popup data="account-pc"}}
+
                     {{else}}
-                        <a class="navUser-action flex-center-y hover-link" href="{{urls.auth.login}}" aria-label="{{lang 'account.title'}}" data-login-form>
+                        <a class="navUser-action flex-center-y hover-link" href="{{urls.auth.login}}" aria-label="{{lang 'account.title'}}">
                             <span class="navUser-icon flex-center-inline">
                                 <svg class="icon" aria-hidden="true"><use xlink:href="#icon-information"></use></svg>
                             </span>
