@@ -412,8 +412,6 @@ export default class Product extends PageManager {
         var targetTime = new Date();
         targetTime.setHours(10, 38, 0); // Set target time to 10:20
 
-        console.log(targetTime);
-
         // Check if current time is after target time
         if (now > targetTime) {
             // Set target time to next day
@@ -424,6 +422,10 @@ export default class Product extends PageManager {
         var countdownElement = document.querySelector('.countdown__hours');
         var minutesElement = document.querySelector('.countdown__minutes');
         var timeEndElement = document.querySelector('.order-for-delivery .text');
+
+        if (!countdownElement || !minutesElement || !timeEndElement) {
+            return;
+        }
 
         function updateCountdown() {
             var currentTime = new Date();

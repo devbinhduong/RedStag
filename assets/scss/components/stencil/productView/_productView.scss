@@ -676,6 +676,7 @@
     .b2b-add-to-list {
         background-color: transparent !important;
         color: $color-custom-red !important;
+        border-radius: 0 !important;
 
         &::after {
             background-color:  $color-custom-white !important;

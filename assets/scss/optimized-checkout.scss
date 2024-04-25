@@ -615,6 +615,10 @@ $optimizedCheckout-input--error-boxShadow: 0 0 3px transparentize(stencilColor("
 .layout-cart {
     max-width: 370px;
 
+    @media (min-width: 1261px) {
+        width: 100%;
+    }
+
     .cart-header {
         padding-top: 22px;
         padding-right: 14px;

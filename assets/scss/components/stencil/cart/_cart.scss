@@ -981,6 +981,11 @@ $card-preview-zoom-bottom-offset:       6rem;
         .b2b-cart-to-quote {
             background-color: $color-custom-white !important;
             color: $color-custom-red !important;
+            border-radius: 0 !important;
+
+            @include smin-m {
+                margin-right: 0 !important;
+            }
 
             &:hover {
                 color: $color-custom-white !important;
