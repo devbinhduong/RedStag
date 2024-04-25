@@ -795,7 +795,7 @@
         "custom_tab": "Tech Sheets",
         "shipping_returns": "Delivery & Returns",
         "video": "Product Video",
-        "price_with_tax": "Inc {tax_label}",
+        "price_with_tax": "In {tax_label}",
         "price_without_tax": "Ex {tax_label}",
         "including_tax": "Including Tax",
         "excluding_tax": "Excluding Tax",

@@ -84,6 +84,12 @@
                 }
             }
         }
+
+        .card-title{
+            > a {
+                color: $color-custom-red;
+            }
+        }
     }
 
     @include smax-m {
@@ -174,13 +180,13 @@
         font-size: $fontSize-root - 2;
         font-weight: $fontWeight-normal;
         letter-spacing: $letterSpacing-base;
-        color: #515C6F;
         line-height: 20px;
         font-family: "Open Sans", sans-serif;
         margin-bottom: 4px;
 
         > a {
             text-decoration: none;
+            color: #515C6F;
         }
     }
 }

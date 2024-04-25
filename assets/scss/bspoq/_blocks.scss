@@ -181,11 +181,15 @@
 //---------------------------------------------------------------------------- 
 .homeFeaturedBlock {
     &.custom-section {
-        padding-bottom: 27px;
+        padding-bottom: 15px;
 
         @include smax-s {
             padding-bottom: 39px;
         }; 
+    }
+
+    .container.container-2 {
+        max-width: 1401px;
     }
 }
 
@@ -255,6 +259,10 @@
 .brandBlock {
     margin-top: 5px;
     padding-bottom: 26px;
+
+    .container.container-2 {
+        max-width: 1390px;
+    }
 
     .custom-desc {
         margin-bottom: 20px;
