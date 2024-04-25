@@ -1,6 +1,6 @@
 //
 // EZ Street Page
-//---------------------------------------------------------------------------- 
+//----------------------------------------------------------------------------
 .ezTopBanner {
     &Image {
         @include image-padding-bottom(1920, 500);
@@ -118,10 +118,10 @@
             @include flexbox();
             width: 100%;
             max-width: 955px;
-            
+
             @include smax-xs {
                 flex-direction: column;
-            }; 
+            };
 
             &-image {
                 position: relative;
@@ -135,7 +135,7 @@
 
                 @include smax-xs {
                     width: 100%;
-                }; 
+                };
             }
 
             &-content {
@@ -152,7 +152,7 @@
 
                 @include smax-xs {
                     width: 100%;
-                }; 
+                };
             }
 
             &-heading {
@@ -168,7 +168,7 @@
                 > li {
                     position: relative;
 
-                    &::before { 
+                    &::before {
                         content: "";
                         position: absolute;
                         left: -40px;
@@ -228,7 +228,7 @@
                     margin-top: 45px;
                     margin-bottom: 0;
                 }
-                
+
                 .item-subDesc {
                     font-family: "Open Sans", sans-serif;
                     color: #515C6F;
@@ -315,7 +315,7 @@
             @include maxWidth(375px) {
                 flex-direction: column;
             }
-            
+
             &-image {
                 width: 100%;
                 max-width: 275px;
@@ -348,7 +348,7 @@
                 font-size: 16px;
                 letter-spacing: 0;
                 line-height: 21px;
-                font-weight: $fontWeight-medium;  
+                font-weight: $fontWeight-medium;
                 margin-top: 3px;
                 margin-bottom: 4px;
             }
@@ -401,7 +401,7 @@
                     .item-content {
                         padding-left: 35px;
                         max-width: 315px;
-                        
+
                         .item-desc {
                             line-height: 19px;
 
@@ -453,7 +453,7 @@
         .form-label {
             display: inline-flex;
             align-items: center;
-    
+
             small {
                 margin-left: 10px;
             }
