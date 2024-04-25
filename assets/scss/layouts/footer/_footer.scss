@@ -283,6 +283,7 @@
 
             .footer-logo {
                 margin-bottom: 32px;
+                padding-left: 0;
             }
             
             ul {
@@ -298,6 +299,12 @@
                         @include smax-m {
                             max-width: 270px;
                         }; 
+                    }
+
+                    &:last-child {
+                        > a {
+                            margin-bottom: 15px;
+                        }
                     }
 
                     .icon {
@@ -335,7 +342,8 @@
             .footer-info-heading--toggle {
                 cursor: pointer;
                 position: relative;
-                padding-bottom: 8px;
+                padding-top: 4px;
+                padding-bottom: 4px;
                 &::before {
                     top: 50%;
                     right: 5px;
@@ -403,6 +411,10 @@
 .footerBottom {
     background-color: $color-custom-black;
     padding: 17px 15px;
+
+    @include smax-s {
+        margin-top: 22px;
+    }
 
     > .container {
         padding: 0;
