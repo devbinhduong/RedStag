@@ -258,19 +258,23 @@
 // -----------------------------------------------------------------------------
 .brandBlock {
     margin-top: 5px;
-    padding-bottom: 26px;
+    padding-bottom: 28px;
 
-    .container.container-2 {
-        max-width: 1390px;
+    &.brandBlock-2 {
+        padding-top: 23px;
+        padding-bottom: 25px;
     }
+
 
     .custom-desc {
         margin-bottom: 20px;
     }
 
     > .container {
+        max-width: 1390px;
+
         @include maxWidth(1500px) {
-            max-width: calc(100% - 104px);
+            max-width: calc(100% - 106px);
         };
 
         @include smax-xxs {
@@ -342,8 +346,10 @@
     }
 
     .slick-prev {
+        left: -55px;
+
         @include smax-xl {
-            left: -50px;
+            left: -57px;
         }; 
 
         @include smax-xxs {
@@ -352,8 +358,10 @@
     }
 
     .slick-next {
+        right: -55px;
+
         @include smax-xl {
-            right: -50px;
+            right: -57px;
         }; 
 
         @include smax-xxs {
@@ -366,6 +374,10 @@
         border: 1px solid #d6d6d6;
         display: block;
 
+        @include smax-m {
+            border: none
+        }; 
+
         img {
             background-color: #ffffff;
             object-fit: none;
@@ -373,6 +385,7 @@
             @include smax-m {
                 object-fit: contain;
                 padding: 12px;
+                background-color: #EFEFEF;
             }
         }
     }
@@ -385,8 +398,21 @@
     background-color: #D6D6D6;
     padding: 20px 0;
 
+    > .container {
+        padding-left: 12px;
+        padding-right: 12px;
+        @include smin-m {
+            padding-left: 17px;
+            padding-right: 17px;
+        }; 
+    }
+
     .custom-desc {
-        margin-bottom: 16px;
+        margin-bottom: 17px;
+
+        @include smax-m {
+            margin-bottom: 12px;
+        }; 
     }
 
     &__desc {
@@ -426,6 +452,10 @@
     .slick-list {
         @include smax-xl {
             margin: 0 -7px;
+
+            @include smax-s {
+                margin: 0
+            }; 
         }
     }
     
@@ -433,13 +463,27 @@
         @include smax-xl {
             padding: 0 7px;
         }
+
+        @include smax-s {
+            padding: 0
+        }; 
+    }
+
+    .slick-dots {
+        @include smax-xl {
+            transform: translateY(11px);
+        }; 
     }
 
     &__item {
         .item-image {
-            @include image-padding-bottom(465, 264);
+            @include image-padding-bottom(465, 257);
             overflow: hidden;
             display: block;
+
+            @include smax-s {
+                @include image-padding-bottom(411, 234);
+            }; 
 
             &::before{
                 content: "";
@@ -465,17 +509,16 @@
 
         .item-content {
             background-color: #ffffff;
-            padding: 20px 10px 13px 14px;
+            padding: 14px 10px 3px 14px;
 
             .title {
                 margin: 0;
 
                 > a {
-                    line-height: 21px;
                     font-size: $fontSize-root;
                     font-weight: $fontWeight-medium;
                     letter-spacing: 0;
-                    @include lineClamp(2, 21px);
+                    @include lineClamp(2, 23px);
                     text-decoration: none;
                 }
             }
@@ -499,6 +542,11 @@
                     letter-spacing: 0;
                     font-weight: $fontWeight-bold;
                     text-transform: uppercase;
+                    text-decoration: none;
+
+                    @include smax-s {
+                        line-height: 16px;
+                    }; 
                 }
             }
         }

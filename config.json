@@ -949,7 +949,7 @@
         "in_stock_label": "10+ In Stock",
         "available_stock_label": "Available to Order",
         "contact_to_buy_label": "Please contact us directly",
-        "showDemoB2BGroup": true,
+        "showDemoB2BGroup": false,
         "sidebar_banner_link": "#",
         "sidebar_banner_image": "category-image-sidebar.jpg",
         "home_recently_post_viewall": "/knowledge-base/"

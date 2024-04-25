@@ -410,14 +410,14 @@ export default class Product extends PageManager {
     startCountdown() {
         var now = new Date();
         var targetTime = new Date();
-        targetTime.setHours(10, 38, 0); // Set target time to 10:20
+        targetTime.setHours(22, 30, 0); // Set target time to 22:30
 
         // Check if current time is after target time
         if (now > targetTime) {
             // Set target time to next day
             // targetTime.setDate(targetTime.getDate() + 1);
-            console.log("now > target Time")
         }   
+
 
         var countdownElement = document.querySelector('.countdown__hours');
         var minutesElement = document.querySelector('.countdown__minutes');

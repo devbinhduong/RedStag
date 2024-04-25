@@ -23,6 +23,10 @@
     background-color: stencilColor("footer_top_bg");
     padding: 22px 0;
 
+    > .container {
+        max-width: 1495px;
+    }
+
     @include smax-s {
         padding-top: 28px;
     }; 
@@ -166,7 +170,7 @@
             .socialLinks-item {
                 margin: 0;
                 background-color: #ffffff;
-                @include square(28px);
+                @include square(26px);
                 border-radius: 50%;
                 @include flexbox($align-items: center, $justify-content: center, $display: inline-flex);
                 margin-left: 2px;

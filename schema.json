@@ -546,7 +546,7 @@
       },
       {
         "type": "color",
-        "content": "Header Middle Background",
+        "label": "Header Middle Background",
         "id": "headerMiddleBackground"
       },
       {
