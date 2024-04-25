@@ -418,8 +418,10 @@
 
 .bannerVideo {
     .videoContainer {
-        @include image-padding-bottom(1920, 535);
-
+        @include image-padding-bottom(1920, 418); //Change to design size 418 at issue 11
+        @include smax-m {
+            padding-bottom: 56.25%; //issue 11
+        }
         iframe {
             @include pos($pos: abs, $cb: center);
             height: 100%;
