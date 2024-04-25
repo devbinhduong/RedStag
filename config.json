@@ -442,7 +442,7 @@
         "homepage_top_products_column_count": 4,
         "homepage_blog_posts_count": 4,
         "productpage_videos_count": 8,
-        "productpage_reviews_count": 9,
+        "productpage_reviews_count": 1000,
         "productpage_related_products_count": 10,
         "productpage_similar_by_views_count": 10,
         "categorypage_products_per_page": 12,
@@ -821,8 +821,6 @@
         "footer_col4_link5": "#",
         "footer-text-color": "#ffffff",
         "footer-heading-fontColor": "#D81C17",
-        
-
         "service_section_text_1": "Credit Accounts Available",
         "service_section_text_2": "Next Day UK Delivery",
         "service_section_img": "image-30.png",
