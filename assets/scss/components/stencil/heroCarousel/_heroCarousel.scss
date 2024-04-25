@@ -28,8 +28,10 @@
     &:not(.special-style) {
         .slick-dots {
             bottom: 15px;
-
-            @include smax-s {
+            @include smax-m {
+                bottom: 2px;
+            }
+            @include smax-xs {
                 bottom: 7px;
             }
         }
@@ -79,7 +81,7 @@
         &:before {
             @include carousel-arrow-color($slick-arrow-slideshow-color, "next");
         }
-    
+
         &:hover {
             &:before {
                 @include carousel-arrow-color($slick-arrow-slideshow-color-hover, "next");
@@ -97,7 +99,7 @@
         &:before {
             @include carousel-arrow-color($slick-arrow-slideshow-color, "prev");
         }
-    
+
         &:hover {
             &:before {
                 @include carousel-arrow-color($slick-arrow-slideshow-color-hover, "prev");
