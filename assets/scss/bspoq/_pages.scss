@@ -4,6 +4,11 @@
 .ezTopBanner {
     &Image {
         @include image-padding-bottom(1920, 500);
+        &:after {
+            @include smax-m {
+                padding-bottom: 33%; //issue 10 - 7
+            }
+        }
     }
 }
 
