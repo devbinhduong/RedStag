@@ -2,25 +2,30 @@
     <div class="container container-2">
         <div class="homeBanner__list">
             <div class="homeBanner__item skeleton-loader">
-                <a href="#" class="homeBanner__image hover-image shine-effect">
-                    <img class="lazyload" src="" data-src="/product_images/uploaded_images/home-banner-red-1.png" alt="Banner Image 1">
+                <a href="{{theme_settings.home_banner2_item1_link}}" class="homeBanner__image hover-image shine-effect">
+                    <img class="lazyload" src="" data-src="/product_images/uploaded_images/{{theme_settings.home_banner2_item1_image}}" alt="Banner {{theme_settings.home_banner2_item1_text}}">
                 </a>
 
                 <div class="homeBanner__content">
-                    <h2 class="title" data-step-animate="2">15%<span>OFF</span></h2>
-                    <p class="text" data-step-animate="3">RedStag Cutting Discs</p>
-                    <a href="#" class="button uppercase button--secondary button--small" data-step-animate="4">Shop Now</a>
+                    <h2 class="title" data-step-animate="2">{{theme_settings.home_banner2_item1_title1}}<span>{{theme_settings.home_banner2_item1_title2}}</span></h2>
+                    <p class="text" data-step-animate="3">{{theme_settings.home_banner2_item1_text}}</p>
+                    <a href="{{theme_settings.home_banner2_item1_link}}" class="button uppercase button--secondary button--small" data-step-animate="4">{{theme_settings.home_banner2_item1_button}}</a>
                 </div>
             </div>
             <div class="homeBanner__item skeleton-loader">
-                <a href="#" class="homeBanner__image hover-image shine-effect">
-                    <img class="lazyload" src="" data-src="/product_images/uploaded_images/home-banner-red-2.png" alt="Banner Image 2">
+                <a href="{{theme_settings.home_banner2_item2_link}}" class="homeBanner__image hover-image shine-effect">
+                    <img class="lazyload" src="" data-src="/product_images/uploaded_images/{{theme_settings.home_banner2_item2_image}}" alt="Banner Image 2">
                 </a>
 
                 <div class="homeBanner__content">
-                    <h2 class="title" data-step-animate="3">3<span>FOR</span>2</h2>
-                    <p class="text" data-step-animate="4">3FOR2 WD‑40® Multi-use Product Aersol</p>
-                    <a href="#" class="button uppercase button--secondary button--small" data-step-animate="5">Shop Now</a>
+                    <h2 class="title" data-step-animate="3">{{theme_settings.home_banner2_item2_title1}}<span>{{theme_settings.home_banner2_item2_title2}}</span>{{theme_settings.home_banner2_item2_title3}}</h2>
+                    <p class="text" data-step-animate="4">
+                    {{#if theme_settings.home_banner2_item2_text}}
+                        {{theme_settings.home_banner2_item2_text}}
+                    {{else}}
+                        3FOR2 WD‑40® Multi-use Product Aersol
+                    {{/if}}</p>
+                    <a href="{{theme_settings.home_banner2_item2_link}}" class="button uppercase button--secondary button--small" data-step-animate="5">{{theme_settings.home_banner2_item2_button}}</a>
                 </div>
             </div>
         </div>

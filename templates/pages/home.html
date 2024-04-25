@@ -35,8 +35,8 @@ blog:
    <!-- Featured products -->
    {{#if products.featured}}
         <div class="custom-section homeFeaturedBlock">
-            <h2 class="custom-heading">Featured Products</h2>
-            <p class="custom-desc">Picked for you</p>
+            <h2 class="custom-heading">{{theme_settings.home_product_featured_heading}}</h2>
+            <p class="custom-desc">{{theme_settings.home_product_featured_subheading}}</p>
 
             <div class="container container-2">
                 {{> components/products/carousel 
