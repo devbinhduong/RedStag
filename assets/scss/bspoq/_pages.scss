@@ -4,6 +4,12 @@
 .ezTopBanner {
     &Image {
         @include image-padding-bottom(1920, 500);
+
+        &:after {
+            @include smax-m {
+                padding-bottom: 33%; //issue 10 - 7
+            }
+        }
     }
 }
 
@@ -121,7 +127,7 @@
             
             @include smax-xs {
                 flex-direction: column;
-            }; 
+            }
 
             &-image {
                 position: relative;
@@ -135,7 +141,21 @@
 
                 @include smax-xs {
                     width: 100%;
-                }; 
+                }
+
+                img {
+                    @include smax-xs {
+                        display: block;
+                        margin: 0 auto;
+                    }
+                }
+                
+                button {
+                    @include smax-xs {
+                        width: auto;
+                        padding: 10px 15px 12px;
+                    }
+                }
             }
 
             &-content {

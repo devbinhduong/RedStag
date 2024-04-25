@@ -2191,7 +2191,7 @@
       },
       {
         "type": "optimizedCheckout-image",
-        "label": "160X65px  Recommended",
+        "label": "163X65px  Recommended",
         "reference": "optimizedCheckout-show-logo",
         "reference_default": "none",
         "force_reload": true,
@@ -2207,7 +2207,7 @@
         "force_reload": true,
         "options": [
           {
-            "value": "160x65",
+            "value": "163x65",
             "label": "Optimized For Theme"
           },
           {

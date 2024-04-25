@@ -165,6 +165,8 @@
 
     @include smax-m {
         position: relative;
+        top: 13px;
+        z-index: 9999;
     }
 
     >.container {
@@ -204,9 +206,9 @@
         display: block;
     }
 
-    @media (min-width: 1025px){
-        max-height: calc(100vh - 150px);
-    }
+    // @media (min-width: 1025px){
+    //     max-height: calc(100vh - 150px);
+    // }
 
     @media (min-width: 1025px) and (max-width: 1299px){
         .productGrid{
@@ -356,6 +358,6 @@
     }
 }
 
-.openSearchDropdown {
+.search-result-open {
     overflow: hidden;
 }

@@ -2,10 +2,10 @@
 // -----------------------------------------------------------------------------
 .serviceBlock {
     background-color: $color-custom-black;
-    padding: 10px 0;
+    padding: 8px 0;
 
-    @include smax-s {
-        padding: 10px 0 6px;
+    @include smax-m {
+        padding: 14px 0 13px;
     }
 
     > .container {
@@ -57,9 +57,19 @@
             font-weight: 300;
             line-height: 21px;
             letter-spacing: 0;
+
+            @include smax-m {
+                font-size: 13px;
+                line-height: 18px;
+                text-wrap: balance;
+            }
         }
         .item-link {
             min-height: 32px;
+
+            @include smax-s {
+                transform: translateX(-5px);
+            }
         }
     }
 }
@@ -72,7 +82,7 @@
     margin-bottom: 37px;
 
     @include smax-s {
-        padding: 12px;
+        padding: 10px;
         margin-bottom: 8px;
     }
 
@@ -187,6 +197,13 @@
 
         @include smax-s {
             @include flex-layout(1, 0px)
+        }
+    }
+
+    .container {
+        @include smax-s {
+            padding-left: 10px;
+            padding-right: 10px;
         }
     }
 

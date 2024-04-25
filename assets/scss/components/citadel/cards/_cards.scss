@@ -130,7 +130,11 @@
         max-height: 100%;
         object-fit: contain;
         margin-bottom: 0;
-        max-height: 206px;
+        
+        @include smin-l {
+            max-height: 206px;
+
+        }
     }
 
     .card-img-hover {

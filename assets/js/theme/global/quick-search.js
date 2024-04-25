@@ -10,6 +10,7 @@ export default function (context) {
     const $quickSearchDiv = $('#quickSearch');
     const $searchQuery = $('#search_query');
     const $quickSearchForms = $('[data-quick-search-form]');
+    const $body = $('body');
 
 
 
@@ -36,6 +37,7 @@ export default function (context) {
 
             $quickSearchResults.removeClass('is-open');
             $quickSearchResultsCustom.removeClass('is-open');
+            $body.removeClass('search-result-open');
         }
     });
 
@@ -43,6 +45,8 @@ export default function (context) {
     $(document).on('click', '.quickResults-close', (e) => {
         e.preventDefault();
         $searchDropdown.removeClass('is-open');
+        $body.removeClass('search-result-open');
+
     });
 
     // stagger searching for 1200ms after last input
@@ -55,6 +59,7 @@ export default function (context) {
             /* Custom Start */
             $quickSearchResultsCustom.removeClass('is-open');
             $quickSearchResults.html(response).addClass('is-open');
+            $body.addClass('search-result-open');
             
             const $quickSearchResultsCurrent = $quickSearchResults.filter(':visible');
 
