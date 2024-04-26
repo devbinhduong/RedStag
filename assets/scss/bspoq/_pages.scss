@@ -44,11 +44,22 @@
     }
 
     &__list {
-        @include flex-layout(8, 20px);
-        margin-top: 45px;
+        padding-top: 20px;
+        padding-bottom: 0px;
+
+        @include smin-m {
+            @include flex-layout(8, 20px);
+            margin-top: 45px;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
 
         @include smax-l {
             justify-content: center;
+        }
+
+        .slick-dots {
+            bottom: -40px;
         }
     }
 
@@ -60,16 +71,15 @@
         }
 
         @include smax-m {
-            min-width: 80px;
+            display: flex !important;
         }
-
-        @include smax-s {
-            min-width: 70px;
-        }
-
 
         .item-image {
             min-height: 80px;
+
+            @include smax-m {
+                max-width: 80px;
+            }
         }
 
         .item-text {
