@@ -1,10 +1,9 @@
 //
 // EZ Street Page
-//---------------------------------------------------------------------------- 
+//----------------------------------------------------------------------------
 .ezTopBanner {
     &Image {
         @include image-padding-bottom(1920, 500);
-
         &:after {
             @include smax-m {
                 padding-bottom: 33%; //issue 10 - 7
@@ -124,7 +123,7 @@
             @include flexbox();
             width: 100%;
             max-width: 955px;
-            
+
             @include smax-xs {
                 flex-direction: column;
             }
@@ -142,14 +141,12 @@
                 @include smax-xs {
                     width: 100%;
                 }
-
                 img {
-                    @include smax-xs {
+                    @include smax-m {
                         display: block;
                         margin: 0 auto;
                     }
                 }
-                
                 button {
                     @include smax-xs {
                         width: auto;
@@ -172,7 +169,7 @@
 
                 @include smax-xs {
                     width: 100%;
-                }; 
+                };
             }
 
             &-heading {
@@ -188,7 +185,7 @@
                 > li {
                     position: relative;
 
-                    &::before { 
+                    &::before {
                         content: "";
                         position: absolute;
                         left: -40px;
@@ -230,7 +227,7 @@
             }
 
             .item-image {
-                margin-right: 38px;
+                margin-right: 36px;
             }
 
             .item-content {
@@ -248,7 +245,7 @@
                     margin-top: 45px;
                     margin-bottom: 0;
                 }
-                
+
                 .item-subDesc {
                     font-family: "Open Sans", sans-serif;
                     color: #515C6F;
@@ -265,6 +262,10 @@
     }
 
     &__button {
+        @include smin-xxl {
+            top: 47%;
+            left: 47%;
+        }
         @include pos($pos: abs, $cb: center);
         min-width: 146px;
 
@@ -322,7 +323,7 @@
             padding-top: 33px;
             padding-left: 40px;
             padding-bottom: 19px;
-            padding: 33px 20px 19px 40px;
+            padding: 36px 20px 19px 40px;
 
             @include maxMinWidth(1025px, 1400px) {
                 flex-direction: column;
@@ -335,7 +336,7 @@
             @include maxWidth(375px) {
                 flex-direction: column;
             }
-            
+
             &-image {
                 width: 100%;
                 max-width: 275px;
@@ -368,7 +369,7 @@
                 font-size: 16px;
                 letter-spacing: 0;
                 line-height: 21px;
-                font-weight: $fontWeight-medium;  
+                font-weight: $fontWeight-medium;
                 margin-top: 3px;
                 margin-bottom: 4px;
             }
@@ -421,7 +422,7 @@
                     .item-content {
                         padding-left: 35px;
                         max-width: 315px;
-                        
+
                         .item-desc {
                             line-height: 19px;
 
@@ -438,8 +439,12 @@
 
 .bannerVideo {
     .videoContainer {
-        @include image-padding-bottom(1920, 535);
-
+        @include image-padding-bottom(1920, 418);
+           &:after {
+               @include smax-m {
+                   padding-bottom: 56%;
+               }
+           }
         iframe {
             @include pos($pos: abs, $cb: center);
             height: 100%;
@@ -450,12 +455,17 @@
 .bottomBanner {
     &__image {
         @include image-padding-bottom(1920, 535);
+        @include smin-m {
+            &::after {
+                padding-bottom: 19.3%;
+            }
+        }
     }
 }
 
 .getTouch {
     background-color: $color-custom-blue;
-    padding: 16px 15px 14px;
+    padding: 15px 15px 14px;
 
     &__link {
         color: #ffffff;
@@ -473,7 +483,7 @@
         .form-label {
             display: inline-flex;
             align-items: center;
-    
+
             small {
                 margin-left: 10px;
             }
